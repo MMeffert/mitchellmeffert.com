@@ -3,7 +3,7 @@
 
     <head>
         <!-- Google reCAPTCHA-->
-    <script src="https://www.google.com/recaptcha/api.js?theme=dark" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Submit contact form through API-->
     <script>
@@ -839,7 +839,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 text-right">
-                                        <input type="submit" id="submit" name="send" class="submitBnt btn btn-custom" value="Send Message">
+                                        <input type="submit" id="submit" name="send" class="submitBnt btn btn-custom" value="Send Message" onClick="submitToAPI(event)">
                                         <div id="simple-msg"></div>
                                     </div>
                                 </div>
