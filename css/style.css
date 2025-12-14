@@ -220,10 +220,6 @@ button:focus {
     z-index: 2;
 }
 
-.bg-custom {
-    background-color: #000;
-}
-
 .section-main-title {
     max-width: 570px;
 }
