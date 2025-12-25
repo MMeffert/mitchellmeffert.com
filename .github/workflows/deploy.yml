@@ -1,0 +1,77 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write # Required for OIDC authentication
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  deploy:
+    name: Deploy Static Site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Get CloudFormation outputs
+        id: cfn
+        run: |
+          # Get S3 bucket name from CloudFormation stack outputs
+          BUCKET_NAME=$(aws cloudformation describe-stacks \
+            --stack-name mitchellmeffert-website-stack-production \
+            --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" \
+            --output text)
+          echo "bucket_name=$BUCKET_NAME" >> $GITHUB_OUTPUT
+
+          # Get CloudFront distribution ID
+          DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
+            --stack-name mitchellmeffert-website-stack-production \
+            --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" \
+            --output text)
+          echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
+
+      - name: Sync files to S3
+        run: |
+          # Sync all static files to S3, excluding CDK and git directories
+          aws s3 sync . s3://${{ steps.cfn.outputs.bucket_name }} \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "cdk/*" \
+            --exclude ".gitattributes" \
+            --cache-control "max-age=31536000,public" \
+            --metadata-directive REPLACE
+
+          # Set shorter cache for HTML files (they change more frequently)
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/index.html \
+            s3://${{ steps.cfn.outputs.bucket_name }}/index.html \
+            --cache-control "max-age=300,public" \
+            --content-type "text/html" \
+            --metadata-directive REPLACE
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.cfn.outputs.distribution_id }} \
+            --paths "/*"
+
+      - name: Deployment complete
+        run: |
+          echo "Deployment complete!"
+          echo "Website URL: https://mitchellmeffert.com"
+          echo "CloudFront Distribution: ${{ steps.cfn.outputs.distribution_id }}"
