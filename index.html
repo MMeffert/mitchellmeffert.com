@@ -31,7 +31,6 @@
                 const token = await grecaptcha.enterprise.execute('6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD', {action: 'contact_submit'});
 
                 var data = {
-                    site: 'mitchellmeffert.com',
                     name: $("#name").val(),
                     email: $("#mail").val(),
                     subject: $("#subject").val(),
@@ -41,7 +40,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "https://dji7iv5hei.execute-api.us-east-1.amazonaws.com/prod",
+                    url: "https://pnsc4a2i3wluegqzj7enp6cxim0wbnna.lambda-url.us-east-1.on.aws/",
                     dataType: "json",
                     crossDomain: "true",
                     contentType: "application/json; charset=utf-8",
