@@ -1,28 +1,43 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { StaticSiteStack } from '@roundhouse/static-site-cdk';
-import { config } from './config';
+import { StaticSiteStack } from './lib/static-site-stack';
 
 /**
  * CDK app that deploys mitchellmeffert.com static website infrastructure.
  *
- * This creates:
+ * Creates:
  * - Private S3 bucket with encryption and versioning
- * - CloudFront distribution with HTTPS and security headers
- * - ACM certificate with automatic DNS validation via Route 53
- * - WAF with rate limiting (100 req/5min) and AWS managed rules
- * - GitHub Actions IAM role for CI/CD deployments via OIDC
- *
- * Prerequisites:
- * 1. Domain mitchellmeffert.com must be in Route 53 (same account)
- * 2. GitHub OIDC provider must be configured in AWS account
- * 3. CDK must be bootstrapped: npm run bootstrap
+ * - CloudFront distribution with HTTPS
+ * - ACM certificate with DNS validation via Route 53
+ * - GitHub Actions IAM role for CI/CD via OIDC
  *
  * Deploy with: npm run deploy
  */
 const app = new cdk.App();
 
-new StaticSiteStack(app, `${config.siteName}-stack`, config);
+// Add required AWS resource tags
+const tags = {
+  Application: 'mitchellmeffert-website',
+  Environment: 'production',
+  ManagedBy: 'cdk',
+  Repository: 'MMeffert/mitchellmeffert.com',
+};
+
+const stack = new StaticSiteStack(app, 'mitchellmeffert-website-stack', {
+  siteName: 'mitchellmeffert-website',
+  domain: 'mitchellmeffert.com',
+  githubRepo: 'MMeffert/mitchellmeffert.com',
+  subdomains: ['www'],
+  env: {
+    account: '241654197557',
+    region: 'us-east-1',
+  },
+});
+
+// Apply tags to all resources
+Object.entries(tags).forEach(([key, value]) => {
+  cdk.Tags.of(stack).add(key, value);
+});
 
 app.synth();
