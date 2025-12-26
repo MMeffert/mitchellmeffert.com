@@ -7,13 +7,13 @@ import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import * as path from 'path';
 import { Construct } from 'constructs';
 
 export interface ContactFormConfig {
   senderEmail: string;
   receiverEmail: string;
-  recaptchaApiKey: string;
   recaptchaProjectId: string;
   recaptchaSiteKey: string;
   recaptchaScoreThreshold?: number;
@@ -137,6 +137,13 @@ export class StaticSiteStack extends cdk.Stack {
 
     // Contact Form Lambda (optional)
     if (contactForm) {
+      // Reference the existing secret for reCAPTCHA API key
+      const recaptchaSecret = secretsmanager.Secret.fromSecretNameV2(
+        this,
+        'RecaptchaApiKeySecret',
+        'mitchellmeffert-website/recaptcha-api-key'
+      );
+
       this.contactFormFunction = new lambda.Function(this, 'ContactFormFunction', {
         functionName: `${siteName}-contact-form`,
         runtime: lambda.Runtime.NODEJS_20_X,
@@ -148,12 +155,15 @@ export class StaticSiteStack extends cdk.Stack {
           SENDER_EMAIL: contactForm.senderEmail,
           RECEIVER_EMAIL: contactForm.receiverEmail,
           EMAIL_SUBJECT: 'Contact Form Submission',
-          RECAPTCHA_API_KEY: contactForm.recaptchaApiKey,
+          RECAPTCHA_API_KEY_SECRET_NAME: 'mitchellmeffert-website/recaptcha-api-key',
           RECAPTCHA_PROJECT_ID: contactForm.recaptchaProjectId,
           RECAPTCHA_SITE_KEY: contactForm.recaptchaSiteKey,
           RECAPTCHA_SCORE_THRESHOLD: (contactForm.recaptchaScoreThreshold || 0.5).toString(),
         },
       });
+
+      // Grant Lambda permission to read the reCAPTCHA API key secret
+      recaptchaSecret.grantRead(this.contactFormFunction);
 
       // Grant SES permissions
       this.contactFormFunction.addToRolePolicy(

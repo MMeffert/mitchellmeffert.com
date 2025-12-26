@@ -1,7 +1,9 @@
 const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
+const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager');
 const https = require('https');
 
 const ses = new SESClient({ region: 'us-east-1' });
+const secretsManager = new SecretsManagerClient({ region: 'us-east-1' });
 
 // Configuration from environment variables
 const SENDER = process.env.SENDER_EMAIL;
@@ -9,10 +11,23 @@ const RECEIVER = process.env.RECEIVER_EMAIL;
 const SUBJECT = process.env.EMAIL_SUBJECT || 'Contact Form Submission';
 
 // reCAPTCHA Enterprise configuration
-const RECAPTCHA_API_KEY = process.env.RECAPTCHA_API_KEY;
+const RECAPTCHA_API_KEY_SECRET_NAME = process.env.RECAPTCHA_API_KEY_SECRET_NAME;
 const RECAPTCHA_PROJECT_ID = process.env.RECAPTCHA_PROJECT_ID;
 const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 const RECAPTCHA_SCORE_THRESHOLD = parseFloat(process.env.RECAPTCHA_SCORE_THRESHOLD || '0.5');
+
+// Cache the API key to avoid fetching on every request
+let cachedApiKey = null;
+
+async function getRecaptchaApiKey() {
+    if (cachedApiKey) {
+        return cachedApiKey;
+    }
+    const command = new GetSecretValueCommand({ SecretId: RECAPTCHA_API_KEY_SECRET_NAME });
+    const response = await secretsManager.send(command);
+    cachedApiKey = response.SecretString;
+    return cachedApiKey;
+}
 
 exports.handler = async function (event, context) {
     console.log('Received event:', JSON.stringify(event));
@@ -27,7 +42,8 @@ exports.handler = async function (event, context) {
 
     // Verify reCAPTCHA token
     try {
-        const recaptchaResult = await verifyRecaptcha(body.recaptchaToken, 'contact_submit');
+        const apiKey = await getRecaptchaApiKey();
+        const recaptchaResult = await verifyRecaptcha(body.recaptchaToken, 'contact_submit', apiKey);
 
         if (!recaptchaResult.success) {
             console.log('reCAPTCHA verification failed:', recaptchaResult.reason);
@@ -91,7 +107,7 @@ exports.handler = async function (event, context) {
     }
 };
 
-function verifyRecaptcha(token, expectedAction) {
+function verifyRecaptcha(token, expectedAction, apiKey) {
     return new Promise((resolve, reject) => {
         const requestBody = JSON.stringify({
             event: {
@@ -104,7 +120,7 @@ function verifyRecaptcha(token, expectedAction) {
         const options = {
             hostname: 'recaptchaenterprise.googleapis.com',
             port: 443,
-            path: `/v1/projects/${RECAPTCHA_PROJECT_ID}/assessments?key=${RECAPTCHA_API_KEY}`,
+            path: `/v1/projects/${RECAPTCHA_PROJECT_ID}/assessments?key=${apiKey}`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -32,7 +32,7 @@ const stack = new StaticSiteStack(app, 'mitchellmeffert-website-stack', {
   contactForm: {
     senderEmail: 'mitchell@mitchellmeffert.com',
     receiverEmail: 'mitchell@mitchellmeffert.com',
-    recaptchaApiKey: 'AIzaSyDXAFGDMtjVIC75aVOLIa-7Y9bwlJGhbWs',
+    // API key stored in AWS Secrets Manager: mitchellmeffert-website/recaptcha-api-key
     recaptchaProjectId: 'mitchellmeffertcom',
     recaptchaSiteKey: '6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD',
     recaptchaScoreThreshold: 0.5,
