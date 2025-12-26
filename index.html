@@ -114,6 +114,9 @@
 
         <!-- Custom style Css -->
         <link rel="stylesheet" href="css/style.css">
+
+        <!-- Hide reCAPTCHA badge (attribution text shown in form instead) -->
+        <style>.grecaptcha-badge { visibility: hidden; }</style>
     </head>
 
     <body>
@@ -823,6 +826,11 @@
                                     <div class="col-sm-12 text-right">
                                         <input type="submit" id="submit" name="send" class="submitBnt btn btn-custom" value="Send Message" onClick="submitToAPI(event)">
                                         <div id="simple-msg"></div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-sm-12">
+                                        <p class="text-muted small mb-0">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
                                     </div>
                                 </div>
                             </form>
