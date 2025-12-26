@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# CDK
+cdk.out/
+.cdk.staging/
+
+# Claude Code
+.claude/
+
+# macOS
+.DS_Store
