@@ -2,45 +2,41 @@
 <html lang="en">
 
     <head>
-        <!-- Google reCAPTCHA-->
-    <script src="https://www.google.com/recaptcha/api.js?theme=light" async defer></script>
+        <!-- Google reCAPTCHA Enterprise -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD"></script>
 
-    <!-- Submit contact form through API-->
+    <!-- Submit contact form through API -->
     <script>
-        function submitToAPI(e) {
-            if (grecaptcha.getResponse() == "") {
-                e.preventDefault();
-                $("#message").css('color', 'red');
-                $("#message").text("You must check the CAPTCHA box before submitting.");
-            } else {
-                e.preventDefault();
+        async function submitToAPI(e) {
+            e.preventDefault();
 
-                var Namere = /[A-Za-z]{1}[A-Za-z]/;
-                if (!Namere.test($("#name").val())) {
-                    alert("Name can not less than 2 char");
-                    return;
-                }
-                if ($("#mail").val() == "") {
-                    alert("Please enter your email id");
-                    return;
-                }
+            var Namere = /[A-Za-z]{1}[A-Za-z]/;
+            if (!Namere.test($("#name").val())) {
+                alert("Name can not less than 2 char");
+                return;
+            }
+            if ($("#mail").val() == "") {
+                alert("Please enter your email id");
+                return;
+            }
 
-                var reemail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-                if (!reemail.test($("#mail").val())) {
-                    alert("Please enter valid email address");
-                    return;
-                }
+            var reemail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+            if (!reemail.test($("#mail").val())) {
+                alert("Please enter valid email address");
+                return;
+            }
 
-                var name = $("#name").val();
-                var email = $("#mail").val();
-                var subject = $("#subject").val();
-                var message = $("#comment").val();
+            // Get reCAPTCHA Enterprise token
+            try {
+                const token = await grecaptcha.enterprise.execute('6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD', {action: 'contact_submit'});
+
                 var data = {
                     site: 'mitchellmeffert.com',
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message
+                    name: $("#name").val(),
+                    email: $("#mail").val(),
+                    subject: $("#subject").val(),
+                    message: $("#comment").val(),
+                    recaptchaToken: token
                 };
 
                 $.ajax({
@@ -51,22 +47,23 @@
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(data),
 
-
                     success: function () {
-                        // clear form and show a success message
                         $("#message").css('color', 'green');
                         $("#message").text("Message Sent Successfully");
-                        document.getElementById('name').value = ''
-                        document.getElementById('mail').value = ''
-                        document.getElementById('subject').value = ''
-                        document.getElementById('comment').value = ''
+                        document.getElementById('name').value = '';
+                        document.getElementById('mail').value = '';
+                        document.getElementById('subject').value = '';
+                        document.getElementById('comment').value = '';
                     },
                     error: function () {
-                        // show an error message
                         $("#message").css('color', 'red');
-                        $("#message").text("Error.  Your message was not sent.");
+                        $("#message").text("Error. Your message was not sent.");
                     }
                 });
+            } catch (err) {
+                console.error('reCAPTCHA error:', err);
+                $("#message").css('color', 'red');
+                $("#message").text("Security verification failed. Please try again.");
             }
         }
     </script>
@@ -821,12 +818,6 @@
                                             <label for="comment" class="font-weight-bold">Message</label>
                                             <textarea name="comment" id="comment" rows="4" class="form-control" placeholder="Your message..."></textarea>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 text-right">
-                                        <div class="g-recaptcha" data-theme="light" data-sitekey="6LdwuhUbAAAAACsUZ0ptVtQb53Hqpr9000BuBXsw"
-                                 style="width:100%;"></div>
                                     </div>
                                 </div>
                                 <div class="row">
