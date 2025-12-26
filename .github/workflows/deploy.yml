@@ -33,14 +33,14 @@ jobs:
         run: |
           # Get S3 bucket name from CloudFormation stack outputs
           BUCKET_NAME=$(aws cloudformation describe-stacks \
-            --stack-name mitchellmeffert-website-stack-production \
+            --stack-name mitchellmeffert-website-stack \
             --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" \
             --output text)
           echo "bucket_name=$BUCKET_NAME" >> $GITHUB_OUTPUT
 
           # Get CloudFront distribution ID
           DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
-            --stack-name mitchellmeffert-website-stack-production \
+            --stack-name mitchellmeffert-website-stack \
             --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" \
             --output text)
           echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
