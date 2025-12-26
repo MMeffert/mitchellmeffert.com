@@ -6,24 +6,38 @@ import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as path from 'path';
 import { Construct } from 'constructs';
+
+export interface ContactFormConfig {
+  senderEmail: string;
+  receiverEmail: string;
+  recaptchaApiKey: string;
+  recaptchaProjectId: string;
+  recaptchaSiteKey: string;
+  recaptchaScoreThreshold?: number;
+}
 
 export interface StaticSiteStackProps extends cdk.StackProps {
   siteName: string;
   domain: string;
   githubRepo: string;
   subdomains?: string[];
+  contactForm?: ContactFormConfig;
 }
 
 export class StaticSiteStack extends cdk.Stack {
   public readonly bucket: s3.Bucket;
   public readonly distribution: cloudfront.Distribution;
   public readonly githubActionsRole: iam.Role;
+  public readonly contactFormFunction?: lambda.Function;
+  public readonly contactFormUrl?: lambda.FunctionUrl;
 
   constructor(scope: Construct, id: string, props: StaticSiteStackProps) {
     super(scope, id, props);
 
-    const { siteName, domain, githubRepo, subdomains = ['www'] } = props;
+    const { siteName, domain, githubRepo, subdomains = ['www'], contactForm } = props;
 
     // S3 Bucket for static content
     this.bucket = new s3.Bucket(this, 'SiteBucket', {
@@ -121,6 +135,45 @@ export class StaticSiteStack extends cdk.Stack {
       })
     );
 
+    // Contact Form Lambda (optional)
+    if (contactForm) {
+      this.contactFormFunction = new lambda.Function(this, 'ContactFormFunction', {
+        functionName: `${siteName}-contact-form`,
+        runtime: lambda.Runtime.NODEJS_20_X,
+        handler: 'index.handler',
+        code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/contact-form')),
+        timeout: cdk.Duration.seconds(10),
+        memorySize: 128,
+        environment: {
+          SENDER_EMAIL: contactForm.senderEmail,
+          RECEIVER_EMAIL: contactForm.receiverEmail,
+          EMAIL_SUBJECT: 'Contact Form Submission',
+          RECAPTCHA_API_KEY: contactForm.recaptchaApiKey,
+          RECAPTCHA_PROJECT_ID: contactForm.recaptchaProjectId,
+          RECAPTCHA_SITE_KEY: contactForm.recaptchaSiteKey,
+          RECAPTCHA_SCORE_THRESHOLD: (contactForm.recaptchaScoreThreshold || 0.5).toString(),
+        },
+      });
+
+      // Grant SES permissions
+      this.contactFormFunction.addToRolePolicy(
+        new iam.PolicyStatement({
+          actions: ['ses:SendEmail', 'ses:SendRawEmail'],
+          resources: ['*'],
+        })
+      );
+
+      // Create Function URL with CORS
+      this.contactFormUrl = this.contactFormFunction.addFunctionUrl({
+        authType: lambda.FunctionUrlAuthType.NONE,
+        cors: {
+          allowedOrigins: [`https://${domain}`, `https://www.${domain}`],
+          allowedMethods: [lambda.HttpMethod.POST],
+          allowedHeaders: ['Content-Type'],
+        },
+      });
+    }
+
     // Outputs
     new cdk.CfnOutput(this, 'S3BucketName', {
       value: this.bucket.bucketName,
@@ -146,5 +199,12 @@ export class StaticSiteStack extends cdk.Stack {
       value: `https://${domain}`,
       description: 'Website URL',
     });
+
+    if (this.contactFormUrl) {
+      new cdk.CfnOutput(this, 'ContactFormUrl', {
+        value: this.contactFormUrl.url,
+        description: 'Contact form Lambda Function URL',
+      });
+    }
   }
 }

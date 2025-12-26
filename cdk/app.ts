@@ -29,6 +29,14 @@ const stack = new StaticSiteStack(app, 'mitchellmeffert-website-stack', {
   domain: 'mitchellmeffert.com',
   githubRepo: 'MMeffert/mitchellmeffert.com',
   subdomains: ['www'],
+  contactForm: {
+    senderEmail: 'mitchell@mitchellmeffert.com',
+    receiverEmail: 'mitchell@mitchellmeffert.com',
+    recaptchaApiKey: 'AIzaSyDXAFGDMtjVIC75aVOLIa-7Y9bwlJGhbWs',
+    recaptchaProjectId: 'mitchellmeffertcom',
+    recaptchaSiteKey: '6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD',
+    recaptchaScoreThreshold: 0.5,
+  },
   env: {
     account: '241654197557',
     region: 'us-east-1',

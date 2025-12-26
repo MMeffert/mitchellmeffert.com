@@ -1,5 +1,6 @@
-# CDK
+# CDK (compiled TypeScript)
 *.js
+!lambda/**/*.js
 *.d.ts
 cdk.out
 .cdk.staging
