@@ -146,7 +146,7 @@ export class StaticSiteStack extends cdk.Stack {
 
       this.contactFormFunction = new lambda.Function(this, 'ContactFormFunction', {
         functionName: `${siteName}-contact-form`,
-        runtime: lambda.Runtime.NODEJS_20_X,
+        runtime: lambda.Runtime.NODEJS_24_X,
         handler: 'index.handler',
         code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/contact-form')),
         timeout: cdk.Duration.seconds(10),
