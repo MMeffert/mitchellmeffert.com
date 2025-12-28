@@ -7,7 +7,6 @@ cdk.out
 
 # Dependencies
 node_modules
-package-lock.json
 
 # IDE
 .vscode
