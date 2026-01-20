@@ -62,10 +62,10 @@ Plans:
   2. Lightbox supports pinch-to-zoom on mobile
   3. Lightbox navigates between images with arrow keys
   4. Magnific Popup JS/CSS files removed from project
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 03-01: PhotoSwipe integration and Magnific Popup removal
+- [ ] 03-01-PLAN.md - PhotoSwipe integration and Magnific Popup removal
 
 ### Phase 4: Filter Migration
 **Goal**: Portfolio filtering works with vanilla JS Isotope syntax (no jQuery dependency)
@@ -172,7 +172,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 |-------|----------------|--------|-----------|
 | 1. Bootstrap Migration | 1/1 | Complete | 2026-01-20 |
 | 2. Carousel Migration | 1/1 | Complete | 2026-01-20 |
-| 3. Lightbox Migration | 0/1 | Not started | - |
+| 3. Lightbox Migration | 0/1 | Planned | - |
 | 4. Filter Migration | 0/1 | Not started | - |
 | 5. jQuery Removal | 0/3 | Not started | - |
 | 6. Content Update | 0/3 | Not started | - |
