@@ -92,7 +92,7 @@ Phase 5 (jQuery Removal) COMPLETE:
 - [x] 05-02: custom.js vanilla JS conversion and Typed.js CDN update
 - [x] 05-03: jQuery removal and verification (~101KB removed)
 
-Ready for Phase 6 (Lazy Loading):
-- Image lazy loading implementation
-- Native loading="lazy" attribute
-- Above-fold critical images optimization
+Ready for Phase 6 (Content Update):
+- Modernize About section (AWS focus, Claude Code/AI mention)
+- Update skills display (add AWS, Claude Code)
+- Update stats (years worked, ownership, computer experience)

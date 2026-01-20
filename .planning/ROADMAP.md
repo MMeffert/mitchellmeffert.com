@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Carousel Migration** - Replace Owl Carousel with Splide.js
 - [x] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
 - [x] **Phase 4: Filter Migration** - Modernize Isotope usage with vanilla JS syntax
-- [ ] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
+- [x] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
 - [ ] **Phase 6: Content Update** - Modernize About, skills, stats, GitHub link, resume download
 - [ ] **Phase 7: SEO and Cleanup** - Refresh meta tags, remove unused files, clean HTML
 - [ ] **Phase 8: Security Hardening** - Scope IAM wildcards, review Lambda permissions
@@ -94,9 +94,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md - Contact form fetch() conversion
-- [ ] 05-02-PLAN.md - custom.js vanilla JS conversion and Typed.js CDN update
-- [ ] 05-03-PLAN.md - jQuery removal and verification
+- [x] 05-01-PLAN.md - Contact form fetch() conversion
+- [x] 05-02-PLAN.md - custom.js vanilla JS conversion and Typed.js CDN update
+- [x] 05-03-PLAN.md - jQuery removal and verification
 
 ### Phase 6: Content Update
 **Goal**: Professional content reflects current expertise (AWS, AI, 19+ years experience)
@@ -174,7 +174,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | 2. Carousel Migration | 1/1 | Complete | 2026-01-20 |
 | 3. Lightbox Migration | 1/1 | Complete | 2026-01-20 |
 | 4. Filter Migration | 1/1 | Complete | 2026-01-20 |
-| 5. jQuery Removal | 0/3 | Not started | - |
+| 5. jQuery Removal | 3/3 | Complete | 2026-01-20 |
 | 6. Content Update | 0/3 | Not started | - |
 | 7. SEO and Cleanup | 0/2 | Not started | - |
 | 8. Security Hardening | 0/1 | Not started | - |
@@ -185,7 +185,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | Requirement ID | Description | Phase | Status |
 |----------------|-------------|-------|--------|
 | BOOT-01 | Update Bootstrap 4 to Bootstrap 5 | Phase 1 | Complete |
-| JS-01 | Update/replace dated JavaScript dependencies | Phases 2-5 | Pending |
+| JS-01 | Update/replace dated JavaScript dependencies | Phases 2-5 | Complete |
 | CONT-01 | Modernize About section content | Phase 6 | Pending |
 | CONT-02 | Update skills display | Phase 6 | Pending |
 | CONT-03 | Update stats | Phase 6 | Pending |
