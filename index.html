@@ -909,8 +909,8 @@
         <!--EASING JS-->
         <script src="js/jquery.easing.min.js"></script>
         <script src="js/scrollspy.min.js"></script>
-        <!-- TYPED -->
-        <script src="js/typed.js"></script>         
+        <!-- Typed.js v2.1.0 -->
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
         <!-- PhotoSwipe Lightbox -->
         <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
@@ -921,14 +921,6 @@
         <!--CUSTOM JS-->
         <script src="js/custom.js"></script>
         <script>
-            $(".element").each(function() {
-                var $this = $(this);
-                $this.typed({
-                    strings: $this.attr('data-elements').split(','),
-                    typeSpeed: 100,
-                    backDelay: 3000
-                });
-            });
             // Set copyright year
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
         </script>
