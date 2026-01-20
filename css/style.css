@@ -471,9 +471,17 @@ button:focus {
 
 .header_title {
     font-size: 72px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.2;
     text-transform: capitalize;
+}
+
+/* Bold text on dark backgrounds for better visibility */
+.home-bg .text-white,
+.bg-funfact .text-white,
+.bg-cta .text-white,
+.bg-client .text-white {
+    font-weight: 700;
 }
 
 .header_subtitle {
@@ -646,6 +654,7 @@ button:focus {
 .lan_funfact .lan_fun_name {
     font-size: 15px;
     color: #ffffff;
+    font-weight: 700;
 }
 
 .bg-funfact {
