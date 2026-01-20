@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** Phase 5 - jQuery Removal (In Progress)
+**Current focus:** Phase 5 - jQuery Removal (Complete)
 
 ## Current Position
 
-Phase: 5 of 9 (jQuery Removal)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-01-20 - Completed 05-02-PLAN.md
+Phase: 5 of 9 (jQuery Removal) - COMPLETE
+Plan: 3 of 3 in current phase (COMPLETE)
+Status: Phase complete, ready for Phase 6
+Last activity: 2026-01-20 - Completed 05-03-PLAN.md
 
-Progress: [██████░░░░] 6/16 plans (~38%)
+Progress: [███████░░░] 7/16 plans (~44%)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: ~10min
-- Total execution time: ~60min
+- Total plans completed: 7
+- Average duration: ~9min
+- Total execution time: ~63min
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [██████░░░░] 6/16 plans (~38%)
 | 02-carousel-migration | 1/1 | ~15min | ~15min |
 | 03-lightbox-migration | 1/1 | ~8min | ~8min |
 | 04-filter-migration | 1/1 | ~1min | ~1min |
-| 05-jquery-removal | 2/3 | ~6min | ~3min |
+| 05-jquery-removal | 3/3 | ~9min | ~3min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (~8min), 04-01 (~1min), 05-01 (~1min), 05-02 (~5min)
-- Trend: Maintaining fast execution for simple conversions
+- Last 5 plans: 04-01 (~1min), 05-01 (~1min), 05-02 (~5min), 05-03 (~3min)
+- Trend: Fast execution for cleanup/conversion tasks
 
 *Updated after each plan completion*
 
@@ -67,6 +67,9 @@ Recent decisions affecting current work:
 - [05-02]: Used Bootstrap 5 ScrollSpy via data-bs-* attributes on body
 - [05-02]: Used opacity/visibility transitions instead of display:none for animations
 - [05-02]: Used requestAnimationFrame with easeOutQuad for counter animation
+- [05-03]: Removed dead contact.js file (documented as unused in CONCERNS.md)
+- [05-03]: Kept Bootstrap bundle.min.js as only local dependency
+- [05-03]: All plugins now loaded from jsDelivr CDN
 
 ### Pending Todos
 
@@ -79,14 +82,17 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-20
-Stopped at: Completed 05-02-PLAN.md
+Stopped at: Completed 05-03-PLAN.md (Phase 5 complete)
 Resume file: None
 
 ## Next Steps
 
-Continue Phase 5 (jQuery Removal):
-- [x] 05-01: Contact form fetch() conversion (DONE)
-- [x] 05-02: custom.js vanilla JS conversion and Typed.js CDN update (DONE)
-- [ ] 05-03: jQuery removal and verification
+Phase 5 (jQuery Removal) COMPLETE:
+- [x] 05-01: Contact form fetch() conversion
+- [x] 05-02: custom.js vanilla JS conversion and Typed.js CDN update
+- [x] 05-03: jQuery removal and verification (~101KB removed)
 
-Remaining jQuery dependencies to remove in 05-03: jQuery core, jQuery Easing, local typed.js file.
+Ready for Phase 6 (Lazy Loading):
+- Image lazy loading implementation
+- Native loading="lazy" attribute
+- Above-fold critical images optimization
