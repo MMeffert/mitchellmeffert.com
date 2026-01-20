@@ -131,7 +131,9 @@ export class StaticSiteStack extends cdk.Stack {
     this.githubActionsRole.addToPolicy(
       new iam.PolicyStatement({
         actions: ['cloudformation:DescribeStacks'],
-        resources: ['*'],
+        resources: [
+          `arn:aws:cloudformation:${this.region}:${this.account}:stack/${siteName}-stack/*`
+        ],
       })
     );
 
