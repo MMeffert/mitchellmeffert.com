@@ -794,12 +794,8 @@ button:focus {
 }
 
 .work_img_box a {
-    position: absolute;
-    left: 0;
+    display: block;
     width: 100%;
-    z-index: 15;
-    height: 100%;
-    top: 0;
 }
 
 .work_img_box .work_images {
