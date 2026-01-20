@@ -107,10 +107,8 @@
         <!-- Animate Css -->
         <link rel="stylesheet" href="css/animate.min.css">
 
-        <!-- Owl Slider -->
-        <link rel="stylesheet" href="css/owl.carousel.css" />
-        <link rel="stylesheet" href="css/owl.theme.css" />
-        <link rel="stylesheet" href="css/owl.transitions.css" />
+        <!-- Splide Carousel -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 
         <!-- Custom style Css -->
         <link rel="stylesheet" href="css/style.css">
@@ -604,58 +602,72 @@
                 </div>
                 <div class="row mt-4 pt-4">
                     <div class="col-lg-12">
-                        <div id="owl-demo" class="owl-carousel">
-                            <div class="text-white people_says text-center">
-                                <div class="people_icon">
-                                    <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JessePeterson.jpg" alt="Jesse Peterson" />                           
-                                </div>
-                                <div class="people_review_box mt-4">
-                                    <p class="people_name text-white h5 fw-bold mb-0">Jesse Peterson</p>
-                                    <p class="h6">Verisk</p>
-                                    <p class="people_review text-white mx-auto pt-3 mb-0">"I have had the opportunity to work with Mitchell over the past 3 years both academically and professionally. Mitchell has exceeded expectations on both fronts with his ability to adapt to new situations and technological solutions. Mitchell's interpersonal skills and industry knowledge make working with him an absolute pleasure."</p>
-                                </div>
+                        <section class="splide" id="testimonial-carousel" aria-label="Client Testimonials">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide">
+                                        <div class="text-white people_says text-center">
+                                            <div class="people_icon">
+                                                <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JessePeterson.jpg" alt="Jesse Peterson" />
+                                            </div>
+                                            <div class="people_review_box mt-4">
+                                                <p class="people_name text-white h5 fw-bold mb-0">Jesse Peterson</p>
+                                                <p class="h6">Verisk</p>
+                                                <p class="people_review text-white mx-auto pt-3 mb-0">"I have had the opportunity to work with Mitchell over the past 3 years both academically and professionally. Mitchell has exceeded expectations on both fronts with his ability to adapt to new situations and technological solutions. Mitchell's interpersonal skills and industry knowledge make working with him an absolute pleasure."</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="text-white people_says text-center">
+                                            <div class="people_icon">
+                                                <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/GregHyer.jpg" alt="Greg Hyer" />
+                                            </div>
+                                            <div class="people_review_box mt-4">
+                                                <p class="people_name text-white h5 fw-bold mb-0">Greg Hyer</p>
+                                                <p class="h6">University of Wisconsin - Madison</p>
+                                                <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell Meffert has done work for me on both the Black Earth Creek Watershed Association and the Bombay Bicycle Club web sites for many years. He is responsive and helpful in working with all of the people involved in both groups. I highly recommend him to others needing web development and maintenance assistance."</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="text-white people_says text-center">
+                                            <div class="people_icon">
+                                                <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JonWolf.jpg" alt="Jon Wolf" />
+                                            </div>
+                                            <div class="people_review_box mt-4">
+                                                <p class="people_name text-white h5 fw-bold mb-0">Jon Wolf</p>
+                                                <p class="h6">STIR Advertising & Integrated Messaging</p>
+                                                <p class="people_review text-white mx-auto pt-3 mb-0">"Mitch was able to help our organization develop a website within a month of an event. His efficient, knowledgeable, accurate work ethic helped create a success website for our event on time AND on budget. Mitch has great design skills and always seeks perfection in the work he does which translates well when you're on the receiving end of his work. I would highly recommend Mitch for any position within Graphic/Web Design, IT Support and Consulting."</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="text-white people_says text-center">
+                                            <div class="people_icon">
+                                                <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JenniferSkolaski.jpg" alt="Jennifer Skolaski" />
+                                            </div>
+                                            <div class="people_review_box mt-4">
+                                                <p class="people_name text-white h5 fw-bold mb-0">Jennifer Skolaski</p>
+                                                <p class="h6">Community & Nonprofit Leadership Consulting</p>
+                                                <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell has done an excellent job working on the Arboretum website as well as meeting many of our technological needs. He completes tasks professionally and in a very timely manner, and is always ready for the next thing at hand. I'd highly recommend Mitchell for your website designing needs."</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="text-white people_says text-center">
+                                            <div class="people_icon">
+                                                <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/StephenGlass.jpg" alt="Stephen Glass" />
+                                            </div>
+                                            <div class="people_review_box mt-4">
+                                                <p class="people_name text-white h5 fw-bold mb-0">Stephen Glass</p>
+                                                <p class="h6">The Restoration Ecology Lab</p>
+                                                <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell helped me solve a computer access problem. He responded quickly and effectively to my request for help. He not only solved the problem but also showed me how to fix similar problems should they occur again. Not only that, he is friendly and great to work with."</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="text-white people_says text-center">
-                                <div class="people_icon">
-                                    <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/GregHyer.jpg" alt="Greg Hyer" />                               
-                                </div>
-                                <div class="people_review_box mt-4">
-                                    <p class="people_name text-white h5 fw-bold mb-0">Greg Hyer</p>
-                                    <p class="h6">University of Wisconsin - Madison</p>
-                                    <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell Meffert has done work for me on both the Black Earth Creek Watershed Association and the Bombay Bicycle Club web sites for many years. He is responsive and helpful in working with all of the people involved in both groups. I highly recommend him to others needing web development and maintenance assistance."</p>
-                                </div>
-                            </div>
-                            <div class="text-white people_says text-center">
-                                <div class="people_icon">
-                                    <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JonWolf.jpg" alt="Jon Wolf" />                               
-                                </div>
-                                <div class="people_review_box mt-4">
-                                    <p class="people_name text-white h5 fw-bold mb-0">Jon Wolf</p>
-                                    <p class="h6">STIR Advertising & Integrated Messaging</p>
-                                    <p class="people_review text-white mx-auto pt-3 mb-0">"Mitch was able to help our organization develop a website within a month of an event. His efficient, knowledgeable, accurate work ethic helped create a success website for our event on time AND on budget. Mitch has great design skills and always seeks perfection in the work he does which translates well when you're on the receiving end of his work. I would highly recommend Mitch for any position within Graphic/Web Design, IT Support and Consulting."</p>
-                                </div>
-                            </div>
-                            <div class="text-white people_says text-center">
-                                <div class="people_icon">
-                                    <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/JenniferSkolaski.jpg" alt="Jennifer Skolaski" />                               
-                                </div>
-                                <div class="people_review_box mt-4">
-                                    <p class="people_name text-white h5 fw-bold mb-0">Jennifer Skolaski</p>
-                                    <p class="h6">Community & Nonprofit Leadership Consulting</p>
-                                    <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell has done an excellent job working on the Arboretum website as well as meeting many of our technological needs. He completes tasks professionally and in a very timely manner, and is always ready for the next thing at hand. I'd highly recommend Mitchell for your website designing needs."</p>
-                                </div>
-                            </div>
-                            <div class="text-white people_says text-center">
-                                <div class="people_icon">
-                                    <img style="border-radius: 50%;" width="125" height="125" src="images/recommendations/StephenGlass.jpg" alt="Stephen Glass" />                               
-                                </div>
-                                <div class="people_review_box mt-4">
-                                    <p class="people_name text-white h5 fw-bold mb-0">Stephen Glass</p>
-                                    <p class="h6">The Restoration Ecology Lab</p>
-                                    <p class="people_review text-white mx-auto pt-3 mb-0">"Mitchell helped me solve a computer access problem. He responded quickly and effectively to my request for help. He not only solved the problem but also showed me how to fix similar problems should they occur again. Not only that, he is friendly and great to work with."</p>
-                                </div>
-                            </div>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -878,8 +890,8 @@
         <script src="js/jquery.magnific-popup.min.js"></script>
         <!--PORTFOLIO FILTER JS-->
         <script src="js/isotope.js"></script>           
-                <!-- OWL CAROUSEL -->
-        <script src="js/owl.carousel.min.js"></script>
+        <!-- Splide Carousel -->
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <!--CUSTOM JS-->
         <script src="js/custom.js"></script>
         <script>
