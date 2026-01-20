@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Bootstrap Migration** - Upgrade Bootstrap 4 to 5.3.8 with all class and attribute changes
 - [x] **Phase 2: Carousel Migration** - Replace Owl Carousel with Splide.js
-- [ ] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
+- [x] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
 - [ ] **Phase 4: Filter Migration** - Modernize Isotope usage with vanilla JS syntax
 - [ ] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
 - [ ] **Phase 6: Content Update** - Modernize About, skills, stats, GitHub link, resume download
@@ -65,7 +65,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md - PhotoSwipe integration and Magnific Popup removal
+- [x] 03-01-PLAN.md - PhotoSwipe integration and Magnific Popup removal
 
 ### Phase 4: Filter Migration
 **Goal**: Portfolio filtering works with vanilla JS Isotope syntax (no jQuery dependency)
@@ -172,7 +172,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 |-------|----------------|--------|-----------|
 | 1. Bootstrap Migration | 1/1 | Complete | 2026-01-20 |
 | 2. Carousel Migration | 1/1 | Complete | 2026-01-20 |
-| 3. Lightbox Migration | 0/1 | Planned | - |
+| 3. Lightbox Migration | 1/1 | Complete | 2026-01-20 |
 | 4. Filter Migration | 0/1 | Not started | - |
 | 5. jQuery Removal | 0/3 | Not started | - |
 | 6. Content Update | 0/3 | Not started | - |
