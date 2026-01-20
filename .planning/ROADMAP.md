@@ -126,11 +126,11 @@ Plans:
   3. No commented-out HTML blocks in index.html
   4. No unused CSS/JS files in assets folder
   5. No broken internal links or references
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: Meta tags and SEO refresh
-- [ ] 07-02: Dead code and file cleanup
+- [ ] 07-01-PLAN.md - Meta tags and SEO refresh
+- [ ] 07-02-PLAN.md - Dead code and file cleanup
 
 ### Phase 8: Security Hardening
 **Goal**: IAM policies follow least-privilege, no unnecessary wildcard permissions
