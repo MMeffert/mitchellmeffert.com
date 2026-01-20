@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** Phase 6 - Content Update (In Progress)
+**Current focus:** Phase 6 - Content Update (COMPLETE)
 
 ## Current Position
 
-Phase: 6 of 9 (Content Update) - IN PROGRESS
-Plan: 1 of 3 in current phase (COMPLETE)
-Status: Plan 06-01 complete, ready for 06-02
-Last activity: 2026-01-20 - Completed 06-01-PLAN.md
+Phase: 6 of 9 (Content Update) - COMPLETE
+Plan: 2 of 2 in current phase (COMPLETE)
+Status: Phase 6 complete, ready for Phase 7
+Last activity: 2026-01-20 - Completed 06-02-PLAN.md
 
-Progress: [████████░░] 8/16 plans (~50%)
+Progress: [█████████░] 9/14 plans (~64%)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: ~8min
-- Total execution time: ~64min
+- Total execution time: ~67min
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [████████░░] 8/16 plans (~50%)
 | 03-lightbox-migration | 1/1 | ~8min | ~8min |
 | 04-filter-migration | 1/1 | ~1min | ~1min |
 | 05-jquery-removal | 3/3 | ~9min | ~3min |
-| 06-content-update | 1/3 | ~1min | ~1min |
+| 06-content-update | 2/2 | ~4min | ~2min |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (~1min), 05-02 (~5min), 05-03 (~3min), 06-01 (~1min)
+- Last 5 plans: 05-02 (~5min), 05-03 (~3min), 06-01 (~1min), 06-02 (~3min)
 - Trend: Fast execution for content/cleanup tasks
 
 *Updated after each plan completion*
@@ -74,6 +74,8 @@ Recent decisions affecting current work:
 - [06-01]: Used "nearly a decade" instead of specific year count for evergreen content
 - [06-01]: Simplified "Roundhouse Marketing" to "Roundhouse" (company rebrand)
 - [06-01]: Badge format replaces percentage bars (avoids arbitrary self-assessment)
+- [06-02]: LinkedIn profile link instead of resume PDF download (user preference)
+- [06-02]: GitHub links placed after Stack Overflow in social icon order
 
 ### Pending Todos
 
@@ -86,12 +88,15 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-20
-Stopped at: Completed 06-01-PLAN.md
+Stopped at: Completed 06-02-PLAN.md (Phase 6 complete)
 Resume file: None
 
 ## Next Steps
 
-Phase 6 (Content Update) IN PROGRESS:
+Phase 6 (Content Update) COMPLETE:
 - [x] 06-01: About section and skills badges
-- [ ] 06-02: Stats counter updates
-- [ ] 06-03: GitHub social link and resume download
+- [x] 06-02: Stats counter updates, GitHub links, LinkedIn profile button
+
+Ready for Phase 7 (SEO and Cleanup):
+- [ ] 07-01: Meta tags and SEO refresh
+- [ ] 07-02: Dead code and file cleanup
