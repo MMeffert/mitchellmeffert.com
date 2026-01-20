@@ -949,6 +949,11 @@ button:focus {
     max-width: 580px;
 }
 
+.people_review_box .h6 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
 .splide__pagination {
     margin-top: 20px;
 }
