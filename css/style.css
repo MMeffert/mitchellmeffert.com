@@ -944,26 +944,23 @@ button:focus {
     max-width: 580px;
 }
 
-.owl-theme .owl-controls .owl-page {
-    margin: 20px 0px;
+.splide__pagination {
+    margin-top: 20px;
 }
 
-.owl-theme .owl-controls .owl-page span {
-    display: block;
+.splide__pagination__page {
     width: 12px;
     height: 6px;
     margin: 5px 4px;
-    filter: Alpha(Opacity=50);
     opacity: 0.5;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
     border-radius: 20px;
     transition: all 0.5s;
     background: #fff;
 }
 
-.owl-theme .owl-controls .owl-page.active span {
+.splide__pagination__page.is-active {
     width: 20px;
+    opacity: 1;
 }
 
 

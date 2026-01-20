@@ -132,15 +132,16 @@
 
     //ClientSlider
     ElvishApp.prototype.initClientSlider = function() {
-        $("#owl-demo").owlCarousel({
-            autoPlay: 7000,
-            stopOnHover: true,
-            navigation: false,
-            paginationSpeed: 1000,
-            goToFirstSpeed: 2000,
-            singleItem: true,
-            autoHeight: true,
-        });
+        new Splide('#testimonial-carousel', {
+            type: 'loop',
+            perPage: 1,
+            autoplay: true,
+            interval: 7000,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            arrows: false,
+            speed: 1000,
+        }).mount();
     },
 
     //MfpVideo
