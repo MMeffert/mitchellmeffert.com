@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
 - [x] **Phase 6: Content Update** - Modernize About, skills, stats, GitHub link, resume download
 - [x] **Phase 7: SEO and Cleanup** - Refresh meta tags, remove unused files, clean HTML
-- [ ] **Phase 8: Security Hardening** - Scope IAM wildcards, review Lambda permissions
+- [x] **Phase 8: Security Hardening** - Scope IAM wildcards, review Lambda permissions
 - [ ] **Phase 9: Design Enhancement** - Dark/light mode toggle, accessibility (OPTIONAL/DEFERRED)
 
 ## Phase Details
@@ -144,7 +144,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 08-01-PLAN.md - IAM policy audit and scoping
+- [x] 08-01-PLAN.md - IAM policy audit and scoping
 
 ### Phase 9: Design Enhancement (OPTIONAL/DEFERRED)
 **Goal**: Site has dark/light mode toggle and improved accessibility
@@ -176,7 +176,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | 5. jQuery Removal | 3/3 | Complete | 2026-01-20 |
 | 6. Content Update | 2/2 | Complete | 2026-01-20 |
 | 7. SEO and Cleanup | 2/2 | Complete | 2026-01-20 |
-| 8. Security Hardening | 0/1 | Not started | - |
+| 8. Security Hardening | 1/1 | Complete | 2026-01-20 |
 | 9. Design Enhancement | 0/3 | Deferred | - |
 
 ## Requirement Coverage
@@ -190,6 +190,6 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | CONT-03 | Update stats | Phase 6 | Complete |
 | SEO-01 | Refresh meta tags and SEO keywords | Phase 7 | Complete |
 | TECH-01 | Clean up tech debt | Phase 7 | Complete |
-| SEC-01 | Improve security (scope IAM wildcards) | Phase 8 | Pending |
+| SEC-01 | Improve security (scope IAM wildcards) | Phase 8 | Complete |
 
 **Coverage:** 8/8 requirements mapped (100%)
