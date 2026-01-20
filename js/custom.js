@@ -87,33 +87,40 @@
 
     //Portfolio Filter
     ElvishApp.prototype.initPortfolioFilter = function() {
-        $(window).on('load', function () {
-            var $container = $('.work-filter');
-            var $filter = $('#menu-filter');
-            $container.isotope({
-                filter: '*',
-                layoutMode: 'masonry',
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear'
-                }
-            });
+        var grid = document.querySelector('.work-filter');
+        if (!grid) return;
 
-            $filter.find('a').on("click",function() {
-                var selector = $(this).attr('data-filter');
-                $filter.find('a').removeClass('active');
-                $(this).addClass('active');
-                $container.isotope({
-                    filter: selector,
-                    animationOptions: {
-                        animationDuration: 750,
-                        easing: 'linear',
-                        queue: false,
-                    }
-                });
-                return false;
-            });
+        // Initialize Isotope with vanilla JS
+        var iso = new Isotope(grid, {
+            itemSelector: '.col-lg-4',
+            layoutMode: 'masonry',
+            filter: '*',
+            percentPosition: true,
+            transitionDuration: '0.75s'
         });
+
+        // Filter button handling with event delegation
+        var filterButtons = document.querySelector('#menu-filter');
+        if (filterButtons) {
+            filterButtons.addEventListener('click', function(event) {
+                // Only handle <a> element clicks
+                if (!event.target.matches('a')) return;
+
+                event.preventDefault();
+
+                var filterValue = event.target.getAttribute('data-filter');
+
+                // Update active button state
+                var currentActive = filterButtons.querySelector('.active');
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                }
+                event.target.classList.add('active');
+
+                // Apply filter using arrange method
+                iso.arrange({ filter: filterValue });
+            });
+        }
     },
 
     //PhotoSwipe Lightbox
