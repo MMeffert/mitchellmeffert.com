@@ -12,7 +12,7 @@ This roadmap transforms a 2018 Bootstrap 4 + jQuery portfolio site into a modern
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Bootstrap Migration** - Upgrade Bootstrap 4 to 5.3.8 with all class and attribute changes
+- [x] **Phase 1: Bootstrap Migration** - Upgrade Bootstrap 4 to 5.3.8 with all class and attribute changes
 - [ ] **Phase 2: Carousel Migration** - Replace Owl Carousel with Splide.js
 - [ ] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
 - [ ] **Phase 4: Filter Migration** - Modernize Isotope usage with vanilla JS syntax
@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md - Bootstrap CSS/JS upgrade and class migration
+- [x] 01-01-PLAN.md - Bootstrap CSS/JS upgrade and class migration
 
 ### Phase 2: Carousel Migration
 **Goal**: Testimonial carousel works with Splide.js instead of Owl Carousel
@@ -170,7 +170,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Bootstrap Migration | 0/1 | Planned | - |
+| 1. Bootstrap Migration | 1/1 | Complete | 2026-01-20 |
 | 2. Carousel Migration | 0/1 | Not started | - |
 | 3. Lightbox Migration | 0/1 | Not started | - |
 | 4. Filter Migration | 0/1 | Not started | - |
@@ -184,7 +184,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 
 | Requirement ID | Description | Phase | Status |
 |----------------|-------------|-------|--------|
-| BOOT-01 | Update Bootstrap 4 to Bootstrap 5 | Phase 1 | Pending |
+| BOOT-01 | Update Bootstrap 4 to Bootstrap 5 | Phase 1 | Complete |
 | JS-01 | Update/replace dated JavaScript dependencies | Phases 2-5 | Pending |
 | CONT-01 | Modernize About section content | Phase 6 | Pending |
 | CONT-02 | Update skills display | Phase 6 | Pending |
