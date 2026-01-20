@@ -1,6 +1,6 @@
 /*
 ------------------------------------------------------------------------
-* Template Name    : Elvish | Responsive Bootstrap 4 Personal Template * 
+* Template Name    : Elvish | Responsive Bootstrap 4 Personal Template *
 * Author           : ThemesBoss                                        *
 * Version          : 1.0.0                                             *
 * Created          : May 2018                                          *
@@ -8,200 +8,242 @@
 *-----------------------------------------------------------------------
 */
 
-! function($) {
+(function() {
     "use strict";
 
-    var ElvishApp = function() {};
+    var ElvishApp = {
+        // Preloader
+        initPreLoader: function() {
+            var status = document.getElementById('status');
+            var preloader = document.getElementById('preloader');
 
-    //Preloader
-    ElvishApp.prototype.initPreLoader = function() {
-        $('#status').fadeOut();
-        $('#preloader').delay(350).fadeOut('slow');
-        $('body').delay(350).css({
-            'overflow': 'visible'
-        });
-    },
+            if (!status || !preloader) return;
 
-    //scroll
-    ElvishApp.prototype.initNavbarStickey = function() {
-        $(window).on('scroll',function() {
-            var scroll = $(window).scrollTop();
+            // Fade out status
+            status.style.opacity = '0';
 
-            if (scroll >= 50) {
-                $(".sticky").addClass("stickyadd");
-            } else {
-                $(".sticky").removeClass("stickyadd");
-            }
-        });
-    },
+            setTimeout(function() {
+                status.style.display = 'none';
+                preloader.style.opacity = '0';
 
-    //Smooth
-    ElvishApp.prototype.initNavbarSmooth = function() {
-        $('.navbar-nav a, .scroll_down a').on('click', function(event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top - 0
-            }, 1500, 'easeInOutExpo');
-            event.preventDefault();
-        });
-    },
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                }, 350);
+            }, 350);
+        },
 
-    //ScrollSpy
-    ElvishApp.prototype.initNavbarScrollSpy = function() {
-        $("#navbarCollapse").scrollspy({
-            offset: 20
-        });
-    },
+        // Scroll - sticky navbar
+        initNavbarStickey: function() {
+            window.addEventListener('scroll', function() {
+                var sticky = document.querySelector('.sticky');
+                if (!sticky) return;
 
-    //Funfacts
-    ElvishApp.prototype.initFunFacts = function() {
-        var a = 0;
-        $(window).on('scroll',function() {
-            var oTop = $('#counter').offset().top - window.innerHeight;
-            if (a == 0 && $(window).scrollTop() > oTop) {
-                $('.lan_fun_value').each(function() {
-                    var $this = $(this),
-                        countTo = $this.attr('data-count');
-                    $({
-                        countNum: $this.text()
-                    }).animate({
-                            countNum: countTo
-                        },
-                        {
-                            duration: 2000,
-                            easing: 'swing',
-                            step: function() {
-                                $this.text(Math.floor(this.countNum));
-                            },
-                            complete: function() {
-                                $this.text(this.countNum);
-                                //alert('finished');
-                            }
-
-                        });
-                });
-                a = 1;
-            }
-        });
-    },
-
-    //Portfolio Filter
-    ElvishApp.prototype.initPortfolioFilter = function() {
-        var grid = document.querySelector('.work-filter');
-        if (!grid) return;
-
-        // Initialize Isotope with vanilla JS
-        var iso = new Isotope(grid, {
-            itemSelector: '.col-lg-4',
-            layoutMode: 'masonry',
-            filter: '*',
-            percentPosition: true,
-            transitionDuration: '0.75s'
-        });
-
-        // Filter button handling with event delegation
-        var filterButtons = document.querySelector('#menu-filter');
-        if (filterButtons) {
-            filterButtons.addEventListener('click', function(event) {
-                // Only handle <a> element clicks
-                if (!event.target.matches('a')) return;
-
-                event.preventDefault();
-
-                var filterValue = event.target.getAttribute('data-filter');
-
-                // Update active button state
-                var currentActive = filterButtons.querySelector('.active');
-                if (currentActive) {
-                    currentActive.classList.remove('active');
+                if (window.scrollY >= 50) {
+                    sticky.classList.add('stickyadd');
+                } else {
+                    sticky.classList.remove('stickyadd');
                 }
-                event.target.classList.add('active');
-
-                // Apply filter using arrange method
-                iso.arrange({ filter: filterValue });
             });
-        }
-    },
+        },
 
-    //PhotoSwipe Lightbox
-    ElvishApp.prototype.initMfpImages = function() {
-        var lightbox = new PhotoSwipeLightbox({
-            gallery: '#portfolio-gallery',
-            children: 'a',
-            pswpModule: PhotoSwipe,
-            bgOpacity: 0.9,
-            loop: true,
-            arrowKeys: true,
-            escKey: true,
-            pinchToClose: true,
-            closeOnVerticalDrag: true,
-            trapFocus: true,
-            returnFocus: true,
-            preload: [1, 2]
-        });
-        lightbox.init();
-    },
+        // Smooth scroll for navigation links
+        initNavbarSmooth: function() {
+            document.querySelectorAll('.navbar-nav a, .scroll_down a').forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    var href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        event.preventDefault();
+                        var target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        },
 
-    //ClientSlider
-    ElvishApp.prototype.initClientSlider = function() {
-        new Splide('#testimonial-carousel', {
-            type: 'loop',
-            perPage: 1,
-            autoplay: true,
-            interval: 7000,
-            pauseOnHover: true,
-            pauseOnFocus: true,
-            arrows: false,
-            speed: 1000,
-        }).mount();
-    },
+        // ScrollSpy - Bootstrap 5 handles this via data attributes on body
+        initNavbarScrollSpy: function() {
+            // Bootstrap 5 ScrollSpy initialized via data attributes on body
+            // This function is kept for API compatibility but is now a no-op
+        },
 
-    //Back To Top
-    ElvishApp.prototype.initBackToTop = function() {
-        $(window).on('scroll',function(){
-            if ($(this).scrollTop() > 100) {
-                $('.back_top').fadeIn();
-            } else {
-                $('.back_top').fadeOut();
+        // Fun Facts counter animation
+        initFunFacts: function() {
+            var counted = false;
+            var counterSection = document.getElementById('counter');
+            if (!counterSection) return;
+
+            function animateValue(element, start, end, duration) {
+                var startTime = performance.now();
+
+                function update(currentTime) {
+                    var elapsed = currentTime - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    // easeOutQuad easing
+                    var easeProgress = 1 - (1 - progress) * (1 - progress);
+                    var current = Math.floor(start + (end - start) * easeProgress);
+                    element.textContent = current;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                requestAnimationFrame(update);
             }
-        }); 
-        $('.back_top').click(function(){
-            $("html, body").animate({ scrollTop: 0 }, 1000);
-            return false;
-        });
-    },
 
-    //Typed Text
-    ElvishApp.prototype.initTypedText = function() {
-        $(".element").each(function() {
-            var $this = $(this);
-            $this.typed({
-                strings: $this.attr('data-elements').split(','),
-                typeSpeed: 100,
-                backDelay: 3000
+            window.addEventListener('scroll', function() {
+                if (counted) return;
+
+                var rect = counterSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    counted = true;
+                    document.querySelectorAll('.lan_fun_value').forEach(function(el) {
+                        var countTo = parseInt(el.getAttribute('data-count'), 10);
+                        animateValue(el, 0, countTo, 2000);
+                    });
+                }
             });
+        },
+
+        // Portfolio Filter (Isotope)
+        initPortfolioFilter: function() {
+            var grid = document.querySelector('.work-filter');
+            if (!grid) return;
+
+            // Initialize Isotope with vanilla JS
+            var iso = new Isotope(grid, {
+                itemSelector: '.col-lg-4',
+                layoutMode: 'masonry',
+                filter: '*',
+                percentPosition: true,
+                transitionDuration: '0.75s'
+            });
+
+            // Filter button handling with event delegation
+            var filterButtons = document.querySelector('#menu-filter');
+            if (filterButtons) {
+                filterButtons.addEventListener('click', function(event) {
+                    // Only handle <a> element clicks
+                    if (!event.target.matches('a')) return;
+
+                    event.preventDefault();
+
+                    var filterValue = event.target.getAttribute('data-filter');
+
+                    // Update active button state
+                    var currentActive = filterButtons.querySelector('.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    event.target.classList.add('active');
+
+                    // Apply filter using arrange method
+                    iso.arrange({ filter: filterValue });
+                });
+            }
+        },
+
+        // PhotoSwipe Lightbox
+        initMfpImages: function() {
+            var gallery = document.getElementById('portfolio-gallery');
+            if (!gallery) return;
+
+            var lightbox = new PhotoSwipeLightbox({
+                gallery: '#portfolio-gallery',
+                children: 'a',
+                pswpModule: PhotoSwipe,
+                bgOpacity: 0.9,
+                loop: true,
+                arrowKeys: true,
+                escKey: true,
+                pinchToClose: true,
+                closeOnVerticalDrag: true,
+                trapFocus: true,
+                returnFocus: true,
+                preload: [1, 2]
+            });
+            lightbox.init();
+        },
+
+        // Client Slider (Splide)
+        initClientSlider: function() {
+            var carousel = document.getElementById('testimonial-carousel');
+            if (!carousel) return;
+
+            new Splide('#testimonial-carousel', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 7000,
+                pauseOnHover: true,
+                pauseOnFocus: true,
+                arrows: false,
+                speed: 1000,
+            }).mount();
+        },
+
+        // Back To Top button
+        initBackToTop: function() {
+            var backTop = document.querySelector('.back_top');
+            if (!backTop) return;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    backTop.style.opacity = '1';
+                    backTop.style.visibility = 'visible';
+                } else {
+                    backTop.style.opacity = '0';
+                    backTop.style.visibility = 'hidden';
+                }
+            });
+
+            backTop.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        },
+
+        // Typed Text animation
+        initTypedText: function() {
+            document.querySelectorAll('.element').forEach(function(el) {
+                var dataElements = el.getAttribute('data-elements');
+                if (!dataElements) return;
+
+                new Typed(el, {
+                    strings: dataElements.split(','),
+                    typeSpeed: 100,
+                    backDelay: 3000,
+                    backSpeed: 50,
+                    loop: true,
+                    showCursor: true,
+                    cursorChar: '|'
+                });
+            });
+        },
+
+        init: function() {
+            this.initPreLoader();
+            this.initNavbarStickey();
+            this.initNavbarSmooth();
+            this.initNavbarScrollSpy();
+            this.initFunFacts();
+            this.initPortfolioFilter();
+            this.initMfpImages();
+            this.initClientSlider();
+            this.initBackToTop();
+            this.initTypedText();
+        }
+    };
+
+    // Initialize when DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            ElvishApp.init();
         });
-    },  
-
-    ElvishApp.prototype.init = function() {
-        this.initPreLoader();
-        this.initNavbarStickey();
-        this.initNavbarSmooth();
-        this.initNavbarScrollSpy();
-        this.initFunFacts();
-        this.initPortfolioFilter();
-        this.initMfpImages();
-        this.initClientSlider();
-        this.initBackToTop();
-        this.initTypedText();
-    },
-
-    //init
-    $.ElvishApp = new ElvishApp, $.ElvishApp.Constructor = ElvishApp
-}(window.jQuery),
-
-//initializing
-function($) {
-    "use strict";
-    $.ElvishApp.init();
-}(window.jQuery);
+    } else {
+        ElvishApp.init();
+    }
+})();
