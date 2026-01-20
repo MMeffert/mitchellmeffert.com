@@ -1090,6 +1090,15 @@ button:focus {
     font-size: 22px;
 }
 
+.recaptcha-notice {
+    font-size: 11px;
+    color: #999;
+}
+
+.recaptcha-notice a {
+    color: #777;
+}
+
 
 /*==========================
         16.FOOTER
