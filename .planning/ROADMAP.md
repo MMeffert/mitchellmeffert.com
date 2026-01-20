@@ -141,10 +141,10 @@ Plans:
   2. GitHub Actions role has scoped S3/CloudFront permissions where possible
   3. No new security warnings in CDK synth output
   4. Contact form still works after permission scoping (regression test)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 08-01: IAM policy audit and scoping
+- [ ] 08-01-PLAN.md - IAM policy audit and scoping
 
 ### Phase 9: Design Enhancement (OPTIONAL/DEFERRED)
 **Goal**: Site has dark/light mode toggle and improved accessibility
