@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 Phase: 5 of 9 (jQuery Removal)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-01-20 - Completed 05-01-PLAN.md
+Last activity: 2026-01-20 - Completed 05-02-PLAN.md
 
-Progress: [█████░░░░░] 5/16 plans (~31%)
+Progress: [██████░░░░] 6/16 plans (~38%)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: ~11min
-- Total execution time: ~55min
+- Total plans completed: 6
+- Average duration: ~10min
+- Total execution time: ~60min
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [█████░░░░░] 5/16 plans (~31%)
 | 02-carousel-migration | 1/1 | ~15min | ~15min |
 | 03-lightbox-migration | 1/1 | ~8min | ~8min |
 | 04-filter-migration | 1/1 | ~1min | ~1min |
-| 05-jquery-removal | 1/3 | ~1min | ~1min |
+| 05-jquery-removal | 2/3 | ~6min | ~3min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (~15min), 03-01 (~8min), 04-01 (~1min), 05-01 (~1min)
+- Last 5 plans: 03-01 (~8min), 04-01 (~1min), 05-01 (~1min), 05-02 (~5min)
 - Trend: Maintaining fast execution for simple conversions
 
 *Updated after each plan completion*
@@ -63,6 +63,10 @@ Recent decisions affecting current work:
 - [04-01]: Used event delegation on filter container for cleaner vanilla JS
 - [05-01]: Kept validation logic and error messages identical to original
 - [05-01]: Used async/await pattern with try/catch for cleaner error handling
+- [05-02]: Used Typed.js v2.1.0 UMD build from jsDelivr CDN
+- [05-02]: Used Bootstrap 5 ScrollSpy via data-bs-* attributes on body
+- [05-02]: Used opacity/visibility transitions instead of display:none for animations
+- [05-02]: Used requestAnimationFrame with easeOutQuad for counter animation
 
 ### Pending Todos
 
@@ -75,14 +79,14 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-20
-Stopped at: Completed 05-01-PLAN.md
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None
 
 ## Next Steps
 
 Continue Phase 5 (jQuery Removal):
 - [x] 05-01: Contact form fetch() conversion (DONE)
-- [ ] 05-02: custom.js vanilla JS conversion and Typed.js CDN update
+- [x] 05-02: custom.js vanilla JS conversion and Typed.js CDN update (DONE)
 - [ ] 05-03: jQuery removal and verification
 
-Remaining jQuery usage: Typed.js initialization (index.html), jQuery Easing (for smooth scroll), custom.js functions.
+Remaining jQuery dependencies to remove in 05-03: jQuery core, jQuery Easing, local typed.js file.
