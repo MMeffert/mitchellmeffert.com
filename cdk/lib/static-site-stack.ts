@@ -165,11 +165,13 @@ export class StaticSiteStack extends cdk.Stack {
       // Grant Lambda permission to read the reCAPTCHA API key secret
       recaptchaSecret.grantRead(this.contactFormFunction);
 
-      // Grant SES permissions
+      // Grant SES permissions (scoped to verified domain identity)
       this.contactFormFunction.addToRolePolicy(
         new iam.PolicyStatement({
-          actions: ['ses:SendEmail', 'ses:SendRawEmail'],
-          resources: ['*'],
+          actions: ['ses:SendEmail'],
+          resources: [
+            `arn:aws:ses:${this.region}:${this.account}:identity/mitchellmeffert.com`
+          ],
         })
       );
 
