@@ -76,10 +76,10 @@ Plans:
   2. Clicking filter shows only matching portfolio items with animation
   3. "All" filter shows all portfolio items
   4. No jQuery selectors in Isotope initialization code
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 04-01: Isotope vanilla JS conversion
+- [ ] 04-01-PLAN.md - Isotope vanilla JS conversion
 
 ### Phase 5: jQuery Removal
 **Goal**: Site runs without jQuery, contact form uses native fetch(), bundle size reduced
