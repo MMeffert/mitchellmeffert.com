@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
 - [x] **Phase 4: Filter Migration** - Modernize Isotope usage with vanilla JS syntax
 - [x] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
-- [ ] **Phase 6: Content Update** - Modernize About, skills, stats, GitHub link, resume download
+- [x] **Phase 6: Content Update** - Modernize About, skills, stats, GitHub link, resume download
 - [ ] **Phase 7: SEO and Cleanup** - Refresh meta tags, remove unused files, clean HTML
 - [ ] **Phase 8: Security Hardening** - Scope IAM wildcards, review Lambda permissions
 - [ ] **Phase 9: Design Enhancement** - Dark/light mode toggle, accessibility (OPTIONAL/DEFERRED)
@@ -113,8 +113,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md - About section content and skills badge redesign
-- [ ] 06-02-PLAN.md - Stats update, GitHub links, and resume download
+- [x] 06-01-PLAN.md - About section content and skills badge redesign
+- [x] 06-02-PLAN.md - Stats update, GitHub links, and resume download
 
 ### Phase 7: SEO and Cleanup
 **Goal**: Site has current meta tags and no dead code or unused files
@@ -174,7 +174,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | 3. Lightbox Migration | 1/1 | Complete | 2026-01-20 |
 | 4. Filter Migration | 1/1 | Complete | 2026-01-20 |
 | 5. jQuery Removal | 3/3 | Complete | 2026-01-20 |
-| 6. Content Update | 0/2 | Not started | - |
+| 6. Content Update | 2/2 | Complete | 2026-01-20 |
 | 7. SEO and Cleanup | 0/2 | Not started | - |
 | 8. Security Hardening | 0/1 | Not started | - |
 | 9. Design Enhancement | 0/3 | Deferred | - |
@@ -185,9 +185,9 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 |----------------|-------------|-------|--------|
 | BOOT-01 | Update Bootstrap 4 to Bootstrap 5 | Phase 1 | Complete |
 | JS-01 | Update/replace dated JavaScript dependencies | Phases 2-5 | Complete |
-| CONT-01 | Modernize About section content | Phase 6 | Pending |
-| CONT-02 | Update skills display | Phase 6 | Pending |
-| CONT-03 | Update stats | Phase 6 | Pending |
+| CONT-01 | Modernize About section content | Phase 6 | Complete |
+| CONT-02 | Update skills display | Phase 6 | Complete |
+| CONT-03 | Update stats | Phase 6 | Complete |
 | SEO-01 | Refresh meta tags and SEO keywords | Phase 7 | Pending |
 | TECH-01 | Clean up tech debt | Phase 7 | Pending |
 | SEC-01 | Improve security (scope IAM wildcards) | Phase 8 | Pending |
