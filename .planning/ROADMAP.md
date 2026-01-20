@@ -48,10 +48,10 @@ Plans:
   2. Carousel responds to swipe gestures on mobile
   3. Carousel has accessible keyboard navigation (arrow keys)
   4. Owl Carousel JS/CSS files removed from project
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 02-01: Splide.js integration and Owl Carousel removal
+- [ ] 02-01-PLAN.md - Splide.js integration and Owl Carousel removal
 
 ### Phase 3: Lightbox Migration
 **Goal**: Portfolio images open in PhotoSwipe lightbox instead of Magnific Popup
@@ -171,7 +171,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Bootstrap Migration | 1/1 | Complete | 2026-01-20 |
-| 2. Carousel Migration | 0/1 | Not started | - |
+| 2. Carousel Migration | 0/1 | Planned | - |
 | 3. Lightbox Migration | 0/1 | Not started | - |
 | 4. Filter Migration | 0/1 | Not started | - |
 | 5. jQuery Removal | 0/3 | Not started | - |
