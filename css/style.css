@@ -150,7 +150,6 @@ button:focus {
     height: 35px;
     width: 35px;
     background-color: #000;
-    display: none;
     z-index: 10000;
     border-radius: 3px;
     right: 20px;
@@ -1440,4 +1439,32 @@ button:focus {
     .blog_detail p.blockquote {
         font-size: 14px !important;
     }
+}
+
+
+/* ==========================================================================
+   Smooth Scrolling and Transitions (jQuery Removal - Phase 5)
+   ========================================================================== */
+
+/* Enable native smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Account for any fixed header when scrolling to sections */
+section[id] {
+    scroll-margin-top: 0;
+}
+
+/* Transition properties for preloader fade */
+#preloader,
+#status {
+    transition: opacity 0.35s ease;
+}
+
+/* Transition for back-to-top button */
+.back_top {
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    opacity: 0;
+    visibility: hidden;
 }
