@@ -116,18 +116,23 @@
         });
     },
 
-    //Magnificpop
+    //PhotoSwipe Lightbox
     ElvishApp.prototype.initMfpImages = function() {
-        $('.img-zoom').magnificPopup({
-            type: 'image',
-            closeOnContentClick: true,
-            mainClass: 'mfp-fade',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1]
-            }
+        var lightbox = new PhotoSwipeLightbox({
+            gallery: '#portfolio-gallery',
+            children: 'a',
+            pswpModule: PhotoSwipe,
+            bgOpacity: 0.9,
+            loop: true,
+            arrowKeys: true,
+            escKey: true,
+            pinchToClose: true,
+            closeOnVerticalDrag: true,
+            trapFocus: true,
+            returnFocus: true,
+            preload: [1, 2]
         });
+        lightbox.init();
     },
 
     //ClientSlider
@@ -142,18 +147,6 @@
             arrows: false,
             speed: 1000,
         }).mount();
-    },
-
-    //MfpVideo
-    ElvishApp.prototype.initMfpVideo = function() {
-        $('.blog_play').magnificPopup({
-            disableOn: 700,
-            type: 'iframe',
-            mainClass: 'mfp-fade',
-            removalDelay: 160,
-            preloader: false,
-            fixedContentPos: false
-        });
     },
 
     //Back To Top
@@ -192,7 +185,6 @@
         this.initPortfolioFilter();
         this.initMfpImages();
         this.initClientSlider();
-        this.initMfpVideo();
         this.initBackToTop();
         this.initTypedText();
     },
