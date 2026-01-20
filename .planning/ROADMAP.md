@@ -13,7 +13,7 @@ This roadmap transforms a 2018 Bootstrap 4 + jQuery portfolio site into a modern
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Bootstrap Migration** - Upgrade Bootstrap 4 to 5.3.8 with all class and attribute changes
-- [ ] **Phase 2: Carousel Migration** - Replace Owl Carousel with Splide.js
+- [x] **Phase 2: Carousel Migration** - Replace Owl Carousel with Splide.js
 - [ ] **Phase 3: Lightbox Migration** - Replace Magnific Popup with PhotoSwipe
 - [ ] **Phase 4: Filter Migration** - Modernize Isotope usage with vanilla JS syntax
 - [ ] **Phase 5: jQuery Removal** - Convert contact form and custom.js to vanilla JS, remove jQuery
@@ -51,7 +51,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md - Splide.js integration and Owl Carousel removal
+- [x] 02-01-PLAN.md - Splide.js integration and Owl Carousel removal
 
 ### Phase 3: Lightbox Migration
 **Goal**: Portfolio images open in PhotoSwipe lightbox instead of Magnific Popup
@@ -171,7 +171,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Bootstrap Migration | 1/1 | Complete | 2026-01-20 |
-| 2. Carousel Migration | 0/1 | Planned | - |
+| 2. Carousel Migration | 1/1 | Complete | 2026-01-20 |
 | 3. Lightbox Migration | 0/1 | Not started | - |
 | 4. Filter Migration | 0/1 | Not started | - |
 | 5. jQuery Removal | 0/3 | Not started | - |
