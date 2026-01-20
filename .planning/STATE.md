@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** Phase 5 - jQuery Removal (Complete)
+**Current focus:** Phase 6 - Content Update (In Progress)
 
 ## Current Position
 
-Phase: 5 of 9 (jQuery Removal) - COMPLETE
-Plan: 3 of 3 in current phase (COMPLETE)
-Status: Phase complete, ready for Phase 6
-Last activity: 2026-01-20 - Completed 05-03-PLAN.md
+Phase: 6 of 9 (Content Update) - IN PROGRESS
+Plan: 1 of 3 in current phase (COMPLETE)
+Status: Plan 06-01 complete, ready for 06-02
+Last activity: 2026-01-20 - Completed 06-01-PLAN.md
 
-Progress: [███████░░░] 7/16 plans (~44%)
+Progress: [████████░░] 8/16 plans (~50%)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: ~9min
-- Total execution time: ~63min
+- Total plans completed: 8
+- Average duration: ~8min
+- Total execution time: ~64min
 
 **By Phase:**
 
@@ -32,10 +32,11 @@ Progress: [███████░░░] 7/16 plans (~44%)
 | 03-lightbox-migration | 1/1 | ~8min | ~8min |
 | 04-filter-migration | 1/1 | ~1min | ~1min |
 | 05-jquery-removal | 3/3 | ~9min | ~3min |
+| 06-content-update | 1/3 | ~1min | ~1min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (~1min), 05-01 (~1min), 05-02 (~5min), 05-03 (~3min)
-- Trend: Fast execution for cleanup/conversion tasks
+- Last 5 plans: 05-01 (~1min), 05-02 (~5min), 05-03 (~3min), 06-01 (~1min)
+- Trend: Fast execution for content/cleanup tasks
 
 *Updated after each plan completion*
 
@@ -70,6 +71,9 @@ Recent decisions affecting current work:
 - [05-03]: Removed dead contact.js file (documented as unused in CONCERNS.md)
 - [05-03]: Kept Bootstrap bundle.min.js as only local dependency
 - [05-03]: All plugins now loaded from jsDelivr CDN
+- [06-01]: Used "nearly a decade" instead of specific year count for evergreen content
+- [06-01]: Simplified "Roundhouse Marketing" to "Roundhouse" (company rebrand)
+- [06-01]: Badge format replaces percentage bars (avoids arbitrary self-assessment)
 
 ### Pending Todos
 
@@ -82,17 +86,12 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-20
-Stopped at: Completed 05-03-PLAN.md (Phase 5 complete)
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
 
 ## Next Steps
 
-Phase 5 (jQuery Removal) COMPLETE:
-- [x] 05-01: Contact form fetch() conversion
-- [x] 05-02: custom.js vanilla JS conversion and Typed.js CDN update
-- [x] 05-03: jQuery removal and verification (~101KB removed)
-
-Ready for Phase 6 (Content Update):
-- Modernize About section (AWS focus, Claude Code/AI mention)
-- Update skills display (add AWS, Claude Code)
-- Update stats (years worked, ownership, computer experience)
+Phase 6 (Content Update) IN PROGRESS:
+- [x] 06-01: About section and skills badges
+- [ ] 06-02: Stats counter updates
+- [ ] 06-03: GitHub social link and resume download
