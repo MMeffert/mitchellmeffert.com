@@ -25,20 +25,19 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Phase Details
 
 ### Phase 1: Bootstrap Migration
-**Goal**: Site renders correctly with Bootstrap 5.3.8, all CSS classes and data attributes updated
+**Goal**: Site renders correctly with Bootstrap 5.3.8, all CSS classes updated
 **Depends on**: Nothing (first phase)
 **Requirements**: BOOT-01 (Update Bootstrap 4 to Bootstrap 5)
 **Success Criteria** (what must be TRUE):
   1. Bootstrap 5.3.8 CSS and JS load without console errors
-  2. Navigation hamburger menu opens/closes on mobile
+  2. ~~Navigation hamburger menu opens/closes on mobile~~ (NOT APPLICABLE - no hamburger in design)
   3. All sections display with correct spacing and alignment (ml-* to ms-*, etc.)
-  4. No deprecated `data-toggle` attributes remain (all converted to `data-bs-*`)
+  4. ~~No deprecated `data-toggle` attributes remain~~ (NOT APPLICABLE - site uses no Bootstrap data attributes)
   5. Link underlines render correctly (Bootstrap 5 text-decoration change addressed)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: Bootstrap CSS/JS upgrade and class migration
-- [ ] 01-02: Data attribute namespace conversion and verification
+- [ ] 01-01-PLAN.md - Bootstrap CSS/JS upgrade and class migration
 
 ### Phase 2: Carousel Migration
 **Goal**: Testimonial carousel works with Splide.js instead of Owl Carousel
@@ -171,7 +170,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Bootstrap Migration | 0/2 | Not started | - |
+| 1. Bootstrap Migration | 0/1 | Planned | - |
 | 2. Carousel Migration | 0/1 | Not started | - |
 | 3. Lightbox Migration | 0/1 | Not started | - |
 | 4. Filter Migration | 0/1 | Not started | - |
