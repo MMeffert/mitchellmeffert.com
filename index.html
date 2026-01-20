@@ -101,8 +101,8 @@
         <!-- Mobirise icons Css -->
         <link rel="stylesheet" href="css/mobiriseicons.css">
 
-        <!-- Magnific-popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
+        <!-- PhotoSwipe Lightbox -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
 
         <!-- Animate Css -->
         <link rel="stylesheet" href="css/animate.min.css">
@@ -532,53 +532,69 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row mt-5 work-filter">
+                <div class="row mt-5 work-filter pswp-gallery" id="portfolio-gallery">
                     <div class="col-lg-4 webdesign">
                         <div class="work_img_box rounded">
-                            <a class="img-zoom" href="images/works/rakegenetics.jpg"></a>
-                            <div class="work_images">
-                                <img src="images/works/rakegenetics.jpg" alt="Rake Genetics" class="img-fluid mx-auto d-block">
-                                <div class="work_overlay">
-                                    <h4 class="mb-0">Web Design</h4>
-                                    <h6 class="mb-0">Rake Genetics</h6>
+                            <a href="images/works/rakegenetics.jpg"
+                               data-pswp-width="800"
+                               data-pswp-height="600"
+                               target="_blank">
+                                <div class="work_images">
+                                    <img src="images/works/rakegenetics.jpg" alt="Rake Genetics" class="img-fluid mx-auto d-block">
+                                    <div class="work_overlay">
+                                        <h4 class="mb-0">Web Design</h4>
+                                        <h6 class="mb-0">Rake Genetics</h6>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 webdesign">
                         <div class="work_img_box rounded">
-                            <a class="img-zoom" href="images/works/dcntp.jpg"></a>
-                            <div class="work_images">
-                                <img src="images/works/dcntp.jpg" alt="Dane County New Teacher Project website screenshot" class="img-fluid mx-auto d-block">
-                                <div class="work_overlay">
-                                    <h4>Web Design</h4>
-                                    <h6>Dane County New Teacher Project</h6>
+                            <a href="images/works/dcntp.jpg"
+                               data-pswp-width="800"
+                               data-pswp-height="600"
+                               target="_blank">
+                                <div class="work_images">
+                                    <img src="images/works/dcntp.jpg" alt="Dane County New Teacher Project website screenshot" class="img-fluid mx-auto d-block">
+                                    <div class="work_overlay">
+                                        <h4>Web Design</h4>
+                                        <h6>Dane County New Teacher Project</h6>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 webdesign">
                         <div class="work_img_box rounded">
-                            <a class="img-zoom" href="images/works/roundhouse.jpg"></a>
-                            <div class="work_images">
-                                <img src="images/works/roundhouse.jpg" alt="Roundhouse Marketing website screenshot" class="img-fluid mx-auto d-block">
-                                <div class="work_overlay">
-                                    <h4>Web Design</h4>
-                                    <h6>Roundhouse Marketing</h6>
+                            <a href="images/works/roundhouse.jpg"
+                               data-pswp-width="800"
+                               data-pswp-height="600"
+                               target="_blank">
+                                <div class="work_images">
+                                    <img src="images/works/roundhouse.jpg" alt="Roundhouse Marketing website screenshot" class="img-fluid mx-auto d-block">
+                                    <div class="work_overlay">
+                                        <h4>Web Design</h4>
+                                        <h6>Roundhouse Marketing</h6>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 programming">
                         <div class="work_img_box rounded">
-                            <a class="img-zoom" href="images/works/ContactFormLambda.jpg"></a>
-                            <div class="work_images">
-                                <img src="images/works/ContactFormLambda.jpg" alt="Python Lambda function code for contact form" class="img-fluid mx-auto d-block">
-                                <div class="work_overlay">
-                                    <h4>Python Lambda Function</h4>
-                                    <h6>Contact form lambda written in Python</h6>
+                            <a href="images/works/ContactFormLambda.jpg"
+                               data-pswp-width="800"
+                               data-pswp-height="600"
+                               target="_blank">
+                                <div class="work_images">
+                                    <img src="images/works/ContactFormLambda.jpg" alt="Python Lambda function code for contact form" class="img-fluid mx-auto d-block">
+                                    <div class="work_overlay">
+                                        <h4>Python Lambda Function</h4>
+                                        <h6>Contact form lambda written in Python</h6>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -886,8 +902,9 @@
         <script src="js/scrollspy.min.js"></script>
         <!-- TYPED -->
         <script src="js/typed.js"></script>         
-        <!-- MFP JS -->
-        <script src="js/jquery.magnific-popup.min.js"></script>
+        <!-- PhotoSwipe Lightbox -->
+        <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js"></script>
         <!--PORTFOLIO FILTER JS-->
         <script src="js/isotope.js"></script>           
         <!-- Splide Carousel -->
