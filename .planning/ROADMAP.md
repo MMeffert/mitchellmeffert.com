@@ -110,12 +110,11 @@ Plans:
   5. Skills section shows AWS, Cloud Architecture, Claude Code/AI alongside existing skills
   6. Skills section uses list/badge format (no percentage bars)
   7. Stats show: Years Worked 19, Business Ownership 14, Computer Exp 29
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: Hero and About section content update
-- [ ] 06-02: Skills section redesign
-- [ ] 06-03: Stats and links update
+- [ ] 06-01-PLAN.md - About section content and skills badge redesign
+- [ ] 06-02-PLAN.md - Stats update, GitHub links, and resume download
 
 ### Phase 7: SEO and Cleanup
 **Goal**: Site has current meta tags and no dead code or unused files
@@ -175,7 +174,7 @@ Phases 1-5 are sequential (technical dependencies). Phase 6-8 can run after Phas
 | 3. Lightbox Migration | 1/1 | Complete | 2026-01-20 |
 | 4. Filter Migration | 1/1 | Complete | 2026-01-20 |
 | 5. jQuery Removal | 3/3 | Complete | 2026-01-20 |
-| 6. Content Update | 0/3 | Not started | - |
+| 6. Content Update | 0/2 | Not started | - |
 | 7. SEO and Cleanup | 0/2 | Not started | - |
 | 8. Security Hardening | 0/1 | Not started | - |
 | 9. Design Enhancement | 0/3 | Deferred | - |
