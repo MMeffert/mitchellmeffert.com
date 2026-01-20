@@ -196,7 +196,7 @@ button:focus {
 }
 
 .page_link a {
-    color: rgba(255, 255, 255, 0.85);
+    color: #ffffff;
 }
 
 .page_link {
@@ -645,7 +645,7 @@ button:focus {
 
 .lan_funfact .lan_fun_name {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
 }
 
 .bg-funfact {
@@ -904,7 +904,7 @@ button:focus {
 }
 
 .work_img_box:hover .work_overlay h4 {
-    color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
 }
 
 .work_img_box:hover .work_overlay h4:before {
