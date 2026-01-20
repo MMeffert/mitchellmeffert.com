@@ -88,15 +88,15 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. Contact form submits successfully (sends email via Lambda)
   2. Contact form shows success/error messages correctly
-  3. All custom.js functions work without jQuery (11 functions converted)
+  3. All custom.js functions work without jQuery (8 functions converted)
   4. No `$` or `jQuery` references remain in codebase
   5. jQuery library removed from project (~87KB eliminated)
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Contact form fetch() conversion
-- [ ] 05-02: custom.js vanilla JS conversion
-- [ ] 05-03: jQuery removal and verification
+- [ ] 05-01-PLAN.md - Contact form fetch() conversion
+- [ ] 05-02-PLAN.md - custom.js vanilla JS conversion and Typed.js CDN update
+- [ ] 05-03-PLAN.md - jQuery removal and verification
 
 ### Phase 6: Content Update
 **Goal**: Professional content reflects current expertise (AWS, AI, 19+ years experience)
