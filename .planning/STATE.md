@@ -10,12 +10,12 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 Milestone: v1.1 Accessibility & Security Hardening
-Phase: 10 - Accessibility Core (complete)
-Plan: 02 of 02 (complete)
-Status: Phase 10 complete, ready for Phase 11
-Last activity: 2026-01-21 - Completed 10-01-PLAN.md (SUMMARY created)
+Phase: 11 - Semantic HTML (in progress)
+Plan: 01 of 02 (complete)
+Status: Plan 11-01 complete, ready for 11-02
+Last activity: 2026-01-21 - Completed 11-01-PLAN.md (icon links & heading hierarchy)
 
-Progress: [#####-----------] 3/6 plans (50%)
+Progress: [######----------] 4/6 plans (67%)
 
 ## Phase Overview
 
@@ -23,7 +23,7 @@ Progress: [#####-----------] 3/6 plans (50%)
 |-------|------|--------------|-------|--------|
 | 9 | CSS Foundation | CSS-01, CSS-02 | 1 | Complete |
 | 10 | Accessibility Core | A11Y-01, A11Y-02 | 2 | Complete |
-| 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 2 | Not started |
+| 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 2 | In progress (1/2) |
 | 12 | Security | SEC-02 | 1 | Not started |
 
 ## Performance Metrics
@@ -34,11 +34,12 @@ Progress: [#####-----------] 3/6 plans (50%)
 - Total execution time: ~73min
 
 **v1.1 Velocity:**
-- Total plans completed: 3/6
+- Total plans completed: 4/6
 - 09-01: 4min (CSS custom properties + breakpoints)
 - 10-01: 3min (Focus styles restoration)
 - 10-02: 3min (Color contrast fixes)
-- Estimated remaining: ~15min total
+- 11-01: 3min (Icon aria-labels + heading hierarchy)
+- Estimated remaining: ~10min total
 
 ## Accumulated Context
 
@@ -54,6 +55,8 @@ v1.1 decisions:
 - #757575 for muted text - slight margin above WCAG minimum (4.6:1)
 - :focus-visible over :focus for keyboard-only focus rings
 - Blue (#005fcc) focus on light, white on dark backgrounds
+- aria-labels describe destination not icon appearance (e.g., "Facebook profile")
+- Single h1 for hero section; funfacts/CTA use h2
 
 ### Pending Todos
 
@@ -72,27 +75,26 @@ From full site review (prioritized):
 | CRITICAL | Focus styles removed (css/style.css:64-72) | A11Y-01 | 10 | Fixed |
 | HIGH | Color contrast failures (#9a9a9a, #999 = 2.85:1) | A11Y-02 | 10 | Fixed |
 | HIGH | 6 CDN resources missing SRI hashes | SEC-02 | 12 | Pending |
-| MEDIUM | Icon-only links missing aria-labels | A11Y-03 | 11 | Pending |
-| MEDIUM | Multiple h1 elements, missing landmarks | A11Y-04, A11Y-05 | 11 | Pending |
+| MEDIUM | Icon-only links missing aria-labels | A11Y-03 | 11 | Fixed |
+| MEDIUM | Multiple h1 elements, missing landmarks | A11Y-04, A11Y-05 | 11 | Fixed (h1), Pending (landmarks) |
 | LOW | CSS maintainability (no custom properties) | CSS-01 | 9 | Fixed |
 | LOW | Single breakpoint (768px only) | CSS-02 | 9 | Fixed |
 
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 10-01-PLAN.md (SUMMARY created)
+Stopped at: Completed 11-01-PLAN.md (icon links & heading hierarchy)
 Resume file: None
 
 ## Next Steps
 
-**Ready for Phase 11: Semantic HTML**
+**Ready for Phase 11 Plan 02: Landmarks**
 
-Phase 11 will address:
-1. Icon-only links missing aria-labels (A11Y-03)
-2. Multiple h1 elements (A11Y-04)
-3. Missing landmarks (A11Y-05)
+Plan 11-02 will address:
+1. Add missing landmarks (header, footer, nav)
+2. Note: main landmark already added in previous work
 
-Run: `/gsd:plan-phase 11`
+Run: `/gsd:execute-phase 11` to continue with 11-02
 
 ---
 *For milestone history, see .planning/MILESTONES.md*
