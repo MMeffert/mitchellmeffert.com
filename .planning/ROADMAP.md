@@ -93,10 +93,10 @@ Plans:
   2. All CDN-loaded CSS files have integrity and crossorigin attributes
   3. Site loads without console errors after SRI implementation
   4. Browser blocks resource loading if integrity check fails (verified in dev tools)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 12-01: SRI hashes for CDN resources
+- [ ] 12-01-PLAN.md -- Add SRI hashes to all CDN resources (7 total: 2 CSS, 5 JavaScript)
 
 ## Progress
 
