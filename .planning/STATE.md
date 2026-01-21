@@ -13,7 +13,7 @@ Milestone: v1.1 Accessibility & Security Hardening
 Phase: 10 - Accessibility Core (complete)
 Plan: 02 of 02 (complete)
 Status: Phase 10 complete, ready for Phase 11
-Last activity: 2026-01-20 - Completed 10-02-PLAN.md
+Last activity: 2026-01-21 - Completed 10-01-PLAN.md (SUMMARY created)
 
 Progress: [#####-----------] 3/6 plans (50%)
 
@@ -36,7 +36,7 @@ Progress: [#####-----------] 3/6 plans (50%)
 **v1.1 Velocity:**
 - Total plans completed: 3/6
 - 09-01: 4min (CSS custom properties + breakpoints)
-- 10-01: ~5min (Focus styles restoration)
+- 10-01: 3min (Focus styles restoration)
 - 10-02: 3min (Color contrast fixes)
 - Estimated remaining: ~15min total
 
@@ -52,6 +52,8 @@ v1.1 decisions:
 - RGB variants for transparency (--color-primary-rgb for rgba() usage)
 - #767676 for light text - darkest gray meeting WCAG 4.5:1 (4.54:1)
 - #757575 for muted text - slight margin above WCAG minimum (4.6:1)
+- :focus-visible over :focus for keyboard-only focus rings
+- Blue (#005fcc) focus on light, white on dark backgrounds
 
 ### Pending Todos
 
@@ -77,8 +79,8 @@ From full site review (prioritized):
 
 ## Session Continuity
 
-Last session: 2026-01-20
-Stopped at: Completed 10-02-PLAN.md
+Last session: 2026-01-21
+Stopped at: Completed 10-01-PLAN.md (SUMMARY created)
 Resume file: None
 
 ## Next Steps
