@@ -2,9 +2,6 @@
 <html lang="en">
 
     <head>
-        <!-- Google reCAPTCHA Enterprise -->
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD"></script>
-
     <!-- Submit contact form through API -->
     <script>
         async function submitToAPI(e) {
@@ -149,6 +146,9 @@
         <link rel="preconnect" href="https://www.google.com" crossorigin>
         <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+        <!-- Preload LCP hero background -->
+        <link rel="preload" as="image" href="images/code-background.png" fetchpriority="high">
 
         <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -725,15 +725,17 @@
         <!-- JAVASCRIPTS -->
         <script src="js/bootstrap.bundle.min.js"></script>
         <!-- Splide Carousel -->
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
+        <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
                 integrity="sha384-RbYB5yr9jD1p+2OHlV3KzOBLAY48CbFsJ87bXEFYINGgOlQJNE4cEjTUf+Q2fygb"
                 crossorigin="anonymous"></script>
         <!-- Typed.js -->
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"
+        <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"
                 integrity="sha384-cMrTlShXEGSdSFA359p+3aVUxK/R+0TAfbRZMcTlAn8yqzxEDj05QsS65nTFMMj4"
                 crossorigin="anonymous"></script>
         <!--CUSTOM JS-->
         <script src="js/custom.js"></script>
+        <!-- Google reCAPTCHA Enterprise (deferred for INP) -->
+        <script defer src="https://www.google.com/recaptcha/enterprise.js?render=6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD"></script>
         <script>
             // Set copyright year
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
