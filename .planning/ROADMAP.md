@@ -3,7 +3,7 @@
 ## Milestones
 
 - [x] **v1.0 Portfolio Modernization** - Phases 1-8 (shipped 2026-01-20)
-- [ ] **v1.1 Accessibility & Security Hardening** - Phases 9-12 (in progress)
+- [x] **v1.1 Accessibility & Security Hardening** - Phases 9-12 (shipped 2026-01-21)
 
 ## Phases
 
@@ -30,86 +30,31 @@ See `.planning/milestones/v1.0-ROADMAP.md` for complete details.
 
 </details>
 
-### v1.1 Accessibility & Security Hardening (In Progress)
+<details>
+<summary>v1.1 Accessibility & Security Hardening (Phases 9-12) - SHIPPED 2026-01-21</summary>
 
-**Milestone Goal:** Address accessibility violations, security gaps, and CSS maintainability issues discovered during full site review.
+See `.planning/milestones/v1.1-ROADMAP.md` for complete details.
 
-#### Phase 9: CSS Foundation
+**Summary:**
+- Phase 9: CSS Foundation (CSS-01, CSS-02)
+- Phase 10: Accessibility Core (A11Y-01, A11Y-02)
+- Phase 11: Semantic HTML (A11Y-03, A11Y-04, A11Y-05)
+- Phase 12: Security (SEC-02)
 
-**Goal**: Establish CSS custom properties and responsive breakpoints as foundation for accessibility fixes
-**Depends on**: Phase 8 (v1.0 complete)
-**Requirements**: CSS-01, CSS-02
-**Success Criteria** (what must be TRUE):
-  1. All color values in style.css reference CSS custom properties (no hardcoded hex values)
-  2. Site layout adapts appropriately at tablet (992px), large desktop (1200px), and extra-large (1400px) breakpoints
-  3. Custom properties use semantic names (--color-primary, --color-text-muted, etc.) not generic names
-**Plans**: 1 plan
+**Key accomplishments:**
+- CSS custom properties system (32 semantic color variables)
+- WCAG accessibility compliance (keyboard focus, color contrast, aria-labels)
+- Semantic HTML landmarks and heading hierarchy
+- SRI hashes on 7 CDN resources
 
-Plans:
-- [x] 09-01-PLAN.md -- Extract colors to CSS custom properties and add responsive breakpoints
-
-#### Phase 10: Accessibility Core
-
-**Goal**: Users can navigate site with keyboard and all text meets WCAG contrast requirements
-**Depends on**: Phase 9 (custom properties available for contrast fixes)
-**Requirements**: A11Y-01, A11Y-02
-**Success Criteria** (what must be TRUE):
-  1. User can tab through all interactive elements (links, buttons, form fields) with visible focus outline
-  2. Focus indicator is clearly visible against all background colors
-  3. All body text meets WCAG 4.5:1 contrast ratio against its background
-  4. All interactive element text (links, buttons) meets WCAG 4.5:1 contrast ratio
-  5. No CSS rules suppress or hide focus outlines (outline: none, outline: 0)
-**Plans**: 2 plans
-
-Plans:
-- [x] 10-01-PLAN.md -- Restore keyboard focus styles (A11Y-01)
-- [x] 10-02-PLAN.md -- Fix color contrast to meet WCAG 4.5:1 (A11Y-02)
-
-#### Phase 11: Semantic HTML
-
-**Goal**: Screen reader users can navigate page structure and understand all interactive elements
-**Depends on**: Phase 10 (core accessibility complete)
-**Requirements**: A11Y-03, A11Y-04, A11Y-05
-**Success Criteria** (what must be TRUE):
-  1. All icon-only links have aria-label attributes describing their purpose
-  2. Page has exactly one h1 element identifying the page purpose
-  3. Page has semantic landmark elements: main, nav, footer
-  4. Screen reader announces page regions correctly (navigation, main content, footer)
-  5. Heading hierarchy is logical (h1 > h2 > h3, no skipped levels)
-**Plans**: 3 plans
-
-Plans:
-- [x] 11-01-PLAN.md -- Add aria-labels to icon-only links and fix heading hierarchy
-- [x] 11-02-PLAN.md -- Add semantic landmark elements (main, footer)
-- [x] 11-03-PLAN.md -- Fix heading hierarchy gaps (gap closure)
-
-#### Phase 12: Security
-
-**Goal**: CDN resources protected against tampering via Subresource Integrity
-**Depends on**: Nothing (independent of accessibility work)
-**Requirements**: SEC-02
-**Success Criteria** (what must be TRUE):
-  1. All CDN-loaded JavaScript files have integrity and crossorigin attributes
-  2. All CDN-loaded CSS files have integrity and crossorigin attributes
-  3. Site loads without console errors after SRI implementation
-  4. Browser blocks resource loading if integrity check fails (verified in dev tools)
-**Plans**: 1 plan
-
-Plans:
-- [x] 12-01-PLAN.md -- Add SRI hashes to all CDN resources (7 total: 2 CSS, 5 JavaScript)
+</details>
 
 ## Progress
-
-**Execution Order:**
-Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
-| 9. CSS Foundation | v1.1 | 1/1 | Complete | 2026-01-20 |
-| 10. Accessibility Core | v1.1 | 2/2 | Complete | 2026-01-20 |
-| 11. Semantic HTML | v1.1 | 3/3 | Complete | 2026-01-21 |
-| 12. Security | v1.1 | 1/1 | Complete | 2026-01-21 |
+| 9-12 | v1.1 | 7/7 | Complete | 2026-01-21 |
 
 ---
-*Created: 2026-01-20 for v1.1 milestone*
+*Last updated: 2026-01-21 — v1.1 milestone complete*

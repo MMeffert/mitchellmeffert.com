@@ -29,22 +29,18 @@ These capabilities exist and work in the current codebase:
 - ✓ Meta tags and SEO refresh (SEO-01) — v1.0
 - ✓ Tech debt cleanup (TECH-01) — v1.0
 - ✓ IAM least-privilege permissions (SEC-01) — v1.0
+- ✓ CSS custom properties for theming (CSS-01) — v1.1
+- ✓ Responsive breakpoints 992px/1200px/1400px (CSS-02) — v1.1
+- ✓ Keyboard focus with visible indicators (A11Y-01) — v1.1
+- ✓ WCAG 4.5:1 color contrast (A11Y-02) — v1.1
+- ✓ Aria-labels on icon-only links (A11Y-03) — v1.1
+- ✓ Semantic landmarks main/footer (A11Y-04) — v1.1
+- ✓ Single h1 heading hierarchy (A11Y-05) — v1.1
+- ✓ SRI hashes on CDN resources (SEC-02) — v1.1
 
 ### Active
 
-**Current Milestone: v1.1 Accessibility & Security Hardening**
-
-Goal: Address accessibility violations, security gaps, and CSS maintainability issues discovered during full site review.
-
-Target features:
-- Restore proper keyboard focus styles (WCAG compliance)
-- Fix color contrast ratios to meet WCAG 4.5:1 minimum
-- Add aria-labels to icon-only links
-- Add semantic HTML landmarks (main, nav, footer)
-- Fix heading hierarchy (single h1 per page)
-- Add SRI hashes to CDN resources
-- Implement CSS custom properties for maintainability
-- Add responsive breakpoints beyond 768px
+No active requirements — site complete.
 
 ### Out of Scope
 
@@ -53,15 +49,16 @@ Target features:
 - Blog integration - keep linking to external mysmallbusinessblog.com
 - User authentication - not needed for portfolio site
 - CMS/admin interface - static content is fine
-- Dark/light mode toggle - deferred to optional Phase 9
+- Dark/light mode toggle - deferred to future milestone if desired
 
 ## Context
 
-**Current State (v1.0 shipped 2026-01-20):**
-- Site uses Bootstrap 5.3.8 (upgraded from Bootstrap 4)
+**Current State (v1.1 shipped 2026-01-21):**
+- Site uses Bootstrap 5.3.8 with CSS custom properties (32 semantic color variables)
 - Vanilla JavaScript with modern plugins: Splide.js, PhotoSwipe, Isotope
 - jQuery completely removed (~241KB bundle reduction)
-- Content reflects current expertise (AWS, cloud, AI, 19 years experience)
+- WCAG accessibility compliant (keyboard focus, color contrast, aria-labels, semantic landmarks)
+- CDN resources protected with SRI hashes (7 resources)
 - Infrastructure: CDK v2, Lambda Node.js 24, GitHub Actions OIDC
 - IAM policies follow least-privilege (scoped SES, CloudFormation)
 
@@ -86,11 +83,16 @@ Target features:
 | Remove jQuery | Research showed all plugins have vanilla alternatives; 57% bundle reduction | ✓ Good |
 | Keep VB/.NET skills | Part of professional history even if not current focus | ✓ Good |
 | Static content (no CMS) | Simple portfolio doesn't need CMS complexity | ✓ Good |
-| Phase 9 optional | Dark/light mode is differentiator, not requirement | ✓ Good |
 | LinkedIn over resume PDF | User preference for live profile over static download | ✓ Good |
 | Splide.js for carousel | Modern, accessible, lightweight replacement for Owl Carousel | ✓ Good |
 | PhotoSwipe for lightbox | Modern, touch-friendly, no jQuery dependency | ✓ Good |
 | Domain identity for SES | More secure than wildcard, scopes to mitchellmeffert.com | ✓ Good |
+| CSS custom properties | Semantic naming (--color-text-muted) enables future theming | ✓ Good |
+| :focus-visible over :focus | Keyboard-only focus rings, no distracting mouse focus | ✓ Good |
+| Context-aware focus colors | Blue on light backgrounds, white on dark for contrast | ✓ Good |
+| reCAPTCHA excluded from SRI | Dynamic content incompatible with fixed hashes - documented limitation | ✓ Good |
+| nav landmark N/A | Single-page portfolio has no navigation menu | ✓ Good |
+| Dark/light mode deferred | Feature enhancement, not requirement - can add in v1.2+ | ✓ Good |
 
 ---
-*Last updated: 2026-01-20 — v1.1 milestone started*
+*Last updated: 2026-01-21 — v1.1 milestone complete*

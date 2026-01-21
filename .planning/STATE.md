@@ -2,67 +2,43 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-20)
+See: .planning/PROJECT.md (updated 2026-01-21)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** v1.1 Accessibility & Security Hardening - COMPLETE
+**Current focus:** Site complete — maintain as-is or plan v1.2 enhancements
 
 ## Current Position
 
-Milestone: v1.1 Accessibility & Security Hardening
-Phase: 12 - Security (complete)
-Plan: 01 of 01 (complete)
-Status: v1.1 MILESTONE COMPLETE
-Last activity: 2026-01-21 - Completed 12-01-PLAN.md (SRI implementation)
+Milestone: v1.1 Accessibility & Security Hardening — SHIPPED
+Phase: N/A (between milestones)
+Plan: N/A
+Status: Ready to plan next milestone
+Last activity: 2026-01-21 — v1.1 milestone complete
 
-Progress: [################] 7/7 plans (100%)
+Progress: [################] 2 milestones shipped (v1.0, v1.1)
 
-## Phase Overview
+## Milestone Summary
 
-| Phase | Name | Requirements | Plans | Status |
-|-------|------|--------------|-------|--------|
-| 9 | CSS Foundation | CSS-01, CSS-02 | 1 | Complete |
-| 10 | Accessibility Core | A11Y-01, A11Y-02 | 2 | Complete |
-| 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 3 | Complete |
-| 12 | Security | SEC-02 | 1 | Complete |
+| Milestone | Phases | Plans | Status | Shipped |
+|-----------|--------|-------|--------|---------|
+| v1.0 Portfolio Modernization | 1-8 | 12 | Complete | 2026-01-20 |
+| v1.1 Accessibility & Security Hardening | 9-12 | 7 | Complete | 2026-01-21 |
 
 ## Performance Metrics
 
-**v1.0 Velocity (reference):**
-- Total plans completed: 12
-- Average duration: ~6min
-- Total execution time: ~73min
+**v1.0 Velocity:**
+- 12 plans in ~73min
+- Average: ~6min per plan
 
 **v1.1 Velocity:**
-- Total plans completed: 7/7
-- 09-01: 4min (CSS custom properties + breakpoints)
-- 10-01: 3min (Focus styles restoration)
-- 10-02: 3min (Color contrast fixes)
-- 11-01: 3min (Icon aria-labels + heading hierarchy)
-- 11-02: 1min (Landmarks)
-- 11-03: 2min (Heading hierarchy gap closure)
-- 12-01: 3min (SRI implementation)
-- **Total v1.1 execution time: ~19min**
+- 7 plans in ~19min
+- Average: ~2.7min per plan
 
 ## Accumulated Context
 
 ### Decisions
 
-See PROJECT.md Key Decisions table for full history.
-
-v1.1 decisions:
-- Semantic color naming (--color-text-muted not --color-gray)
-- Role-based color separation (same #000 as --color-primary and --color-text)
-- RGB variants for transparency (--color-primary-rgb for rgba() usage)
-- #767676 for light text - darkest gray meeting WCAG 4.5:1 (4.54:1)
-- #757575 for muted text - slight margin above WCAG minimum (4.6:1)
-- :focus-visible over :focus for keyboard-only focus rings
-- Blue (#005fcc) focus on light, white on dark backgrounds
-- aria-labels describe destination not icon appearance (e.g., "Facebook profile")
-- Single h1 for hero section; funfacts/CTA use h2
-- Semantic landmarks: main wraps content sections, footer has aria-label="Site footer"
-- No SRI for Google reCAPTCHA (documented limitation - dynamic content)
-- SHA-384 hashes for all jsDelivr resources
+See PROJECT.md Key Decisions table for full history (14 decisions total).
 
 ### Pending Todos
 
@@ -72,38 +48,12 @@ None.
 
 None.
 
-### Known Issues to Address
-
-From full site review (prioritized):
-
-| Priority | Issue | Requirement | Phase | Status |
-|----------|-------|-------------|-------|--------|
-| CRITICAL | Focus styles removed (css/style.css:64-72) | A11Y-01 | 10 | Fixed |
-| HIGH | Color contrast failures (#9a9a9a, #999 = 2.85:1) | A11Y-02 | 10 | Fixed |
-| HIGH | 7 CDN resources missing SRI hashes | SEC-02 | 12 | Fixed |
-| MEDIUM | Icon-only links missing aria-labels | A11Y-03 | 11 | Fixed |
-| MEDIUM | Multiple h1 elements, missing landmarks | A11Y-04, A11Y-05 | 11 | Fixed |
-| LOW | CSS maintainability (no custom properties) | CSS-01 | 9 | Fixed |
-| LOW | Single breakpoint (768px only) | CSS-02 | 9 | Fixed |
-
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 12-01-PLAN.md (SRI implementation)
+Stopped at: v1.1 milestone completed and archived
 Resume file: None
-
-## v1.1 Milestone Complete
-
-All requirements satisfied:
-- CSS-01: CSS custom properties implemented
-- CSS-02: Responsive breakpoints added
-- A11Y-01: Focus styles restored
-- A11Y-02: Color contrast fixed (WCAG 4.5:1)
-- A11Y-03: Icon aria-labels added
-- A11Y-04: Heading hierarchy fixed
-- A11Y-05: Semantic landmarks added
-- SEC-02: SRI hashes added to all CDN resources
 
 ---
 *For milestone history, see .planning/MILESTONES.md*
-*For v1.0 archive, see .planning/milestones/v1.0-ROADMAP.md*
+*For archived milestones, see .planning/milestones/*

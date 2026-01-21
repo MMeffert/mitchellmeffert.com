@@ -1,5 +1,34 @@
 # Project Milestones: mitchellmeffert.com
 
+## v1.1 Accessibility & Security Hardening (Shipped: 2026-01-21)
+
+**Delivered:** Addressed WCAG accessibility violations and added CDN security hardening with SRI hashes.
+
+**Phases completed:** 9-12 (7 plans total)
+
+**Key accomplishments:**
+- CSS custom properties system with 32 semantic color variables
+- Visible keyboard focus indicators with context-aware colors
+- WCAG 4.5:1 color contrast compliance for all text
+- Aria-labels on 21 icon-only links for screen reader accessibility
+- Proper heading hierarchy (h1 > h2 > h3 > h4, no skipped levels)
+- SRI hashes on 7 CDN resources for supply-chain attack protection
+
+**Stats:**
+- 24 files created/modified
+- 4 phases, 7 plans executed
+- 2026-01-20 → 2026-01-21 (2 days)
+
+**Git range:** `c4882e2` (docs(09): create phase plan) → `448f87d` (docs(12): complete security phase)
+
+**What's next:** Site complete — maintain as-is or plan v1.2 enhancements
+
+---
+
+*For archived milestone details, see `.planning/milestones/v1.1-ROADMAP.md`*
+
+---
+
 ## v1.0 Portfolio Modernization (Shipped: 2026-01-20)
 
 **Delivered:** Transformed 2018 Bootstrap 4 + jQuery portfolio into modern Bootstrap 5 + vanilla JavaScript site with updated professional content and security hardening.
