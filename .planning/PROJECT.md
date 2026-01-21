@@ -40,7 +40,14 @@ These capabilities exist and work in the current codebase:
 
 ### Active
 
-No active requirements — site complete.
+**Current Milestone: v1.2 Performance & SEO**
+
+**Goal:** Comprehensive performance and SEO optimization for better search visibility and user experience.
+
+**Target features:**
+- Core Web Vitals optimization (LCP, FID/INP, CLS)
+- JSON-LD structured data (Person, WebSite schemas)
+- Technical SEO (sitemap, robots.txt, canonical URLs)
 
 ### Out of Scope
 
@@ -95,4 +102,4 @@ No active requirements — site complete.
 | Dark/light mode deferred | Feature enhancement, not requirement - can add in v1.2+ | ✓ Good |
 
 ---
-*Last updated: 2026-01-21 — v1.1 milestone complete*
+*Last updated: 2026-01-21 — v1.2 milestone started*

@@ -9,11 +9,11 @@ See: .planning/PROJECT.md (updated 2026-01-21)
 
 ## Current Position
 
-Milestone: v1.1 Accessibility & Security Hardening — SHIPPED
-Phase: N/A (between milestones)
-Plan: N/A
-Status: Ready to plan next milestone
-Last activity: 2026-01-21 — v1.1 milestone complete
+Milestone: v1.2 Performance & SEO
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-01-21 — Milestone v1.2 started
 
 Progress: [################] 2 milestones shipped (v1.0, v1.1)
 
@@ -51,7 +51,7 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: v1.1 milestone completed and archived
+Stopped at: v1.2 milestone initialization
 Resume file: None
 
 ---
