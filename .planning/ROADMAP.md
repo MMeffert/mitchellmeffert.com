@@ -53,11 +53,11 @@ See `.planning/milestones/v1.1-ROADMAP.md` for complete details.
 
 **Milestone Goal:** Achieve green Core Web Vitals, implement structured data for knowledge panel potential, and add security headers via CloudFront.
 
-- [ ] **Phase 13: Quick Wins** - robots.txt, sitemap.xml, preconnect hints, image dimensions
-- [ ] **Phase 14: Structured Data** - JSON-LD schemas for Person, ProfilePage, WebSite
-- [ ] **Phase 15: Core Web Vitals** - LCP, INP, CLS optimization
-- [ ] **Phase 16: Image Optimization** - WebP conversion with fallbacks
-- [ ] **Phase 17: Infrastructure** - CloudFront Response Headers Policy
+- [x] **Phase 13: Quick Wins** - robots.txt, sitemap.xml, preconnect hints, image dimensions
+- [x] **Phase 14: Structured Data** - JSON-LD schemas for Person, ProfilePage, WebSite
+- [x] **Phase 15: Core Web Vitals** - LCP, INP, CLS optimization
+- [x] **Phase 16: Image Optimization** - WebP conversion with fallbacks
+- [x] **Phase 17: Infrastructure** - CloudFront Response Headers Policy
 
 ## Phase Details
 
@@ -137,11 +137,11 @@ Plans:
 |-------|-----------|----------------|--------|-----------|
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
 | 9-12 | v1.1 | 7/7 | Complete | 2026-01-21 |
-| 13. Quick Wins | v1.2 | 0/TBD | Not started | - |
-| 14. Structured Data | v1.2 | 0/TBD | Not started | - |
-| 15. Core Web Vitals | v1.2 | 0/TBD | Not started | - |
-| 16. Image Optimization | v1.2 | 0/TBD | Not started | - |
-| 17. Infrastructure | v1.2 | 0/TBD | Not started | - |
+| 13. Quick Wins | v1.2 | 1/1 | Complete | 2026-01-21 |
+| 14. Structured Data | v1.2 | 1/1 | Complete | 2026-01-21 |
+| 15. Core Web Vitals | v1.2 | 1/1 | Complete | 2026-01-21 |
+| 16. Image Optimization | v1.2 | 1/1 | Complete | 2026-01-21 |
+| 17. Infrastructure | v1.2 | 1/1 | Complete | 2026-01-21 |
 
 ---
-*Last updated: 2026-01-21 — v1.2 roadmap created*
+*Last updated: 2026-01-21 — v1.2 all phases complete*
