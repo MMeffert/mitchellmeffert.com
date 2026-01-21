@@ -36,14 +36,15 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| A11Y-01 | TBD | Pending |
-| A11Y-02 | TBD | Pending |
-| A11Y-03 | TBD | Pending |
-| A11Y-04 | TBD | Pending |
-| A11Y-05 | TBD | Pending |
-| SEC-02 | TBD | Pending |
-| CSS-01 | TBD | Pending |
-| CSS-02 | TBD | Pending |
+| CSS-01 | Phase 9 | Pending |
+| CSS-02 | Phase 9 | Pending |
+| A11Y-01 | Phase 10 | Pending |
+| A11Y-02 | Phase 10 | Pending |
+| A11Y-03 | Phase 11 | Pending |
+| A11Y-04 | Phase 11 | Pending |
+| A11Y-05 | Phase 11 | Pending |
+| SEC-02 | Phase 12 | Pending |
 
 ---
 *8 requirements across 3 categories*
+*Coverage: 8/8 mapped (100%)*
