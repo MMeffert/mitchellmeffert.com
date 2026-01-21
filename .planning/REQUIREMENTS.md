@@ -4,8 +4,8 @@
 
 ### Accessibility (A11Y)
 
-- [ ] **A11Y-01**: User can navigate all interactive elements using keyboard with visible focus indicators
-- [ ] **A11Y-02**: User can read all text content with sufficient color contrast (WCAG 4.5:1 minimum)
+- [x] **A11Y-01**: User can navigate all interactive elements using keyboard with visible focus indicators
+- [x] **A11Y-02**: User can read all text content with sufficient color contrast (WCAG 4.5:1 minimum)
 - [ ] **A11Y-03**: User with screen reader can understand icon-only links via aria-labels
 - [ ] **A11Y-04**: User with screen reader can navigate page structure via semantic landmarks (main, nav, footer)
 - [ ] **A11Y-05**: User with screen reader encounters single h1 heading identifying page purpose
@@ -38,8 +38,8 @@
 |-------------|-------|--------|
 | CSS-01 | Phase 9 | Complete |
 | CSS-02 | Phase 9 | Complete |
-| A11Y-01 | Phase 10 | Pending |
-| A11Y-02 | Phase 10 | Pending |
+| A11Y-01 | Phase 10 | Complete |
+| A11Y-02 | Phase 10 | Complete |
 | A11Y-03 | Phase 11 | Pending |
 | A11Y-04 | Phase 11 | Pending |
 | A11Y-05 | Phase 11 | Pending |

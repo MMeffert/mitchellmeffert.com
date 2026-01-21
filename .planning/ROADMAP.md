@@ -62,8 +62,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 10-01-PLAN.md -- Restore keyboard focus styles (A11Y-01)
-- [ ] 10-02-PLAN.md -- Fix color contrast to meet WCAG 4.5:1 (A11Y-02)
+- [x] 10-01-PLAN.md -- Restore keyboard focus styles (A11Y-01)
+- [x] 10-02-PLAN.md -- Fix color contrast to meet WCAG 4.5:1 (A11Y-02)
 
 #### Phase 11: Semantic HTML
 
@@ -106,7 +106,7 @@ Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 |-------|-----------|----------------|--------|-----------|
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
 | 9. CSS Foundation | v1.1 | 1/1 | Complete | 2026-01-20 |
-| 10. Accessibility Core | v1.1 | 0/2 | Not started | - |
+| 10. Accessibility Core | v1.1 | 2/2 | Complete | 2026-01-20 |
 | 11. Semantic HTML | v1.1 | 0/2 | Not started | - |
 | 12. Security | v1.1 | 0/1 | Not started | - |
 
