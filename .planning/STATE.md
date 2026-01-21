@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** v1.1 Accessibility & Security Hardening
+**Current focus:** v1.1 Accessibility & Security Hardening - COMPLETE
 
 ## Current Position
 
 Milestone: v1.1 Accessibility & Security Hardening
-Phase: 11 - Semantic HTML (complete, gaps closed)
-Plan: 03 of 03 (complete)
-Status: Phase 11 complete with gap closure, ready for Phase 12
-Last activity: 2026-01-21 - Completed 11-03-PLAN.md (heading hierarchy gap closure)
+Phase: 12 - Security (complete)
+Plan: 01 of 01 (complete)
+Status: v1.1 MILESTONE COMPLETE
+Last activity: 2026-01-21 - Completed 12-01-PLAN.md (SRI implementation)
 
-Progress: [##########------] 6/7 plans (86%)
+Progress: [################] 7/7 plans (100%)
 
 ## Phase Overview
 
@@ -24,7 +24,7 @@ Progress: [##########------] 6/7 plans (86%)
 | 9 | CSS Foundation | CSS-01, CSS-02 | 1 | Complete |
 | 10 | Accessibility Core | A11Y-01, A11Y-02 | 2 | Complete |
 | 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 3 | Complete |
-| 12 | Security | SEC-02 | 1 | Not started |
+| 12 | Security | SEC-02 | 1 | Complete |
 
 ## Performance Metrics
 
@@ -34,14 +34,15 @@ Progress: [##########------] 6/7 plans (86%)
 - Total execution time: ~73min
 
 **v1.1 Velocity:**
-- Total plans completed: 5/6
+- Total plans completed: 7/7
 - 09-01: 4min (CSS custom properties + breakpoints)
 - 10-01: 3min (Focus styles restoration)
 - 10-02: 3min (Color contrast fixes)
 - 11-01: 3min (Icon aria-labels + heading hierarchy)
 - 11-02: 1min (Landmarks)
 - 11-03: 2min (Heading hierarchy gap closure)
-- Estimated remaining: ~5min total
+- 12-01: 3min (SRI implementation)
+- **Total v1.1 execution time: ~19min**
 
 ## Accumulated Context
 
@@ -60,6 +61,8 @@ v1.1 decisions:
 - aria-labels describe destination not icon appearance (e.g., "Facebook profile")
 - Single h1 for hero section; funfacts/CTA use h2
 - Semantic landmarks: main wraps content sections, footer has aria-label="Site footer"
+- No SRI for Google reCAPTCHA (documented limitation - dynamic content)
+- SHA-384 hashes for all jsDelivr resources
 
 ### Pending Todos
 
@@ -77,7 +80,7 @@ From full site review (prioritized):
 |----------|-------|-------------|-------|--------|
 | CRITICAL | Focus styles removed (css/style.css:64-72) | A11Y-01 | 10 | Fixed |
 | HIGH | Color contrast failures (#9a9a9a, #999 = 2.85:1) | A11Y-02 | 10 | Fixed |
-| HIGH | 6 CDN resources missing SRI hashes | SEC-02 | 12 | Pending |
+| HIGH | 7 CDN resources missing SRI hashes | SEC-02 | 12 | Fixed |
 | MEDIUM | Icon-only links missing aria-labels | A11Y-03 | 11 | Fixed |
 | MEDIUM | Multiple h1 elements, missing landmarks | A11Y-04, A11Y-05 | 11 | Fixed |
 | LOW | CSS maintainability (no custom properties) | CSS-01 | 9 | Fixed |
@@ -86,18 +89,20 @@ From full site review (prioritized):
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 11-02-PLAN.md (landmarks)
+Stopped at: Completed 12-01-PLAN.md (SRI implementation)
 Resume file: None
 
-## Next Steps
+## v1.1 Milestone Complete
 
-**Ready for Phase 12: Security**
-
-Plan 12-01 will address:
-1. Add SRI hashes to 6 CDN resources
-2. Complete SEC-02 requirement
-
-Run: `/gsd:plan-phase 12` to plan Phase 12
+All requirements satisfied:
+- CSS-01: CSS custom properties implemented
+- CSS-02: Responsive breakpoints added
+- A11Y-01: Focus styles restored
+- A11Y-02: Color contrast fixed (WCAG 4.5:1)
+- A11Y-03: Icon aria-labels added
+- A11Y-04: Heading hierarchy fixed
+- A11Y-05: Semantic landmarks added
+- SEC-02: SRI hashes added to all CDN resources
 
 ---
 *For milestone history, see .planning/MILESTONES.md*
