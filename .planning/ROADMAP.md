@@ -43,10 +43,10 @@ See `.planning/milestones/v1.0-ROADMAP.md` for complete details.
   1. All color values in style.css reference CSS custom properties (no hardcoded hex values)
   2. Site layout adapts appropriately at tablet (992px), large desktop (1200px), and extra-large (1400px) breakpoints
   3. Custom properties use semantic names (--color-primary, --color-text-muted, etc.) not generic names
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 09-01: CSS custom properties and responsive breakpoints
+- [ ] 09-01-PLAN.md -- Extract colors to CSS custom properties and add responsive breakpoints
 
 #### Phase 10: Accessibility Core
 
@@ -105,7 +105,7 @@ Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
-| 9. CSS Foundation | v1.1 | 0/1 | Not started | - |
+| 9. CSS Foundation | v1.1 | 0/1 | Planned | - |
 | 10. Accessibility Core | v1.1 | 0/2 | Not started | - |
 | 11. Semantic HTML | v1.1 | 0/2 | Not started | - |
 | 12. Security | v1.1 | 0/1 | Not started | - |
