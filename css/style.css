@@ -84,6 +84,48 @@
     --color-blockquote-border: #d6d6d6;
     --color-recent-border: rgba(238, 238, 238, .7);
     --color-pagination: #757575;
+
+    /* Focus */
+    --color-focus: #005fcc;
+    --color-focus-light: #fff;
+}
+
+/*======================
+    Focus Styles
+========================*/
+
+/* Default focus style for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+/* Focus on dark backgrounds (hero, funfacts, cta, testimonials) */
+.home-bg a:focus-visible,
+.home-bg button:focus-visible,
+.bg-funfact a:focus-visible,
+.bg-funfact button:focus-visible,
+.bg-cta a:focus-visible,
+.bg-cta button:focus-visible,
+.bg-client a:focus-visible,
+.bg-client button:focus-visible,
+.bg-dark a:focus-visible,
+.bg-dark button:focus-visible {
+    outline-color: var(--color-focus-light);
+}
+
+/* Navbar focus - adapt to sticky state */
+.custom-nav a:focus-visible {
+    outline-color: var(--color-focus-light);
+}
+
+.custom-nav.stickyadd a:focus-visible {
+    outline-color: var(--color-focus);
 }
 
 /*======================
