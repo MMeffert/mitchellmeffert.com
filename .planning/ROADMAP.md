@@ -76,11 +76,12 @@ Plans:
   3. Page has semantic landmark elements: main, nav, footer
   4. Screen reader announces page regions correctly (navigation, main content, footer)
   5. Heading hierarchy is logical (h1 > h2 > h3, no skipped levels)
-**Plans**: 2 plans
+**Plans**: 3 plans
 
 Plans:
-- [ ] 11-01-PLAN.md -- Add aria-labels to icon-only links and fix heading hierarchy
-- [ ] 11-02-PLAN.md -- Add semantic landmark elements (main, footer)
+- [x] 11-01-PLAN.md -- Add aria-labels to icon-only links and fix heading hierarchy
+- [x] 11-02-PLAN.md -- Add semantic landmark elements (main, footer)
+- [x] 11-03-PLAN.md -- Fix heading hierarchy gaps (gap closure)
 
 #### Phase 12: Security
 
@@ -107,7 +108,7 @@ Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
 | 9. CSS Foundation | v1.1 | 1/1 | Complete | 2026-01-20 |
 | 10. Accessibility Core | v1.1 | 2/2 | Complete | 2026-01-20 |
-| 11. Semantic HTML | v1.1 | 0/2 | Not started | - |
+| 11. Semantic HTML | v1.1 | 3/3 | Complete | 2026-01-21 |
 | 12. Security | v1.1 | 0/1 | Not started | - |
 
 ---

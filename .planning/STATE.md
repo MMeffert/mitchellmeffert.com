@@ -10,12 +10,12 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 Milestone: v1.1 Accessibility & Security Hardening
-Phase: 11 - Semantic HTML (complete)
-Plan: 02 of 02 (complete)
-Status: Phase 11 complete, ready for Phase 12
-Last activity: 2026-01-21 - Completed 11-02-PLAN.md (landmarks)
+Phase: 11 - Semantic HTML (complete, gaps closed)
+Plan: 03 of 03 (complete)
+Status: Phase 11 complete with gap closure, ready for Phase 12
+Last activity: 2026-01-21 - Completed 11-03-PLAN.md (heading hierarchy gap closure)
 
-Progress: [########--------] 5/6 plans (83%)
+Progress: [##########------] 6/7 plans (86%)
 
 ## Phase Overview
 
@@ -23,7 +23,7 @@ Progress: [########--------] 5/6 plans (83%)
 |-------|------|--------------|-------|--------|
 | 9 | CSS Foundation | CSS-01, CSS-02 | 1 | Complete |
 | 10 | Accessibility Core | A11Y-01, A11Y-02 | 2 | Complete |
-| 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 2 | Complete |
+| 11 | Semantic HTML | A11Y-03, A11Y-04, A11Y-05 | 3 | Complete |
 | 12 | Security | SEC-02 | 1 | Not started |
 
 ## Performance Metrics
@@ -40,6 +40,7 @@ Progress: [########--------] 5/6 plans (83%)
 - 10-02: 3min (Color contrast fixes)
 - 11-01: 3min (Icon aria-labels + heading hierarchy)
 - 11-02: 1min (Landmarks)
+- 11-03: 2min (Heading hierarchy gap closure)
 - Estimated remaining: ~5min total
 
 ## Accumulated Context
@@ -96,7 +97,7 @@ Plan 12-01 will address:
 1. Add SRI hashes to 6 CDN resources
 2. Complete SEC-02 requirement
 
-Run: `/gsd:execute-phase 12` to start Phase 12
+Run: `/gsd:plan-phase 12` to plan Phase 12
 
 ---
 *For milestone history, see .planning/MILESTONES.md*
