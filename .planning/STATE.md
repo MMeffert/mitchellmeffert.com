@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Present Mitchell's professional capabilities accurately and make it easy for potential clients/employers to understand his expertise and get in touch.
-**Current focus:** v1.0 Milestone Complete
+**Current focus:** v1.1 Accessibility & Security Hardening
 
 ## Current Position
 
-Milestone: v1.0 Portfolio Modernization - SHIPPED
-Phases: 8 of 8 complete (Phase 9 deferred as optional)
-Status: Ready for maintenance or next milestone
-Last activity: 2026-01-20 — v1.0 milestone archived
+Milestone: v1.1 Accessibility & Security Hardening
+Phase: Not started (defining requirements)
+Status: Defining requirements
+Last activity: 2026-01-20 — Milestone v1.1 started
 
-Progress: [████████████████] 12/12 plans (100%)
+Progress: [░░░░░░░░░░░░░░░░] 0/? plans (0%)
 
 ## Performance Metrics
 
@@ -58,11 +58,15 @@ Resume file: None
 
 ## Next Steps
 
-**v1.0 is SHIPPED.** Options:
+**v1.1 in progress.** Defining requirements from full site review findings.
 
-1. **Maintain as-is** — Site is fully modernized and functional
-2. **Start Phase 9** — Optional dark/light mode and accessibility (deferred)
-3. **New milestone** — Use `/gsd:new-milestone` to define new goals
+Issues to address:
+- **CRITICAL**: Focus styles removed (css/style.css:64-72) - WCAG violation
+- **HIGH**: Color contrast failures (#9a9a9a, #999 = 2.85:1, need 4.5:1)
+- **HIGH**: 6 CDN resources missing SRI hashes
+- **MEDIUM**: Icon-only links missing aria-labels
+- **MEDIUM**: Multiple h1 elements, missing main/nav landmarks
+- **LOW**: CSS maintainability (no custom properties, single breakpoint)
 
 For milestone history, see `.planning/MILESTONES.md`
 For v1.0 archive, see `.planning/milestones/v1.0-ROADMAP.md`

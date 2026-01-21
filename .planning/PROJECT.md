@@ -32,7 +32,19 @@ These capabilities exist and work in the current codebase:
 
 ### Active
 
-(No active requirements - v1.0 milestone complete. Define next milestone with `/gsd:new-milestone`)
+**Current Milestone: v1.1 Accessibility & Security Hardening**
+
+Goal: Address accessibility violations, security gaps, and CSS maintainability issues discovered during full site review.
+
+Target features:
+- Restore proper keyboard focus styles (WCAG compliance)
+- Fix color contrast ratios to meet WCAG 4.5:1 minimum
+- Add aria-labels to icon-only links
+- Add semantic HTML landmarks (main, nav, footer)
+- Fix heading hierarchy (single h1 per page)
+- Add SRI hashes to CDN resources
+- Implement CSS custom properties for maintainability
+- Add responsive breakpoints beyond 768px
 
 ### Out of Scope
 
@@ -81,4 +93,4 @@ These capabilities exist and work in the current codebase:
 | Domain identity for SES | More secure than wildcard, scopes to mitchellmeffert.com | ✓ Good |
 
 ---
-*Last updated: 2026-01-20 after v1.0 milestone completion*
+*Last updated: 2026-01-20 — v1.1 milestone started*
