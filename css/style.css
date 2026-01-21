@@ -1,6 +1,6 @@
 /*
 ------------------------------------------------------------------------
-* Template Name    : Elvish | Responsive Bootstrap 4 Personal Template * 
+* Template Name    : Elvish | Responsive Bootstrap 4 Personal Template *
 * Author           : ThemesBoss                                        *
 * Version          : 1.0.0                                             *
 * Created          : May 2018                                        *
@@ -10,7 +10,7 @@
 
 
 /***********************
-    1.BASIC           
+    1.BASIC
     2.HELPER
     3.NAVBAR
     4.HOME
@@ -33,6 +33,58 @@
 ************************/
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700');
+
+/*======================
+    CSS Custom Properties
+========================*/
+
+:root {
+    /* Primary/Brand */
+    --color-primary: #000;
+    --color-primary-rgb: 0, 0, 0;
+    --color-on-primary: #fff;
+
+    /* Background */
+    --color-background: #fff;
+    --color-background-light: #f8f9fa;
+    --color-background-input: #f1f1f1;
+
+    /* Text */
+    --color-text: #000;
+    --color-text-muted: #777;
+    --color-text-description: #666;
+    --color-text-light: #9a9a9a;
+    --color-text-separator: #bbb;
+    --color-text-input: #4c5667;
+
+    /* Text on dark backgrounds */
+    --color-text-on-dark: #fff;
+    --color-text-on-dark-rgb: 255, 255, 255;
+
+    /* Borders */
+    --color-border: #e7e7e7;
+    --color-border-strong: #d0d0d0;
+    --color-border-dashed: #b9b9b9;
+    --color-border-social: #868e96;
+
+    /* Status */
+    --color-success: #0dba26;
+    --color-error: red;
+
+    /* Legacy (keep for reference) */
+    --color-link-legacy: #337ab7;
+
+    /* Special */
+    --color-dot: #757575;
+    --color-sidebar-link: #303133;
+    --color-selection: rgba(166, 175, 189, 0.3);
+    --color-gradient-start: rgba(18, 166, 181, 0.8);
+    --color-gradient-end: rgba(16, 12, 242, 0.7);
+    --color-tag-text: #9c9c9c;
+    --color-blockquote-border: #d6d6d6;
+    --color-recent-border: rgba(238, 238, 238, .7);
+    --color-pagination: #777777;
+}
 
 /*======================
         1.BASIC
@@ -72,11 +124,11 @@ button:focus {
 }
 
 ::selection {
-    background: rgba(166, 175, 189, 0.3);
+    background: var(--color-selection);
 }
 
 ::-moz-selection {
-    background: rgba(166, 175, 189, 0.3);
+    background: var(--color-selection);
 }
 
 #preloader {
@@ -85,7 +137,7 @@ button:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff;
+    background-color: var(--color-background);
     z-index: 9999999;
 }
 
@@ -103,10 +155,10 @@ button:focus {
     font-size: 10px;
     position: relative;
     text-indent: -9999em;
-    border-top: 5px solid rgba(0, 0, 0, 0.2);
-    border-right: 5px solid rgba(0, 0, 0, 0.2);
-    border-bottom: 5px solid rgba(0, 0, 0, 0.2);
-    border-left: 5px solid #000;
+    border-top: 5px solid rgba(var(--color-primary-rgb), 0.2);
+    border-right: 5px solid rgba(var(--color-primary-rgb), 0.2);
+    border-bottom: 5px solid rgba(var(--color-primary-rgb), 0.2);
+    border-left: 5px solid var(--color-primary);
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
@@ -149,7 +201,7 @@ button:focus {
     bottom: 15px;
     height: 35px;
     width: 35px;
-    background-color: #000;
+    background-color: var(--color-primary);
     z-index: 10000;
     border-radius: 3px;
     right: 20px;
@@ -157,7 +209,7 @@ button:focus {
 }
 
 .back_top i {
-    color: #fff;
+    color: var(--color-on-primary);
     line-height: 35px;
     font-size: 12px;
     display: block;
@@ -172,19 +224,19 @@ button:focus {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-    background-color: #fff;
+    background-color: var(--color-background);
 }
 
 .bg-dark {
-    background-color: #000;
+    background-color: var(--color-primary);
 }
 
 .bg-custom {
-    background-color: #000;
+    background-color: var(--color-primary);
 }
 
 .text-dark {
-    color: #000 !important;
+    color: var(--color-text) !important;
 }
 
 .header_section {
@@ -196,7 +248,7 @@ button:focus {
 }
 
 .page_link a {
-    color: #ffffff;
+    color: var(--color-text-on-dark);
 }
 
 .page_link {
@@ -204,11 +256,11 @@ button:focus {
 }
 
 .text-muted {
-    color: #777;
+    color: var(--color-text-muted);
 }
 
 .text-custom {
-    color: #000 !important;
+    color: var(--color-text) !important;
 }
 
 .h-100vh {
@@ -229,7 +281,7 @@ button:focus {
     margin-top: -7px;
     vertical-align: middle;
     content: "";
-    background-color: #d0d0d0;
+    background-color: var(--color-border-strong);
     width: 30px;
     height: 1px;
 }
@@ -239,7 +291,7 @@ button:focus {
 }
 
 .bg-overlay-gredient {
-    background: linear-gradient(32deg, rgba(18, 166, 181, 0.8) 0%, rgba(16, 12, 242, 0.7) 100%);
+    background: linear-gradient(32deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 100%);
     position: absolute;
     top: 0;
     right: 0;
@@ -250,7 +302,7 @@ button:focus {
 }
 
 .bg-overlay {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(var(--color-primary-rgb), 0.7);
     position: absolute;
     top: 0;
     right: 0;
@@ -271,8 +323,8 @@ button:focus {
 
 .btn-outline-custom {
     background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
+    border: 2px solid var(--color-text-on-dark);
+    color: var(--color-text-on-dark);
     letter-spacing: 1px;
     transition: all 0.5s;
     font-size: 15px;
@@ -287,15 +339,15 @@ button:focus {
 .btn-outline-custom:focus,
 .btn-outline-custom:hover,
 .open>.dropdown-toggle.btn-outline-custom {
-    background-color: #fff !important;
-    border-color: #fff !important;
-    color: #000 !important;
+    background-color: var(--color-background) !important;
+    border-color: var(--color-background) !important;
+    color: var(--color-text) !important;
 }
 
 .btn-outline-black {
     background-color: transparent;
-    border: 2px solid #000;
-    color: #000;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
     font-weight: 600;
     letter-spacing: 1px;
     transition: all 0.5s;
@@ -311,15 +363,15 @@ button:focus {
 .btn-outline-black:focus,
 .btn-outline-black:hover,
 .open>.dropdown-toggle.btn-outline-black {
-    background-color: #000 !important;
-    border-color: #000 !important;
-    color: #fff !important;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-on-primary) !important;
 }
 
 .btn-custom {
-    background-color: #000;
-    border: 2px solid #000;
-    color: #fff;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-on-primary);
     transition: all 0.5s;
     font-size: 15px;
     text-transform: capitalize;
@@ -334,9 +386,9 @@ button:focus {
 .btn-custom:focus,
 .btn-custom:hover,
 .open>.dropdown-toggle.btn-custom {
-    background-color: #fff;
-    border-color: #000;
-    color: #000;
+    background-color: var(--color-background);
+    border-color: var(--color-primary);
+    color: var(--color-text);
 }
 
 
@@ -355,13 +407,13 @@ button:focus {
 }
 
 .custom-nav.stickyadd {
-    background-color: #fff;
+    background-color: var(--color-background);
     padding: 8px 0;
-    box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 18px 1px rgba(var(--color-primary-rgb), 0.1);
 }
 
 .custom-nav .navbar-nav li a {
-    color: #fff;
+    color: var(--color-text-on-dark);
     font-size: 16px;
     background-color: transparent !important;
     padding: 15px 0;
@@ -388,7 +440,7 @@ button:focus {
     bottom: 10%;
     height: 6px;
     width: 6px;
-    background: #fff;
+    background: var(--color-text-on-dark);
     border-radius: 50%;
     opacity: 0;
     transform: translateX(-50%);
@@ -398,32 +450,32 @@ button:focus {
 }
 
 .custom-nav.stickyadd .navbar-nav li a:before {
-    background: #000 !important;
+    background: var(--color-primary) !important;
 }
 
 .navbar-toggler {
     font-size: 24px;
     margin-top: 5px;
     margin-bottom: 0px;
-    color: #ffffff;
+    color: var(--color-text-on-dark);
 }
 
 .custom-nav.stickyadd .navbar-nav li a {
-    color: #000;
+    color: var(--color-text);
 }
 
 .navbar-toggle {
     font-size: 24px;
     margin-top: 5px;
     margin-bottom: 0px;
-    color: #ffffff;
+    color: var(--color-text-on-dark);
 }
 
 .nav .open>a,
 .nav .open>a:focus,
 .nav .open>a:hover {
     background-color: transparent;
-    border-color: #337ab7;
+    border-color: var(--color-link-legacy);
 }
 
 .logo .logo-light {
@@ -494,7 +546,7 @@ button:focus {
 
 .social_home li a {
     font-size: 18px;
-    color: #ffffff;
+    color: var(--color-text-on-dark);
     display: inline-block;
     width: 30px;
     text-align: center;
@@ -505,7 +557,7 @@ button:focus {
     bottom: 5vh;
     width: 100%;
     text-align: center;
-    color: #fff;
+    color: var(--color-text-on-dark);
     font-size: 13px;
     z-index: 8;
 }
@@ -518,9 +570,9 @@ button:focus {
     width: 30px;
     line-height: 60px;
     border-radius: 30px;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--color-text-on-dark);
     display: inline-block;
-    color: #fff;
+    color: var(--color-text-on-dark);
     font-size: 12px;
 }
 
@@ -609,7 +661,7 @@ button:focus {
     height: 3px;
     width: 3px;
     border-radius: 50%;
-    background-color: #757575;
+    background-color: var(--color-dot);
     margin: 0px 12px;
     position: relative;
     display: inline-block;
@@ -628,7 +680,7 @@ button:focus {
 }
 
 .skill-custom .progress-bar {
-    background: #000;
+    background: var(--color-primary);
 }
 
 
@@ -637,7 +689,7 @@ button:focus {
 ============================*/
 
 .lan_box_ser {
-    border: 1px dotted #e7e7e7;
+    border: 1px dotted var(--color-border);
 }
 
 .lan_box_ser .ser_icon i {
@@ -650,12 +702,12 @@ button:focus {
 ============================*/
 
 .lan_funfact {
-    border: 1px dashed #b9b9b9;
+    border: 1px dashed var(--color-border-dashed);
 }
 
 .lan_funfact .lan_fun_name {
     font-size: 15px;
-    color: #ffffff;
+    color: var(--color-text-on-dark);
     font-weight: 700;
 }
 
@@ -685,7 +737,7 @@ button:focus {
     content: "";
     height: 100%;
     left: 0;
-    background-color: #e7e7e7;
+    background-color: var(--color-border);
     margin: 0;
     position: absolute;
     right: 0;
@@ -695,7 +747,7 @@ button:focus {
 
 .cv_edu_exp .cv_edu_exp_box {
     border-radius: 7px;
-    border: 1px solid #e7e7e7;
+    border: 1px solid var(--color-border);
     margin-left: 20px;
     padding: 20px;
 }
@@ -706,11 +758,11 @@ button:focus {
 }
 
 .cv_edu_exp .cv_edu_exp_box .cv_edu_exp_year::after {
-    border: 3px solid #fff;
+    border: 3px solid var(--color-background);
     border-radius: 50%;
     content: "";
     height: 20px;
-    background-color: #000;
+    background-color: var(--color-primary);
     position: absolute;
     left: -65px !important;
     width: 20px;
@@ -735,7 +787,7 @@ button:focus {
 .cv_desc {
     line-height: 26px;
     font-size: 15px;
-    color: #666;
+    color: var(--color-text-description);
 }
 
 
@@ -769,7 +821,7 @@ button:focus {
     top: 3px;
     position: relative;
     display: inline-block;
-    color: #bbb;
+    color: var(--color-text-separator);
     margin: 0px 8px;
 }
 
@@ -789,17 +841,17 @@ button:focus {
     margin-top: 5px;
     transition: all 0.5s;
     font-size: 14px;
-    color: #9a9a9a;
+    color: var(--color-text-light);
 }
 
 .work_menu li a.active {
-    background-color: #000;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-dark);
 }
 
 .work_menu li a:hover {
-    background-color: #000;
-    color: #ffffff !important;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-dark) !important;
 }
 
 .work_img_box {
@@ -848,7 +900,7 @@ button:focus {
     content: '';
     left: 50%;
     top: 50%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(var(--color-primary-rgb), 0.85);
     border-radius: 30%;
     width: 0;
     position: absolute;
@@ -887,7 +939,7 @@ button:focus {
 
 .work_img_box .work_images .work_overlay h4:before {
     content: '';
-    background: #fff;
+    background: var(--color-background);
     width: 100%;
     position: absolute;
     right: 100%;
@@ -898,7 +950,7 @@ button:focus {
 
 .work_img_box .work_images .work_overlay h6::before {
     content: '';
-    background: #fff;
+    background: var(--color-background);
     bottom: 0;
     right: auto;
     position: absolute;
@@ -925,7 +977,7 @@ button:focus {
 }
 
 .work_img_box:hover .work_overlay h4 {
-    color: #ffffff;
+    color: var(--color-text-on-dark);
 }
 
 .work_img_box:hover .work_overlay h4:before {
@@ -933,7 +985,7 @@ button:focus {
 }
 
 .work_img_box:hover .work_overlay h6 {
-    color: white;
+    color: var(--color-text-on-dark);
 }
 
 .work_img_box:hover .work_overlay h6:before {
@@ -967,7 +1019,7 @@ button:focus {
 }
 
 .people_review_box .h6 {
-    color: #ffffff;
+    color: var(--color-text-on-dark);
     font-weight: 700;
 }
 
@@ -982,7 +1034,7 @@ button:focus {
     opacity: 0.5;
     border-radius: 20px;
     transition: all 0.5s;
-    background: #fff;
+    background: var(--color-text-on-dark);
 }
 
 .splide__pagination__page.is-active {
@@ -1009,13 +1061,13 @@ button:focus {
     padding: 15px 20px;
     width: 100%;
     font-size: 17px;
-    color: #4c5667 !important;
+    color: var(--color-text-input) !important;
     border: none;
     outline: none !important;
     padding-right: 150px;
     padding-left: 30px;
     border-radius: 30px;
-    background-color: #f1f1f1;
+    background-color: var(--color-background-input);
 }
 
 .subcribe-newslatter button {
@@ -1055,10 +1107,10 @@ button:focus {
     display: inline-block;
     cursor: pointer;
     text-align: center;
-    color: #000 !important;
+    color: var(--color-text) !important;
     font-size: 35px;
     line-height: 65px;
-    background-color: #fff;
+    background-color: var(--color-background);
 }
 
 
@@ -1079,7 +1131,7 @@ button:focus {
 }
 
 .contact_form .form-control:focus {
-    border-color: #000;
+    border-color: var(--color-primary);
 }
 
 .contact_form textarea.form-control {
@@ -1089,14 +1141,14 @@ button:focus {
 .error {
     margin: 8px 0px;
     display: none;
-    color: red;
+    color: var(--color-error);
 }
 
 .error_msg {
     margin-bottom: 20px;
     text-align: center;
     font-size: 18px;
-    color: red;
+    color: var(--color-error);
     font-weight: 700;
 }
 
@@ -1110,17 +1162,17 @@ button:focus {
 }
 
 #success_msg h3 {
-    color: #0dba26;
+    color: var(--color-success);
     font-size: 22px;
 }
 
 .recaptcha-notice {
     font-size: 11px;
-    color: #999;
+    color: var(--color-text-light);
 }
 
 .recaptcha-notice a {
-    color: #777;
+    color: var(--color-text-muted);
 }
 
 
@@ -1129,7 +1181,7 @@ button:focus {
 ============================*/
 
 .fot_social .social-icon {
-    border: 2px solid #868e96;
+    border: 2px solid var(--color-border-social);
     border-radius: 50%;
     transition: all 0.5s;
     width: 42px;
@@ -1141,8 +1193,8 @@ button:focus {
 }
 
 .fot_social .social-icon:hover {
-    border-color: #000;
-    color: #000 !important;
+    border-color: var(--color-primary);
+    color: var(--color-text) !important;
     transform: rotate(360deg);
 }
 
@@ -1163,7 +1215,7 @@ button:focus {
 .pagination>li>a,
 .pagination>li>span {
     border-radius: 3px;
-    color: #777777;
+    color: var(--color-pagination);
     display: block;
     float: none;
     padding: 8px 15px;
@@ -1172,14 +1224,14 @@ button:focus {
 
 .pagination>.active>a,
 .pagination>.active>span {
-    color: #000;
+    color: var(--color-text);
 }
 
 .pagination>li>a:hover,
 .pagination>li>a:focus,
 .pagination>li>span:hover,
 .pagination>li>span:focus {
-    color: #000;
+    color: var(--color-text);
 }
 
 .pagination>.active>a,
@@ -1189,9 +1241,9 @@ button:focus {
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
     cursor: default;
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border-color: var(--color-primary);
     z-index: 3;
 }
 
@@ -1214,7 +1266,7 @@ button:focus {
 }
 
 .side_widget_search form input:focus {
-    border-color: #000;
+    border-color: var(--color-primary);
 }
 
 .search_icon {
@@ -1239,11 +1291,11 @@ button:focus {
 }
 
 .search_icon:hover {
-    color: #000;
+    color: var(--color-text);
 }
 
 .blog_sidebar .widget_list li a {
-    color: #777;
+    color: var(--color-text-muted);
     font-size: 14px;
     transition: all 0.5s;
     padding: 5px 0px;
@@ -1251,11 +1303,11 @@ button:focus {
 }
 
 .blog_sidebar .widget_list li a:hover {
-    color: #000;
+    color: var(--color-text);
 }
 
 .widget_recent_entries_custom ul li {
-    border-bottom: 1px solid rgba(238, 238, 238, .7);
+    border-bottom: 1px solid var(--color-recent-border);
     margin-bottom: 15px;
     padding-bottom: 15px;
 }
@@ -1274,21 +1326,21 @@ button:focus {
 }
 
 .widget_recent_entries_custom .re_post_desc a {
-    color: #303133;
+    color: var(--color-sidebar-link);
     font-size: 14px;
     display: block;
 }
 
 .widget_recent_entries_custom .re_post_desc span {
     font-size: 12px;
-    color: #777;
+    color: var(--color-text-muted);
 }
 
 .blog_tag a {
-    background: #f8f9fa;
+    background: var(--color-background-light);
     border-radius: 2px;
-    border: 1px solid #e7e7e7;
-    color: #9c9c9c;
+    border: 1px solid var(--color-border);
+    color: var(--color-tag-text);
     display: inline-block;
     transition: all 0.5s;
     font-size: 9px;
@@ -1299,24 +1351,24 @@ button:focus {
 }
 
 .blog_tag a:hover {
-    border-color: #000;
-    color: #000;
+    border-color: var(--color-primary);
+    color: var(--color-text);
 }
 
 
 /*---BLOG SINGLE----*/
 
 .blockquote {
-    border: 1px solid #e7e7e7;
-    border-left: 4px solid #d6d6d6;
-    background-color: #f8f9fa;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blockquote-border);
+    background-color: var(--color-background-light);
     padding: 14px 20px;
 }
 
 .comment_blog .comment_read {
     padding-bottom: 30px;
     margin-bottom: 50px;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .comment_blog .comment_read:nth-child(odd) {
@@ -1343,7 +1395,7 @@ button:focus {
 .comment_data h6 span {
     font-size: 12px;
     margin-top: 8px;
-    color: #777;
+    color: var(--color-text-muted);
 }
 
 .comment_blog .comment_read .comment_data .comment_reply {
@@ -1363,7 +1415,7 @@ button:focus {
 }
 
 .comments-form .comment-form-input .form-control:focus {
-    border-color: #000;
+    border-color: var(--color-primary);
 }
 
 .comments-form .comment-form-input textarea.form-control {
@@ -1375,11 +1427,21 @@ button:focus {
         18.RESPONSIVE
 ============================*/
 
+/* Tablet breakpoint */
+@media (max-width: 992px) {
+    .header_title {
+        font-size: 54px;
+    }
+    .header_subtitle {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 768px) {
     .custom-nav {
         margin-top: 0px;
         padding: 10px 0px !important;
-        background-color: #fff !important;
+        background-color: var(--color-background) !important;
     }
     .custom-nav .navbar-nav li a:before {
         content: '';
@@ -1388,10 +1450,10 @@ button:focus {
     .custom-nav .navbar-nav li a {
         margin: 0 0px;
         padding: 6px 0;
-        color: rgba(0, 0, 0, 0.55) !important;
+        color: rgba(var(--color-primary-rgb), 0.55) !important;
     }
     .custom-nav .navbar-nav li.active a {
-        color: #000 !important;
+        color: var(--color-text) !important;
     }
     .custom-nav>.container {
         width: 90%;
@@ -1412,7 +1474,7 @@ button:focus {
         font-size: 29px;
         margin-top: 0px;
         margin-bottom: 0px;
-        color: #000;
+        color: var(--color-text);
     }
     .header_title {
         font-size: 40px;
@@ -1466,6 +1528,34 @@ button:focus {
     }
     .blog_detail p.blockquote {
         font-size: 14px !important;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    .section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .about-detail {
+        max-width: 900px;
+    }
+    .section-main-title {
+        max-width: 650px;
+    }
+}
+
+/* Extra-large screens */
+@media (min-width: 1400px) {
+    .section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .about-detail {
+        max-width: 950px;
+    }
+    .header_title {
+        font-size: 80px;
     }
 }
 
