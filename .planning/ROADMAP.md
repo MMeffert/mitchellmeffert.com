@@ -59,11 +59,11 @@ Plans:
   3. All body text meets WCAG 4.5:1 contrast ratio against its background
   4. All interactive element text (links, buttons) meets WCAG 4.5:1 contrast ratio
   5. No CSS rules suppress or hide focus outlines (outline: none, outline: 0)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 10-01: Focus styles restoration
-- [ ] 10-02: Color contrast remediation
+- [ ] 10-01-PLAN.md -- Restore keyboard focus styles (A11Y-01)
+- [ ] 10-02-PLAN.md -- Fix color contrast to meet WCAG 4.5:1 (A11Y-02)
 
 #### Phase 11: Semantic HTML
 
