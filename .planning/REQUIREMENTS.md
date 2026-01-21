@@ -70,30 +70,30 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CWV-01 | TBD | Pending |
-| CWV-02 | TBD | Pending |
-| CWV-03 | TBD | Pending |
-| CWV-04 | TBD | Pending |
-| CWV-05 | TBD | Pending |
-| CWV-06 | TBD | Pending |
-| IMG-01 | TBD | Pending |
-| IMG-02 | TBD | Pending |
-| IMG-03 | TBD | Pending |
-| STRUCT-01 | TBD | Pending |
-| STRUCT-02 | TBD | Pending |
-| STRUCT-03 | TBD | Pending |
-| STRUCT-04 | TBD | Pending |
-| TECH-01 | TBD | Pending |
-| TECH-02 | TBD | Pending |
-| TECH-03 | TBD | Pending |
-| TECH-04 | TBD | Pending |
-| TECH-05 | TBD | Pending |
+| CWV-01 | Phase 15 | Pending |
+| CWV-02 | Phase 15 | Pending |
+| CWV-03 | Phase 15 | Pending |
+| CWV-04 | Phase 13 | Pending |
+| CWV-05 | Phase 15 | Pending |
+| CWV-06 | Phase 15 | Pending |
+| IMG-01 | Phase 16 | Pending |
+| IMG-02 | Phase 16 | Pending |
+| IMG-03 | Phase 16 | Pending |
+| STRUCT-01 | Phase 14 | Pending |
+| STRUCT-02 | Phase 14 | Pending |
+| STRUCT-03 | Phase 14 | Pending |
+| STRUCT-04 | Phase 14 | Pending |
+| TECH-01 | Phase 13 | Pending |
+| TECH-02 | Phase 13 | Pending |
+| TECH-03 | Phase 13 | Pending |
+| TECH-04 | Phase 17 | Pending |
+| TECH-05 | Phase 17 | Pending |
 
 **Coverage:**
 - v1.2 requirements: 18 total
-- Mapped to phases: 0
-- Unmapped: 18 ⚠️
+- Mapped to phases: 18
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-21*
-*Last updated: 2026-01-21 after initial definition*
+*Last updated: 2026-01-21 after roadmap creation*
