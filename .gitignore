@@ -8,5 +8,8 @@ cdk.out/
 # Claude Code
 .claude/
 
+# Playwright test screenshots
+.playwright-mcp/
+
 # macOS
 .DS_Store
