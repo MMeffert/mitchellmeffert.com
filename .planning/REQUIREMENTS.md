@@ -12,7 +12,7 @@
 
 ### Security (SEC)
 
-- [ ] **SEC-02**: CDN resources load with Subresource Integrity (SRI) hashes to prevent tampering
+- [x] **SEC-02**: CDN resources load with Subresource Integrity (SRI) hashes to prevent tampering
 
 ### CSS Maintainability (CSS)
 
@@ -43,7 +43,7 @@
 | A11Y-03 | Phase 11 | Complete |
 | A11Y-04 | Phase 11 | Complete |
 | A11Y-05 | Phase 11 | Complete |
-| SEC-02 | Phase 12 | Pending |
+| SEC-02 | Phase 12 | Complete |
 
 ---
 *8 requirements across 3 categories*

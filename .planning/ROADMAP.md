@@ -96,7 +96,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 12-01-PLAN.md -- Add SRI hashes to all CDN resources (7 total: 2 CSS, 5 JavaScript)
+- [x] 12-01-PLAN.md -- Add SRI hashes to all CDN resources (7 total: 2 CSS, 5 JavaScript)
 
 ## Progress
 
@@ -109,7 +109,7 @@ Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 | 9. CSS Foundation | v1.1 | 1/1 | Complete | 2026-01-20 |
 | 10. Accessibility Core | v1.1 | 2/2 | Complete | 2026-01-20 |
 | 11. Semantic HTML | v1.1 | 3/3 | Complete | 2026-01-21 |
-| 12. Security | v1.1 | 0/1 | Not started | - |
+| 12. Security | v1.1 | 1/1 | Complete | 2026-01-21 |
 
 ---
 *Created: 2026-01-20 for v1.1 milestone*
