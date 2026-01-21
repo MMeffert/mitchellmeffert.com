@@ -76,11 +76,11 @@ Plans:
   3. Page has semantic landmark elements: main, nav, footer
   4. Screen reader announces page regions correctly (navigation, main content, footer)
   5. Heading hierarchy is logical (h1 > h2 > h3, no skipped levels)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 11-01: Aria-labels and heading hierarchy
-- [ ] 11-02: Semantic landmarks
+- [ ] 11-01-PLAN.md -- Add aria-labels to icon-only links and fix heading hierarchy
+- [ ] 11-02-PLAN.md -- Add semantic landmark elements (main, footer)
 
 #### Phase 12: Security
 
