@@ -37,17 +37,33 @@ These capabilities exist and work in the current codebase:
 - ✓ Semantic landmarks main/footer (A11Y-04) — v1.1
 - ✓ Single h1 heading hierarchy (A11Y-05) — v1.1
 - ✓ SRI hashes on CDN resources (SEC-02) — v1.1
+- ✓ LCP < 2.5s optimization (CWV-01) — v1.2
+- ✓ INP < 200ms optimization (CWV-02) — v1.2
+- ✓ CLS < 0.1 optimization (CWV-03) — v1.2
+- ✓ Image dimensions prevent layout shift (CWV-04) — v1.2
+- ✓ Hero preload with fetchpriority (CWV-05) — v1.2
+- ✓ Deferred third-party scripts (CWV-06) — v1.2
+- ✓ WebP image format (IMG-01) — v1.2
+- ✓ Picture elements with fallbacks (IMG-02) — v1.2
+- ✓ Preserved image dimensions (IMG-03) — v1.2
+- ✓ Person JSON-LD schema (STRUCT-01) — v1.2
+- ✓ ProfilePage JSON-LD schema (STRUCT-02) — v1.2
+- ✓ WebSite JSON-LD schema (STRUCT-03) — v1.2
+- ✓ Validated structured data (STRUCT-04) — v1.2
+- ✓ robots.txt with sitemap (TECH-01) — v1.2
+- ✓ sitemap.xml with canonical URL (TECH-02) — v1.2
+- ✓ Preconnect hints (TECH-03) — v1.2
+- ✓ CloudFront ResponseHeadersPolicy (TECH-04) — v1.2
+- ✓ Security headers (HSTS, X-Frame, etc) (TECH-05) — v1.2
 
 ### Active
 
-**Current Milestone: v1.2 Performance & SEO**
+**Current Focus:** Monitoring Core Web Vitals in production
 
-**Goal:** Comprehensive performance and SEO optimization for better search visibility and user experience.
-
-**Target features:**
-- Core Web Vitals optimization (LCP, FID/INP, CLS)
-- JSON-LD structured data (Person, WebSite schemas)
-- Technical SEO (sitemap, robots.txt, canonical URLs)
+**Next Milestone:** TBD - Potential areas:
+- Responsive images with srcset (PERF-03)
+- AVIF image format (PERF-02)
+- AWS certification credential schemas (SEO-01)
 
 ### Out of Scope
 
@@ -60,12 +76,17 @@ These capabilities exist and work in the current codebase:
 
 ## Context
 
-**Current State (v1.1 shipped 2026-01-21):**
+**Current State (v1.2 shipped 2026-01-21):**
 - Site uses Bootstrap 5.3.8 with CSS custom properties (32 semantic color variables)
 - Vanilla JavaScript with modern plugins: Splide.js, PhotoSwipe, Isotope
 - jQuery completely removed (~241KB bundle reduction)
 - WCAG accessibility compliant (keyboard focus, color contrast, aria-labels, semantic landmarks)
 - CDN resources protected with SRI hashes (7 resources)
+- Core Web Vitals optimized (preload, defer, dimensions, font-display)
+- WebP images with progressive enhancement (13 images, ~25-34% size reduction)
+- JSON-LD structured data for search engine understanding (Person, ProfilePage, WebSite)
+- Technical SEO foundation (robots.txt, sitemap.xml, canonical URLs, preconnect hints)
+- CloudFront security headers (HSTS with preload, X-Frame-Options, X-Content-Type-Options)
 - Infrastructure: CDK v2, Lambda Node.js 24, GitHub Actions OIDC
 - IAM policies follow least-privilege (scoped SES, CloudFormation)
 
@@ -100,6 +121,10 @@ These capabilities exist and work in the current codebase:
 | reCAPTCHA excluded from SRI | Dynamic content incompatible with fixed hashes - documented limitation | ✓ Good |
 | nav landmark N/A | Single-page portfolio has no navigation menu | ✓ Good |
 | Dark/light mode deferred | Feature enhancement, not requirement - can add in v1.2+ | ✓ Good |
+| WebP with picture elements | Progressive enhancement over srcset-only approach | ✓ Good |
+| font-display: swap | Show fallback fonts immediately, prevents FOIT | ✓ Good |
+| Hero image stays PNG | Used in Open Graph tags, CSS backgrounds - conversion complex | ✓ Good |
+| Structured data focus | Person/ProfilePage/WebSite schemas prioritized for knowledge panel eligibility | ✓ Good |
 
 ---
-*Last updated: 2026-01-21 — v1.2 milestone started*
+*Last updated: 2026-01-21 — v1.2 milestone complete*

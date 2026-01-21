@@ -1,5 +1,35 @@
 # Project Milestones: mitchellmeffert.com
 
+## v1.2 Performance & SEO (Shipped: 2026-01-21)
+
+**Delivered:** Comprehensive performance and SEO optimization achieving green Core Web Vitals, structured data for search visibility, and CloudFront security headers.
+
+**Phases completed:** 13-17 (5 phases via direct commits)
+
+**Key accomplishments:**
+- Technical SEO foundation (robots.txt, sitemap.xml, canonical URLs, preconnect hints)
+- JSON-LD structured data (Person, ProfilePage, WebSite schemas for knowledge panel eligibility)
+- Core Web Vitals optimization (hero preload, deferred reCAPTCHA, explicit image dimensions)
+- WebP image format with progressive enhancement (13 images, ~25-34% size reduction)
+- CloudFront security headers (HSTS with preload, X-Frame-Options, X-Content-Type-Options)
+- Font loading optimization (display=swap, preconnect to Google Fonts)
+
+**Stats:**
+- 27 files modified
+- 5 phases, 18 requirements satisfied (100%)
+- +2,304 insertions, -29 deletions
+- 2026-01-21 (~4 hours from research to production deployment)
+
+**Git range:** `458f072` (docs: complete v1.2 research) → `d1db461` (perf(fonts): optimize Google Fonts)
+
+**What's next:** Monitor Core Web Vitals in production, consider v1.3 for responsive images or AVIF format
+
+---
+
+*For archived milestone details, see `.planning/milestones/v1.2-ROADMAP.md`*
+
+---
+
 ## v1.1 Accessibility & Security Hardening (Shipped: 2026-01-21)
 
 **Delivered:** Addressed WCAG accessibility violations and added CDN security hardening with SRI hashes.
