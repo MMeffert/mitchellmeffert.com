@@ -108,66 +108,6 @@
             });
         },
 
-        // Portfolio Filter (Isotope)
-        initPortfolioFilter: function() {
-            var grid = document.querySelector('.work-filter');
-            if (!grid) return;
-
-            // Initialize Isotope with vanilla JS
-            var iso = new Isotope(grid, {
-                itemSelector: '.col-lg-4',
-                layoutMode: 'masonry',
-                filter: '*',
-                percentPosition: true,
-                transitionDuration: '0.75s'
-            });
-
-            // Filter button handling with event delegation
-            var filterButtons = document.querySelector('#menu-filter');
-            if (filterButtons) {
-                filterButtons.addEventListener('click', function(event) {
-                    // Only handle <a> element clicks
-                    if (!event.target.matches('a')) return;
-
-                    event.preventDefault();
-
-                    var filterValue = event.target.getAttribute('data-filter');
-
-                    // Update active button state
-                    var currentActive = filterButtons.querySelector('.active');
-                    if (currentActive) {
-                        currentActive.classList.remove('active');
-                    }
-                    event.target.classList.add('active');
-
-                    // Apply filter using arrange method
-                    iso.arrange({ filter: filterValue });
-                });
-            }
-        },
-
-        // PhotoSwipe Lightbox
-        initMfpImages: function() {
-            var gallery = document.getElementById('portfolio-gallery');
-            if (!gallery) return;
-
-            var lightbox = new PhotoSwipeLightbox({
-                gallery: '#portfolio-gallery',
-                children: 'a',
-                pswpModule: PhotoSwipe,
-                bgOpacity: 0.9,
-                loop: true,
-                arrowKeys: true,
-                escKey: true,
-                pinchToClose: true,
-                closeOnVerticalDrag: true,
-                trapFocus: true,
-                returnFocus: true,
-                preload: [1, 2]
-            });
-            lightbox.init();
-        },
-
         // Client Slider (Splide)
         initClientSlider: function() {
             var carousel = document.getElementById('testimonial-carousel');
@@ -230,8 +170,6 @@
             this.initNavbarSmooth();
             this.initNavbarScrollSpy();
             this.initFunFacts();
-            this.initPortfolioFilter();
-            this.initMfpImages();
             this.initClientSlider();
             this.initBackToTop();
             this.initTypedText();
