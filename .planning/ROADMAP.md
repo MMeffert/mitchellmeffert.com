@@ -46,7 +46,7 @@ See `.planning/milestones/v1.0-ROADMAP.md` for complete details.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 09-01-PLAN.md -- Extract colors to CSS custom properties and add responsive breakpoints
+- [x] 09-01-PLAN.md -- Extract colors to CSS custom properties and add responsive breakpoints
 
 #### Phase 10: Accessibility Core
 
@@ -105,7 +105,7 @@ Phases execute in numeric order: 9 -> 10 -> 11 -> 12
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1-8 | v1.0 | 12/12 | Complete | 2026-01-20 |
-| 9. CSS Foundation | v1.1 | 0/1 | Planned | - |
+| 9. CSS Foundation | v1.1 | 1/1 | Complete | 2026-01-20 |
 | 10. Accessibility Core | v1.1 | 0/2 | Not started | - |
 | 11. Semantic HTML | v1.1 | 0/2 | Not started | - |
 | 12. Security | v1.1 | 0/1 | Not started | - |
