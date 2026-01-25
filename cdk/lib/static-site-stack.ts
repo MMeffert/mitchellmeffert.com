@@ -67,6 +67,32 @@ export class StaticSiteStack extends cdk.Stack {
       signing: cloudfront.Signing.SIGV4_ALWAYS,
     });
 
+    // CloudFront Function for www to non-www redirect
+    const wwwRedirectFunction = new cloudfront.Function(this, 'WwwRedirectFunction', {
+      functionName: `${siteName}-www-redirect`,
+      comment: 'Redirects www subdomain to apex domain for canonical URL enforcement',
+      code: cloudfront.FunctionCode.fromInline(`
+function handler(event) {
+  var request = event.request;
+  var host = request.headers.host.value;
+
+  // Redirect www to non-www
+  if (host.startsWith('www.')) {
+    var newHost = host.substring(4);
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        'location': { value: 'https://' + newHost + request.uri }
+      }
+    };
+  }
+
+  return request;
+}
+      `),
+    });
+
     // Response Headers Policy for security headers
     const responseHeadersPolicy = new cloudfront.ResponseHeadersPolicy(this, 'ResponseHeadersPolicy', {
       responseHeadersPolicyName: `${siteName}-security-headers`,
@@ -105,6 +131,10 @@ export class StaticSiteStack extends cdk.Stack {
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
         compress: true,
         responseHeadersPolicy: responseHeadersPolicy,
+        functionAssociations: [{
+          function: wwwRedirectFunction,
+          eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+        }],
       },
       domainNames: domainNames,
       certificate: certificate,
@@ -114,7 +144,13 @@ export class StaticSiteStack extends cdk.Stack {
       errorResponses: [
         {
           httpStatus: 404,
-          responseHttpStatus: 404,
+          responseHttpStatus: 200,
+          responsePagePath: '/index.html',
+          ttl: cdk.Duration.seconds(0),
+        },
+        {
+          httpStatus: 403,
+          responseHttpStatus: 200,
           responsePagePath: '/index.html',
           ttl: cdk.Duration.seconds(0),
         },
