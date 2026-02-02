@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /cdk/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.planning/
+
 Sitemap: https://mitchellmeffert.com/sitemap.xml

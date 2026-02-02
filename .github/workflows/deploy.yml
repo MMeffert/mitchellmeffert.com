@@ -47,13 +47,18 @@ jobs:
 
       - name: Sync files to S3
         run: |
-          # Sync all static files to S3, excluding CDK and git directories
+          # Sync all static files to S3, excluding non-site files
           aws s3 sync . s3://${{ steps.cfn.outputs.bucket_name }} \
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*" \
+            --exclude ".claude/*" \
+            --exclude ".planning/*" \
             --exclude "cdk/*" \
             --exclude ".gitattributes" \
+            --exclude ".gitignore" \
+            --exclude "CLAUDE.md" \
+            --exclude "SECURITY.md" \
             --cache-control "max-age=31536000,public" \
             --metadata-directive REPLACE
 
@@ -63,6 +68,17 @@ jobs:
             --cache-control "max-age=300,public" \
             --content-type "text/html" \
             --metadata-directive REPLACE
+
+      - name: Clean up stale files from S3
+        run: |
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/.planning --recursive || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/.github --recursive || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/.claude --recursive || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/cdk --recursive || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/.gitignore || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/.gitattributes || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/CLAUDE.md || true
+          aws s3 rm s3://${{ steps.cfn.outputs.bucket_name }}/SECURITY.md || true
 
       - name: Invalidate CloudFront cache
         run: |

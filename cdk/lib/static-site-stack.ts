@@ -67,14 +67,15 @@ export class StaticSiteStack extends cdk.Stack {
       signing: cloudfront.Signing.SIGV4_ALWAYS,
     });
 
-    // CloudFront Function for www to non-www redirect
+    // CloudFront Function for URL normalization and redirects
     const wwwRedirectFunction = new cloudfront.Function(this, 'WwwRedirectFunction', {
       functionName: `${siteName}-www-redirect`,
-      comment: 'Redirects www subdomain to apex domain for canonical URL enforcement',
+      comment: 'URL normalization: www redirect, query string stripping, /index.html redirect',
       code: cloudfront.FunctionCode.fromInline(`
 function handler(event) {
   var request = event.request;
   var host = request.headers.host.value;
+  var uri = request.uri;
 
   // Redirect www to non-www
   if (host.startsWith('www.')) {
@@ -83,7 +84,29 @@ function handler(event) {
       statusCode: 301,
       statusDescription: 'Moved Permanently',
       headers: {
-        'location': { value: 'https://' + newHost + request.uri }
+        'location': { value: 'https://' + newHost + uri }
+      }
+    };
+  }
+
+  // Redirect /index.html to /
+  if (uri === '/index.html') {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        'location': { value: 'https://' + host + '/' }
+      }
+    };
+  }
+
+  // Strip query strings (static site doesn't use them)
+  if (Object.keys(request.querystring).length > 0) {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        'location': { value: 'https://' + host + uri }
       }
     };
   }
@@ -141,20 +164,6 @@ function handler(event) {
       defaultRootObject: 'index.html',
       httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
       priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
-      errorResponses: [
-        {
-          httpStatus: 404,
-          responseHttpStatus: 200,
-          responsePagePath: '/index.html',
-          ttl: cdk.Duration.seconds(0),
-        },
-        {
-          httpStatus: 403,
-          responseHttpStatus: 200,
-          responsePagePath: '/index.html',
-          ttl: cdk.Duration.seconds(0),
-        },
-      ],
     });
 
     // DNS Records
