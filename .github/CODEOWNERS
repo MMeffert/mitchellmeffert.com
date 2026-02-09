@@ -1,2 +1,8 @@
 # Default owner for all files
 * @MMeffert
+
+# No owner for dependency files (avoids review requests on Dependabot PRs)
+package.json
+package-lock.json
+cdk/package.json
+cdk/package-lock.json
