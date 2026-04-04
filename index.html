@@ -2,76 +2,6 @@
 <html lang="en">
 
     <head>
-    <!-- Submit contact form through API -->
-    <script>
-        async function submitToAPI(e) {
-            e.preventDefault();
-
-            var nameInput = document.getElementById('name');
-            var emailInput = document.getElementById('mail');
-            var subjectInput = document.getElementById('subject');
-            var commentInput = document.getElementById('comment');
-            var messageDiv = document.getElementById('message');
-
-            var Namere = /[A-Za-z]{1}[A-Za-z]/;
-            if (!Namere.test(nameInput.value)) {
-                alert("Name can not less than 2 char");
-                return;
-            }
-            if (emailInput.value == "") {
-                alert("Please enter your email id");
-                return;
-            }
-
-            var reemail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-            if (!reemail.test(emailInput.value)) {
-                alert("Please enter valid email address");
-                return;
-            }
-
-            // Get reCAPTCHA Enterprise token
-            try {
-                const token = await grecaptcha.enterprise.execute('6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD', {action: 'contact_submit'});
-
-                var data = {
-                    name: nameInput.value,
-                    email: emailInput.value,
-                    subject: subjectInput.value,
-                    message: commentInput.value,
-                    recaptchaToken: token
-                };
-
-                const response = await fetch(
-                    'https://txy7g2ztcmlm7klk5ptcv5zze40schil.lambda-url.us-east-1.on.aws/',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json; charset=utf-8'
-                        },
-                        body: JSON.stringify(data)
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = 'Message Sent Successfully';
-                nameInput.value = '';
-                emailInput.value = '';
-                subjectInput.value = '';
-                commentInput.value = '';
-
-            } catch (err) {
-                console.error('Error:', err);
-                messageDiv.style.color = 'red';
-                messageDiv.textContent = err.message.includes('reCAPTCHA')
-                    ? 'Security verification failed. Please try again.'
-                    : 'Error. Your message was not sent.';
-            }
-        }
-    </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Mitchell Meffert | AWS Cloud Architect & Web Developer</title>
@@ -157,20 +87,25 @@
         <!--Bootstrap Css-->
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-        <!-- Materialdesign icons Css -->
-        <link rel="stylesheet" href="css/materialdesignicons.min.css">
+        <!-- Materialdesign icons Css (async - non-critical) -->
+        <link rel="stylesheet" href="css/materialdesignicons.min.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="css/materialdesignicons.min.css"></noscript>
 
-        <!-- Mobirise icons Css -->
-        <link rel="stylesheet" href="css/mobiriseicons.css">
+        <!-- Mobirise icons Css (async - non-critical) -->
+        <link rel="stylesheet" href="css/mobiriseicons.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="css/mobiriseicons.css"></noscript>
 
-        <!-- Animate Css -->
-        <link rel="stylesheet" href="css/animate.min.css">
+        <!-- Animate Css (async - non-critical) -->
+        <link rel="stylesheet" href="css/animate.min.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="css/animate.min.css"></noscript>
 
-        <!-- Splide Carousel -->
+        <!-- Splide Carousel (async - non-critical) -->
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
               integrity="sha384-RQYEYzAnHyG0swTqlleCCsKHN9pUKyYMflAk6KEjvY6KhE5MLlvjwZkai5538g2T"
-              crossorigin="anonymous">
+              crossorigin="anonymous"
+              media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"></noscript>
 
         <!-- Custom style Css -->
         <link rel="stylesheet" href="css/style.css?v=20260120b">
@@ -780,6 +715,76 @@
         <script>
             // Set copyright year
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        </script>
+        <!-- Contact form handler (moved from head to avoid render-blocking) -->
+        <script>
+            async function submitToAPI(e) {
+                e.preventDefault();
+
+                var nameInput = document.getElementById('name');
+                var emailInput = document.getElementById('mail');
+                var subjectInput = document.getElementById('subject');
+                var commentInput = document.getElementById('comment');
+                var messageDiv = document.getElementById('message');
+
+                var Namere = /[A-Za-z]{1}[A-Za-z]/;
+                if (!Namere.test(nameInput.value)) {
+                    alert("Name can not less than 2 char");
+                    return;
+                }
+                if (emailInput.value == "") {
+                    alert("Please enter your email id");
+                    return;
+                }
+
+                var reemail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+                if (!reemail.test(emailInput.value)) {
+                    alert("Please enter valid email address");
+                    return;
+                }
+
+                // Get reCAPTCHA Enterprise token
+                try {
+                    const token = await grecaptcha.enterprise.execute('6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD', {action: 'contact_submit'});
+
+                    var data = {
+                        name: nameInput.value,
+                        email: emailInput.value,
+                        subject: subjectInput.value,
+                        message: commentInput.value,
+                        recaptchaToken: token
+                    };
+
+                    const response = await fetch(
+                        'https://txy7g2ztcmlm7klk5ptcv5zze40schil.lambda-url.us-east-1.on.aws/',
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            },
+                            body: JSON.stringify(data)
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = 'Message Sent Successfully';
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    subjectInput.value = '';
+                    commentInput.value = '';
+
+                } catch (err) {
+                    console.error('Error:', err);
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = err.message.includes('reCAPTCHA')
+                        ? 'Security verification failed. Please try again.'
+                        : 'Error. Your message was not sent.';
+                }
+            }
         </script>
     </body>
 </html>
