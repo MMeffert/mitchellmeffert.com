@@ -49,7 +49,7 @@
 
         // Smooth scroll for navigation links
         initNavbarSmooth: function() {
-            document.querySelectorAll('.navbar-nav a, .scroll_down a').forEach(function(link) {
+            document.querySelectorAll('.navbar-nav a, .scroll_down a, .header_btn a').forEach(function(link) {
                 link.addEventListener('click', function(event) {
                     var href = this.getAttribute('href');
                     if (href && href.startsWith('#')) {

@@ -45,6 +45,12 @@ jobs:
             --output text)
           echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
 
+      - name: Stamp sitemap lastmod with deploy date
+        run: |
+          # Keep <lastmod> current so search engines see the page as freshly updated
+          sed -i "s|<lastmod>.*</lastmod>|<lastmod>$(date -u +%Y-%m-%d)</lastmod>|" sitemap.xml
+          grep lastmod sitemap.xml
+
       - name: Sync files to S3
         run: |
           # Sync all static files to S3, excluding non-site files

@@ -544,6 +544,7 @@ button:focus {
 
 .home-bg {
     background-image: url(../images/code-background.png);
+    background-image: image-set(url(../images/code-background.webp) type("image/webp"), url(../images/code-background.png) type("image/png"));
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -752,6 +753,7 @@ button:focus {
 .bg-funfact {
     position: relative;
     background-image: url(../images/code-background.png);
+    background-image: image-set(url(../images/code-background.webp) type("image/webp"), url(../images/code-background.png) type("image/png"));
     background-size: cover;
     background-position: center center;
 }
@@ -836,6 +838,7 @@ button:focus {
 .bg-client {
     position: relative;
     background-image: url(../images/code-background.png);
+    background-image: image-set(url(../images/code-background.webp) type("image/webp"), url(../images/code-background.png) type("image/png"));
     background-size: cover;
     background-position: center center;
 }
