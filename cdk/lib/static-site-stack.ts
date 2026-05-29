@@ -116,11 +116,35 @@ function handler(event) {
       `),
     });
 
+    // Content Security Policy. style-src keeps 'unsafe-inline' because third-party
+    // libraries inject <style> elements at runtime (Typed.js cursor, reCAPTCHA badge,
+    // Splide). All first-party executable JS lives in external files, so script-src
+    // stays free of 'unsafe-inline'. reCAPTCHA / contact-form sources are only added
+    // when the contact form is enabled.
+    const cspDirectives = [
+      "default-src 'self'",
+      `script-src 'self' https://cdn.jsdelivr.net${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
+      "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com",
+      `img-src 'self' data:${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
+      "font-src 'self' data: https://fonts.gstatic.com",
+      `connect-src 'self'${contactForm ? ` https://www.google.com https://*.lambda-url.${this.region}.on.aws` : ''}`,
+      ...(contactForm ? ['frame-src https://www.google.com'] : []),
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+      'upgrade-insecure-requests',
+    ].join('; ');
+
     // Response Headers Policy for security headers
     const responseHeadersPolicy = new cloudfront.ResponseHeadersPolicy(this, 'ResponseHeadersPolicy', {
       responseHeadersPolicyName: `${siteName}-security-headers`,
       comment: 'Security headers for portfolio site',
       securityHeadersBehavior: {
+        contentSecurityPolicy: {
+          contentSecurityPolicy: cspDirectives,
+          override: true,
+        },
         contentTypeOptions: { override: true },
         frameOptions: {
           frameOption: cloudfront.HeadersFrameOption.DENY,
@@ -188,7 +212,9 @@ function handler(event) {
             [`${githubProvider}:aud`]: 'sts.amazonaws.com',
           },
           StringLike: {
-            [`${githubProvider}:sub`]: `repo:${githubRepo}:*`,
+            // Pin to the main branch only: a role with S3 write + CloudFront
+            // invalidation must not be assumable from arbitrary branches/tags/PRs.
+            [`${githubProvider}:sub`]: `repo:${githubRepo}:ref:refs/heads/main`,
           },
         }
       ),

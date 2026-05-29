@@ -18,6 +18,42 @@ const RECAPTCHA_SCORE_THRESHOLD = parseFloat(process.env.RECAPTCHA_SCORE_THRESHO
 // Cache the API key to avoid fetching on every request
 let cachedApiKey = null;
 
+// Maximum accepted lengths for each field (defense against abuse on a public endpoint)
+const MAX_LENGTHS = { name: 100, email: 254, subject: 200, message: 5000 };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function jsonResponse(statusCode, payload) {
+    return {
+        statusCode,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    };
+}
+
+// Validate the submission server-side. The client checks are advisory only:
+// the Function URL is public (authType NONE), so every field must be re-checked here.
+function validateSubmission(body) {
+    if (!body || typeof body !== 'object') {
+        return 'Missing request body';
+    }
+    for (const field of ['name', 'email', 'subject', 'message']) {
+        const value = body[field];
+        if (typeof value !== 'string' || value.trim() === '') {
+            return `Missing required field: ${field}`;
+        }
+        if (value.length > MAX_LENGTHS[field]) {
+            return `Field exceeds maximum length: ${field}`;
+        }
+    }
+    if (!EMAIL_RE.test(body.email)) {
+        return 'Invalid email address';
+    }
+    if (typeof body.recaptchaToken !== 'string' || body.recaptchaToken === '') {
+        return 'Missing reCAPTCHA token';
+    }
+    return null;
+}
+
 async function getRecaptchaApiKey() {
     if (cachedApiKey) {
         return cachedApiKey;
@@ -34,9 +70,21 @@ exports.handler = async function (event) {
     // Parse body if it's a string (from API Gateway or Function URL)
     let body = event;
     if (typeof event.body === 'string') {
-        body = JSON.parse(event.body);
+        try {
+            body = JSON.parse(event.body);
+        } catch (error) {
+            console.warn('Malformed JSON body:', error.message);
+            return jsonResponse(400, { result: 'Failed', reason: 'Invalid request body' });
+        }
     } else if (event.body) {
         body = event.body;
+    }
+
+    // Validate input before spending a reCAPTCHA assessment or SES call
+    const validationError = validateSubmission(body);
+    if (validationError) {
+        console.warn('Validation failed:', validationError);
+        return jsonResponse(400, { result: 'Failed', reason: validationError });
     }
 
     // Verify reCAPTCHA token
@@ -46,49 +94,29 @@ exports.handler = async function (event) {
 
         if (!recaptchaResult.success) {
             console.log('reCAPTCHA verification failed:', recaptchaResult.reason);
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ result: 'Failed', reason: 'reCAPTCHA verification failed' })
-            };
+            return jsonResponse(400, { result: 'Failed', reason: 'reCAPTCHA verification failed' });
         }
 
         if (recaptchaResult.score < RECAPTCHA_SCORE_THRESHOLD) {
             console.log('reCAPTCHA score too low:', recaptchaResult.score);
-            return {
-                statusCode: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ result: 'Failed', reason: 'Submission blocked' })
-            };
+            return jsonResponse(400, { result: 'Failed', reason: 'Submission blocked' });
         }
 
         console.log('reCAPTCHA passed with score:', recaptchaResult.score);
 
     } catch (error) {
         console.error('reCAPTCHA error:', error);
-        return {
-            statusCode: 500,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ result: 'Failed', reason: 'reCAPTCHA service error' })
-        };
+        return jsonResponse(500, { result: 'Failed', reason: 'reCAPTCHA service error' });
     }
 
     // Send email
     try {
         await sendEmail(body);
         console.log('Email sent successfully');
-        return {
-            statusCode: 200,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ result: 'Success' })
-        };
+        return jsonResponse(200, { result: 'Success' });
     } catch (error) {
         console.error('Email error:', error);
-        return {
-            statusCode: 500,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ result: 'Failed', reason: 'Email service error' })
-        };
+        return jsonResponse(500, { result: 'Failed', reason: 'Email service error' });
     }
 };
 
@@ -144,7 +172,9 @@ async function sendEmail(event) {
                 Charset: 'UTF-8'
             }
         },
-        Source: SENDER
+        Source: SENDER,
+        // Replies go to the person who filled out the form, not the verified sender identity
+        ReplyToAddresses: [event.email]
     };
 
     const command = new SendEmailCommand(params);

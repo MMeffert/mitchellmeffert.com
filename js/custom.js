@@ -94,18 +94,22 @@
                 requestAnimationFrame(update);
             }
 
-            window.addEventListener('scroll', function() {
+            function maybeCount() {
                 if (counted) return;
 
                 var rect = counterSection.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
                     counted = true;
                     document.querySelectorAll('.lan_fun_value').forEach(function(el) {
                         var countTo = parseInt(el.getAttribute('data-count'), 10);
                         animateValue(el, 0, countTo, 2000);
                     });
                 }
-            });
+            }
+
+            window.addEventListener('scroll', maybeCount);
+            // Run once on init in case the counter is already in view (tall viewport / short page)
+            maybeCount();
         },
 
         // Client Slider (Splide)
@@ -164,6 +168,95 @@
             });
         },
 
+        // Contact form: client-side validation, reCAPTCHA Enterprise, submit to Lambda.
+        // Moved out of inline HTML so the CSP can forbid inline script.
+        initContactForm: function() {
+            var form = document.getElementById('working_form');
+            if (!form) return;
+
+            var submitBtn = document.getElementById('submit');
+            var messageDiv = document.getElementById('message');
+            var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var siteKey = '6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD';
+            var endpoint = 'https://txy7g2ztcmlm7klk5ptcv5zze40schil.lambda-url.us-east-1.on.aws/';
+
+            function showMessage(text, color) {
+                messageDiv.style.color = color;
+                messageDiv.textContent = text;
+            }
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                var nameInput = document.getElementById('name');
+                var emailInput = document.getElementById('mail');
+                var subjectInput = document.getElementById('subject');
+                var commentInput = document.getElementById('comment');
+
+                if (nameInput.value.trim().length < 2) {
+                    showMessage('Please enter your name (at least 2 characters).', 'red');
+                    return;
+                }
+                if (!emailRe.test(emailInput.value.trim())) {
+                    showMessage('Please enter a valid email address.', 'red');
+                    return;
+                }
+                if (subjectInput.value.trim() === '') {
+                    showMessage('Please enter a subject.', 'red');
+                    return;
+                }
+                if (commentInput.value.trim() === '') {
+                    showMessage('Please enter a message.', 'red');
+                    return;
+                }
+
+                // reCAPTCHA loads deferred; guard against an early submit before it is ready
+                if (typeof grecaptcha === 'undefined' || !grecaptcha.enterprise) {
+                    showMessage('Security verification is still loading. Please try again in a moment.', 'red');
+                    return;
+                }
+
+                // Prevent double submission while the request is in flight
+                if (submitBtn) submitBtn.disabled = true;
+
+                try {
+                    var token = await grecaptcha.enterprise.execute(siteKey, { action: 'contact_submit' });
+
+                    var response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+                        body: JSON.stringify({
+                            name: nameInput.value,
+                            email: emailInput.value,
+                            subject: subjectInput.value,
+                            message: commentInput.value,
+                            recaptchaToken: token
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    showMessage('Message Sent Successfully', 'green');
+                    form.reset();
+                } catch (err) {
+                    console.error('Contact form error:', err);
+                    showMessage('Error. Your message was not sent. Please try again.', 'red');
+                } finally {
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            });
+        },
+
+        // Footer copyright year
+        initCopyrightYear: function() {
+            var yearEl = document.getElementById('copyright-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+        },
+
         init: function() {
             this.initPreLoader();
             this.initNavbarStickey();
@@ -173,6 +266,8 @@
             this.initClientSlider();
             this.initBackToTop();
             this.initTypedText();
+            this.initContactForm();
+            this.initCopyrightYear();
         }
     };
 
