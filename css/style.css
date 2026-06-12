@@ -12,27 +12,20 @@
 /***********************
     1.BASIC
     2.HELPER
-    3.NAVBAR
-    4.HOME
-    5.ABOUT ME
-    6.SERVICES
-    7.FUNFACTS
-    8.EDUCATION & EXPERIANCE
-    9.CTA SECTION
-    10.WORK
-    11.CLIENT
-    12.GREATE PEOPLE
-    13.SUBCRIBE SECTION
-    14.BLOG
-    15.CONTACT US
-    16.FOOTER
-    17.BLOG PAGE
-        -SIDEBAR
-        -BLOG SINGLE
-    17.RESPONSIVE
+    3.HOME
+    4.ABOUT ME
+    5.FUNFACTS
+    6.EDUCATION & EXPERIANCE
+    7.CLIENT
+    8.CERTIFICATIONS
+    9.BLOG
+    10.CONTACT US
+    11.FOOTER
+    12.RESPONSIVE
 ************************/
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700&display=swap');
+/* Google Fonts are loaded via <link> in index.html <head> (parallel discovery
+   beats a CSS @import, which chains behind this file's download). */
 
 /*======================
     CSS Custom Properties
@@ -117,14 +110,25 @@ textarea:focus-visible,
     outline-color: var(--color-focus-light);
 }
 
-/* Navbar focus - adapt to sticky state */
-.custom-nav a:focus-visible {
-    outline-color: var(--color-focus-light);
+/* Skip link - visually hidden until focused, sits above the preloader */
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: 8px;
+    z-index: 10000000;
+    padding: 10px 18px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 0 0 4px 4px;
+    font-weight: 600;
+    transition: top 0.2s ease;
 }
 
-.custom-nav.stickyadd a:focus-visible {
-    outline-color: var(--color-focus);
+.skip-link:focus {
+    top: 0;
+    color: #fff;
 }
+
 
 /*======================
         1.BASIC
@@ -431,112 +435,6 @@ button:focus {
 }
 
 
-/*==========================
-        3.NAVBAR
-============================*/
-
-.custom-nav {
-    padding: 15px 0px;
-    width: 100%;
-    border-radius: 0px;
-    z-index: 999;
-    margin-bottom: 0px;
-    transition: all 0.5s ease-in-out;
-    background-color: transparent;
-}
-
-.custom-nav.stickyadd {
-    background-color: var(--color-background);
-    padding: 8px 0;
-    box-shadow: 0px 0px 18px 1px rgba(var(--color-primary-rgb), 0.1);
-}
-
-.custom-nav .navbar-nav li a {
-    color: var(--color-text-on-dark);
-    font-size: 16px;
-    background-color: transparent !important;
-    padding: 15px 0;
-    position: relative;
-    margin: 0 7px;
-    font-weight: 600;
-    transition: all 0.4s;
-}
-
-.custom-nav .navbar-nav li.active a:before,
-.custom-nav .navbar-nav li:hover a:before,
-.custom-nav .navbar-nav li:active a:before,
-.custom-nav.stickyadd .navbar-nav li.active a:before,
-.custom-nav.stickyadd .navbar-nav li:hover a:before,
-.custom-nav.stickyadd .navbar-nav li:active a:before {
-    opacity: 1;
-}
-
-.custom-nav .navbar-nav li a:before,
-.custom-nav.stickyadd .navbar-nav li a:before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    height: 6px;
-    width: 6px;
-    background: var(--color-text-on-dark);
-    border-radius: 50%;
-    opacity: 0;
-    transform: translateX(-50%);
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-}
-
-.custom-nav.stickyadd .navbar-nav li a:before {
-    background: var(--color-primary) !important;
-}
-
-.navbar-toggler {
-    font-size: 24px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    color: var(--color-text-on-dark);
-}
-
-.custom-nav.stickyadd .navbar-nav li a {
-    color: var(--color-text);
-}
-
-.navbar-toggle {
-    font-size: 24px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    color: var(--color-text-on-dark);
-}
-
-.nav .open>a,
-.nav .open>a:focus,
-.nav .open>a:hover {
-    background-color: transparent;
-    border-color: var(--color-link-legacy);
-}
-
-.logo .logo-light {
-    display: inline-block;
-}
-
-.stickyadd .logo .logo-dark {
-    display: inline-block;
-}
-
-.stickyadd .logo .logo-light {
-    display: none;
-}
-
-.logo .logo-dark {
-    display: none;
-}
-
-.custom-nav .navbar-brand.logo img {
-    height: 28px;
-}
-
 
 /*==========================
         4.HOME
@@ -627,59 +525,26 @@ button:focus {
     transition: all .2s;
 }
 
-
-/*----DEMO 4/5/6----*/
-
-.creative:after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100px;
-    background: transparent;
-    background-size: 100% 100%;
-    background-image: url(../images/bottom-color.png);
+/* Bounce keyframes for the scroll-down arrow (formerly supplied by animate.min.css,
+   which was 56KB of CSS for this single animation) */
+@keyframes bounce {
+    0%, 20%, 53%, 80%, to {
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        transform: translateZ(0);
+    }
+    40%, 43% {
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        animation-timing-function: cubic-bezier(.755, .05, .855, .06);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
 }
 
-
-/*----DEMO 7/8/9-----*/
-
-.clip-home {
-    clip-path: polygon(0 0, 100% 0, 100% 83%, 50% 100%, 0 83%);
-}
-
-
-/*----DEMO 10/11/12/13----*/
-
-.jarallax {
-    background-size: cover;
-    background-position: center center;
-}
-
-
-/*----DEMO 14----*/
-
-.home-bg-slider {
-    position: relative;
-}
-
-.home-bg-slider .carousel-control-next,
-.carousel-control-prev {
-    width: 6%;
-}
-
-.home-bg-slider .carousel-item,
-.home-bg-slider .carousel {
-    height: 100vh;
-    width: 100%;
-}
-
-.home-bg-slider .carousel-item {
-    background-position: center center;
-    background-size: cover;
-}
 
 
 /*==========================
@@ -712,28 +577,6 @@ button:focus {
     display: none;
 }
 
-.skill-custom .progress {
-    height: 4px;
-    margin-bottom: 40px;
-    margin-top: 10px;
-}
-
-.skill-custom .progress-bar {
-    background: var(--color-primary);
-}
-
-
-/*==========================
-        6.SERVICES
-============================*/
-
-.lan_box_ser {
-    border: 1px dotted var(--color-border);
-}
-
-.lan_box_ser .ser_icon i {
-    font-size: 42px;
-}
 
 
 /*==========================
@@ -893,64 +736,9 @@ button:focus {
 
 
 /*==========================
-        13.SUBCRIBE SECTION
-============================*/
-
-.subcribe-newslatter input {
-    padding: 15px 20px;
-    width: 100%;
-    font-size: 17px;
-    color: var(--color-text-input) !important;
-    border: none;
-    outline: none !important;
-    padding-right: 150px;
-    padding-left: 30px;
-    border-radius: 30px;
-    background-color: var(--color-background-input);
-}
-
-.subcribe-newslatter button {
-    position: absolute;
-    top: 4px;
-    right: 5px;
-    outline: none !important;
-    border-radius: 30px;
-    font-size: 17px;
-    padding: 9px 30px;
-}
-
-.subcribe-newslatter form {
-    max-width: 550px;
-}
-
-
-/*==========================
         14.BLOG
 ============================*/
 
-.blog_video .blog_play {
-    position: absolute;
-    top: 52%;
-    left: 52%;
-    margin-left: -40px;
-    margin-top: -40px;
-}
-
-.blog_play {
-    outline: none !important;
-    width: 65px;
-    height: 65px;
-    padding-left: 2px;
-    border-radius: 50%;
-    z-index: 4;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    color: var(--color-text) !important;
-    font-size: 35px;
-    line-height: 65px;
-    background-color: var(--color-background);
-}
 
 
 /*==========================
@@ -1043,226 +831,6 @@ button:focus {
 
 
 /*==========================
-        17.BLOG PAGE
-============================*/
-
-.pagination>li {
-    display: inline-block;
-    margin-right: 2px;
-}
-
-.pagination>li>a,
-.pagination>li>span {
-    border-radius: 3px;
-    color: var(--color-pagination);
-    display: block;
-    float: none;
-    padding: 8px 15px;
-    transition: all 0.5s;
-}
-
-.pagination>.active>a,
-.pagination>.active>span {
-    color: var(--color-text);
-}
-
-.pagination>li>a:hover,
-.pagination>li>a:focus,
-.pagination>li>span:hover,
-.pagination>li>span:focus {
-    color: var(--color-text);
-}
-
-.pagination>.active>a,
-.pagination>.active>a:focus,
-.pagination>.active>a:hover,
-.pagination>.active>span,
-.pagination>.active>span:focus,
-.pagination>.active>span:hover {
-    cursor: default;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-    border-color: var(--color-primary);
-    z-index: 3;
-}
-
-
-/*---- SIDEBAR ----*/
-
-.blog_sidebar .sidebar_widget_title {
-    font-size: 14px;
-}
-
-.side_widget_search form {
-    position: relative;
-    box-shadow: none;
-}
-
-.side_widget_search form input {
-    box-shadow: none !important;
-    height: 46px;
-    border-radius: 0px;
-}
-
-.side_widget_search form input:focus {
-    border-color: var(--color-primary);
-}
-
-.search_icon {
-    top: 0;
-    font-size: 20px;
-    height: 100%;
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    transition: all .3s ease-out;
-    cursor: pointer;
-    right: 10px;
-}
-
-.search_icon:focus,
-.search_icon.focus,
-.search_icon.active.focus,
-.search_icon.active:focus,
-.search_icon:active.focus,
-.search_icon:active:focus {
-    outline: 0;
-}
-
-.search_icon:hover {
-    color: var(--color-text);
-}
-
-.blog_sidebar .widget_list li a {
-    color: var(--color-text-muted);
-    font-size: 14px;
-    transition: all 0.5s;
-    padding: 5px 0px;
-    display: inline-block;
-}
-
-.blog_sidebar .widget_list li a:hover {
-    color: var(--color-text);
-}
-
-.widget_recent_entries_custom ul li {
-    border-bottom: 1px solid var(--color-recent-border);
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-}
-
-.widget ul li:last-child {
-    border: 0;
-}
-
-.widget_recent_entries_custom .re_post_img {
-    float: left;
-    width: 68px;
-}
-
-.widget_recent_entries_custom .re_post_desc {
-    margin-left: 80px;
-}
-
-.widget_recent_entries_custom .re_post_desc a {
-    color: var(--color-sidebar-link);
-    font-size: 14px;
-    display: block;
-}
-
-.widget_recent_entries_custom .re_post_desc span {
-    font-size: 12px;
-    color: var(--color-text-muted);
-}
-
-.blog_tag a {
-    background: var(--color-background-light);
-    border-radius: 2px;
-    border: 1px solid var(--color-border);
-    color: var(--color-tag-text);
-    display: inline-block;
-    transition: all 0.5s;
-    font-size: 9px;
-    letter-spacing: 1px;
-    margin: 5px 10px 5px 0;
-    padding: 7px 8px 5px 10px;
-    text-transform: uppercase;
-}
-
-.blog_tag a:hover {
-    border-color: var(--color-primary);
-    color: var(--color-text);
-}
-
-
-/*---BLOG SINGLE----*/
-
-.blockquote {
-    border: 1px solid var(--color-border);
-    border-left: 4px solid var(--color-blockquote-border);
-    background-color: var(--color-background-light);
-    padding: 14px 20px;
-}
-
-.comment_blog .comment_read {
-    padding-bottom: 30px;
-    margin-bottom: 50px;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.comment_blog .comment_read:nth-child(odd) {
-    margin-left: 80px;
-}
-
-.comment_blog .comment_read:last-child {
-    margin-bottom: 0;
-}
-
-.comment_blog .comment_read .comment_img {
-    width: 80px;
-    float: left;
-}
-
-.comment_blog .comment_read .comment_data {
-    margin-left: 100px;
-}
-
-.comment_blog .comment_read .comment_data h6 {
-    font-size: 14px;
-}
-
-.comment_data h6 span {
-    font-size: 12px;
-    margin-top: 8px;
-    color: var(--color-text-muted);
-}
-
-.comment_blog .comment_read .comment_data .comment_reply {
-    margin-top: 10px;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.comment_blog .comment_read .comment_data .comment_reply i {
-    padding-right: 2px;
-    font-size: 14px;
-}
-
-.comments-form .comment-form-input .form-control {
-    height: 46px;
-    box-shadow: none !important;
-}
-
-.comments-form .comment-form-input .form-control:focus {
-    border-color: var(--color-primary);
-}
-
-.comments-form .comment-form-input textarea.form-control {
-    height: auto;
-}
-
-
-/*==========================
         18.RESPONSIVE
 ============================*/
 
@@ -1277,44 +845,6 @@ button:focus {
 }
 
 @media (max-width: 768px) {
-    .custom-nav {
-        margin-top: 0px;
-        padding: 10px 0px !important;
-        background-color: var(--color-background) !important;
-    }
-    .custom-nav .navbar-nav li a:before {
-        content: '';
-        display: none;
-    }
-    .custom-nav .navbar-nav li a {
-        margin: 0 0px;
-        padding: 6px 0;
-        color: rgba(var(--color-primary-rgb), 0.55) !important;
-    }
-    .custom-nav .navbar-nav li.active a {
-        color: var(--color-text) !important;
-    }
-    .custom-nav>.container {
-        width: 90%;
-    }
-    .custom-nav .logo .logo-dark {
-        display: inline-block;
-    }
-    .custom-nav .logo .logo-light {
-        display: none;
-    }
-    .custom-nav .navbar-brand.logo img {
-        height: 26px;
-    }
-    .navbar-nav {
-        margin-top: 0px;
-    }
-    .navbar-toggler {
-        font-size: 29px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        color: var(--color-text);
-    }
     .header_title {
         font-size: 40px;
         line-height: 1.2;
@@ -1323,21 +853,11 @@ button:focus {
         font-size: 15px;
         line-height: 1.8;
     }
-    .home-bg,
-    .h-100vh.jarallax,
-    .h-100vh.bg-dark,
-    .home-bg-slider .carousel-item {
+    .home-bg {
         padding: 110px 0 170px 0;
     }
-    .h-100vh,
-    .home-bg-slider .carousel-item {
+    .h-100vh {
         height: auto;
-    }
-    .clip-home {
-        clip-path: none;
-    }
-    .custom-nav .navbar-brand.logo img {
-        height: 26px;
     }
     .about-detail .about-work li::after {
         display: none;
@@ -1354,15 +874,6 @@ button:focus {
     .float_none.float-start {
         float: none !important;
         text-align: center;
-    }
-    .comment_blog .comment_read:nth-child(odd) {
-        margin-left: 34px;
-    }
-    .blog_detail h4 {
-        font-size: 18px;
-    }
-    .blog_detail p.blockquote {
-        font-size: 14px !important;
     }
 }
 
@@ -1413,6 +924,20 @@ section[id] {
 #preloader,
 #status {
     transition: opacity 0.35s ease;
+}
+
+/* Autoplay pause/play toggle for the testimonial carousel (WCAG 2.2.2).
+   Splide shows .splide__toggle__pause while playing and .splide__toggle__play
+   while paused via its own stylesheet. */
+.splide__toggle {
+    background: transparent;
+    border: 2px solid var(--color-text-on-dark);
+    border-radius: 50%;
+    color: var(--color-text-on-dark);
+    width: 40px;
+    height: 40px;
+    line-height: 1;
+    margin-top: 16px;
 }
 
 /* Transition for back-to-top button */

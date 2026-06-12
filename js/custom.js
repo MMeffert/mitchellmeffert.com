@@ -33,23 +33,9 @@
             }, 350);
         },
 
-        // Scroll - sticky navbar
-        initNavbarStickey: function() {
-            window.addEventListener('scroll', function() {
-                var sticky = document.querySelector('.sticky');
-                if (!sticky) return;
-
-                if (window.scrollY >= 50) {
-                    sticky.classList.add('stickyadd');
-                } else {
-                    sticky.classList.remove('stickyadd');
-                }
-            });
-        },
-
-        // Smooth scroll for navigation links
-        initNavbarSmooth: function() {
-            document.querySelectorAll('.navbar-nav a, .scroll_down a, .header_btn a').forEach(function(link) {
+        // Smooth scroll for in-page anchor links
+        initSmoothScroll: function() {
+            document.querySelectorAll('.scroll_down a, .header_btn a').forEach(function(link) {
                 link.addEventListener('click', function(event) {
                     var href = this.getAttribute('href');
                     if (href && href.startsWith('#')) {
@@ -61,12 +47,6 @@
                     }
                 });
             });
-        },
-
-        // ScrollSpy - Bootstrap 5 handles this via data attributes on body
-        initNavbarScrollSpy: function() {
-            // Bootstrap 5 ScrollSpy initialized via data attributes on body
-            // This function is kept for API compatibility but is now a no-op
         },
 
         // Fun Facts counter animation
@@ -180,9 +160,19 @@
             var siteKey = '6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD';
             var endpoint = 'https://txy7g2ztcmlm7klk5ptcv5zze40schil.lambda-url.us-east-1.on.aws/';
 
+            // WCAG-friendly feedback colors (>=4.5:1 on the white form background)
+            var ERROR_COLOR = '#b00020';
+            var SUCCESS_COLOR = '#1e7e34';
+
             function showMessage(text, color) {
                 messageDiv.style.color = color;
                 messageDiv.textContent = text;
+            }
+
+            function markInvalid(input, message) {
+                input.setAttribute('aria-invalid', 'true');
+                input.focus();
+                showMessage(message, ERROR_COLOR);
             }
 
             form.addEventListener('submit', async function(event) {
@@ -193,26 +183,30 @@
                 var subjectInput = document.getElementById('subject');
                 var commentInput = document.getElementById('comment');
 
+                [nameInput, emailInput, subjectInput, commentInput].forEach(function(input) {
+                    input.removeAttribute('aria-invalid');
+                });
+
                 if (nameInput.value.trim().length < 2) {
-                    showMessage('Please enter your name (at least 2 characters).', 'red');
+                    markInvalid(nameInput, 'Please enter your name (at least 2 characters).');
                     return;
                 }
                 if (!emailRe.test(emailInput.value.trim())) {
-                    showMessage('Please enter a valid email address.', 'red');
+                    markInvalid(emailInput, 'Please enter a valid email address.');
                     return;
                 }
                 if (subjectInput.value.trim() === '') {
-                    showMessage('Please enter a subject.', 'red');
+                    markInvalid(subjectInput, 'Please enter a subject.');
                     return;
                 }
                 if (commentInput.value.trim() === '') {
-                    showMessage('Please enter a message.', 'red');
+                    markInvalid(commentInput, 'Please enter a message.');
                     return;
                 }
 
                 // reCAPTCHA loads deferred; guard against an early submit before it is ready
                 if (typeof grecaptcha === 'undefined' || !grecaptcha.enterprise) {
-                    showMessage('Security verification is still loading. Please try again in a moment.', 'red');
+                    showMessage('Security verification is still loading. Please try again in a moment.', ERROR_COLOR);
                     return;
                 }
 
@@ -238,11 +232,11 @@
                         throw new Error('Network response was not ok');
                     }
 
-                    showMessage('Message Sent Successfully', 'green');
+                    showMessage('Message Sent Successfully', SUCCESS_COLOR);
                     form.reset();
                 } catch (err) {
                     console.error('Contact form error:', err);
-                    showMessage('Error. Your message was not sent. Please try again.', 'red');
+                    showMessage('Error. Your message was not sent. Please try again.', ERROR_COLOR);
                 } finally {
                     if (submitBtn) submitBtn.disabled = false;
                 }
@@ -259,9 +253,7 @@
 
         init: function() {
             this.initPreLoader();
-            this.initNavbarStickey();
-            this.initNavbarSmooth();
-            this.initNavbarScrollSpy();
+            this.initSmoothScroll();
             this.initFunFacts();
             this.initClientSlider();
             this.initBackToTop();
