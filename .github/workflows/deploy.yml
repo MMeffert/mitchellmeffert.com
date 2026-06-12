@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          # Full history so the sitemap lastmod step can find the last commit
+          # that actually touched index.html
+          fetch-depth: 0
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v6
@@ -45,10 +49,13 @@ jobs:
             --output text)
           echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
 
-      - name: Stamp sitemap lastmod with deploy date
+      - name: Stamp sitemap lastmod with last content change
         run: |
-          # Keep <lastmod> current so search engines see the page as freshly updated
-          sed -i "s|<lastmod>.*</lastmod>|<lastmod>$(date -u +%Y-%m-%d)</lastmod>|" sitemap.xml
+          # Use the date index.html last changed, not the deploy date, so lastmod
+          # stays truthful when a deploy touches only infra/workflow files
+          LASTMOD=$(git log -1 --format=%cd --date=format:%Y-%m-%d -- index.html)
+          LASTMOD=${LASTMOD:-$(date -u +%Y-%m-%d)}
+          sed -i "s|<lastmod>.*</lastmod>|<lastmod>$LASTMOD</lastmod>|" sitemap.xml
           grep lastmod sitemap.xml
 
       - name: Sync files to S3
@@ -71,6 +78,12 @@ jobs:
           # Set shorter cache for HTML files (they change more frequently)
           aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/index.html \
             s3://${{ steps.cfn.outputs.bucket_name }}/index.html \
+            --cache-control "max-age=300,public" \
+            --content-type "text/html" \
+            --metadata-directive REPLACE
+
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/404.html \
+            s3://${{ steps.cfn.outputs.bucket_name }}/404.html \
             --cache-control "max-age=300,public" \
             --content-type "text/html" \
             --metadata-directive REPLACE

@@ -65,7 +65,8 @@ async function getRecaptchaApiKey() {
 }
 
 exports.handler = async function (event) {
-    console.log('Received event:', JSON.stringify(event));
+    // Do not log the raw event: it contains visitor PII (name, email, message).
+    console.log('Contact form submission received');
 
     // Parse body if it's a string (from API Gateway or Function URL)
     let body = event;
@@ -136,7 +137,13 @@ async function verifyRecaptcha(token, expectedAction, apiKey) {
     });
 
     const data = await response.json();
-    console.log('reCAPTCHA response:', JSON.stringify(data));
+    // Log only the assessment outcome, not the full response (it echoes token data)
+    console.log('reCAPTCHA assessment:', JSON.stringify({
+        valid: data.tokenProperties?.valid,
+        action: data.tokenProperties?.action,
+        score: data.riskAnalysis?.score,
+        error: data.error?.message,
+    }));
 
     if (data.error) {
         return { success: false, reason: data.error.message };
