@@ -11,6 +11,10 @@
 (function() {
     "use strict";
 
+    // Honor the OS-level "reduce motion" preference (WCAG 2.3.3): skip decorative
+    // animations and fall back to instant scrolling when it is set.
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var ElvishApp = {
         // Preloader
         initPreLoader: function() {
@@ -42,7 +46,7 @@
                         event.preventDefault();
                         var target = document.querySelector(href);
                         if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
+                            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                         }
                     }
                 });
@@ -82,12 +86,16 @@
                     counted = true;
                     document.querySelectorAll('.lan_fun_value').forEach(function(el) {
                         var countTo = parseInt(el.getAttribute('data-count'), 10);
-                        animateValue(el, 0, countTo, 2000);
+                        if (prefersReducedMotion) {
+                            el.textContent = countTo;
+                        } else {
+                            animateValue(el, 0, countTo, 2000);
+                        }
                     });
                 }
             }
 
-            window.addEventListener('scroll', maybeCount);
+            window.addEventListener('scroll', maybeCount, { passive: true });
             // Run once on init in case the counter is already in view (tall viewport / short page)
             maybeCount();
         },
@@ -96,6 +104,10 @@
         initClientSlider: function() {
             var carousel = document.getElementById('testimonial-carousel');
             if (!carousel) return;
+
+            // If the vendor script failed to load, skip the carousel instead of
+            // throwing and taking the rest of init() down with it.
+            if (typeof Splide === 'undefined') return;
 
             new Splide('#testimonial-carousel', {
                 type: 'loop',
@@ -122,11 +134,11 @@
                     backTop.style.opacity = '0';
                     backTop.style.visibility = 'hidden';
                 }
-            });
+            }, { passive: true });
 
             backTop.addEventListener('click', function(event) {
                 event.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
             });
         },
 
@@ -135,6 +147,15 @@
             document.querySelectorAll('.element').forEach(function(el) {
                 var dataElements = el.getAttribute('data-elements');
                 if (!dataElements) return;
+
+                // Reduced motion: show the first phrase statically instead of the
+                // endless type/erase loop. (Splide handles this itself via its
+                // built-in reducedMotion defaults, so only Typed.js needs a guard.)
+                // Same static fallback if the Typed.js vendor script failed to load.
+                if (prefersReducedMotion || typeof Typed === 'undefined') {
+                    el.textContent = dataElements.split(',')[0];
+                    return;
+                }
 
                 new Typed(el, {
                     strings: dataElements.split(','),
