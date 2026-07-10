@@ -72,15 +72,17 @@
         <!-- Canonical URL -->
         <link rel="canonical" href="https://mitchellmeffert.com/" />
 
-        <!-- Preconnect to third-party origins -->
+        <!-- Preconnect to third-party origins (reCAPTCHA only; all other assets are self-hosted) -->
         <link rel="preconnect" href="https://www.google.com" crossorigin>
         <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <!-- Preload LCP hero background -->
         <link rel="preload" as="image" href="images/code-background.webp" type="image/webp" fetchpriority="high">
+
+        <!-- Preload above-the-fold fonts (fonts always require crossorigin, even same-origin) -->
+        <link rel="preload" as="font" type="font/woff2" href="fonts/montserrat-latin-500-normal.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="fonts/montserrat-latin-600-normal.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="fonts/nunito-latin-400-normal.woff2" crossorigin>
 
         <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -93,14 +95,10 @@
         <!-- Mobirise icons Css -->
         <link rel="stylesheet" href="css/mobiriseicons.css">
 
-        <!-- Google Fonts (moved out of style.css @import so the download starts in parallel) -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Nunito:400,600,700&display=swap">
+        <!-- Fonts are self-hosted via @font-face in css/style.css (no Google Fonts dependency) -->
 
-        <!-- Splide Carousel -->
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
-              integrity="sha384-RQYEYzAnHyG0swTqlleCCsKHN9pUKyYMflAk6KEjvY6KhE5MLlvjwZkai5538g2T"
-              crossorigin="anonymous">
+        <!-- Splide Carousel (self-hosted, verified against the jsdelivr SRI hash) -->
+        <link rel="stylesheet" href="css/splide-4.1.4.min.css">
 
         <!-- Custom style Css -->
         <link rel="stylesheet" href="css/style.css">
@@ -707,15 +705,10 @@
         <a href="#" class="back_top" aria-label="Back to top"> <i class="mbri-arrow-up"> </i> </a>
 
 
-        <!-- JAVASCRIPTS -->
-        <!-- Splide Carousel -->
-        <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
-                integrity="sha384-RbYB5yr9jD1p+2OHlV3KzOBLAY48CbFsJ87bXEFYINGgOlQJNE4cEjTUf+Q2fygb"
-                crossorigin="anonymous"></script>
-        <!-- Typed.js -->
-        <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"
-                integrity="sha384-cMrTlShXEGSdSFA359p+3aVUxK/R+0TAfbRZMcTlAn8yqzxEDj05QsS65nTFMMj4"
-                crossorigin="anonymous"></script>
+        <!-- JAVASCRIPTS (Splide and Typed.js are self-hosted, verified against the
+             jsdelivr SRI hashes; version in filename so the 1-year cache stays safe) -->
+        <script defer src="js/splide-4.1.4.min.js"></script>
+        <script defer src="js/typed-2.1.0.umd.js"></script>
         <!--CUSTOM JS (defer keeps it off the parser's critical path; deferred scripts
             run in document order, so Splide and Typed.js above are defined first) -->
         <script defer src="js/custom.js"></script>

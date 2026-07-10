@@ -105,8 +105,8 @@
             var carousel = document.getElementById('testimonial-carousel');
             if (!carousel) return;
 
-            // If the CDN failed (blocked network, adblocker), skip the carousel
-            // instead of throwing and taking the rest of init() down with it.
+            // If the vendor script failed to load, skip the carousel instead of
+            // throwing and taking the rest of init() down with it.
             if (typeof Splide === 'undefined') return;
 
             new Splide('#testimonial-carousel', {
@@ -151,7 +151,7 @@
                 // Reduced motion: show the first phrase statically instead of the
                 // endless type/erase loop. (Splide handles this itself via its
                 // built-in reducedMotion defaults, so only Typed.js needs a guard.)
-                // Same static fallback if the Typed.js CDN failed to load.
+                // Same static fallback if the Typed.js vendor script failed to load.
                 if (prefersReducedMotion || typeof Typed === 'undefined') {
                     el.textContent = dataElements.split(',')[0];
                     return;

@@ -24,8 +24,62 @@
     12.RESPONSIVE
 ************************/
 
-/* Google Fonts are loaded via <link> in index.html <head> (parallel discovery
-   beats a CSS @import, which chains behind this file's download). */
+/*======================
+    Self-hosted Fonts
+========================*/
+
+/* Montserrat and Nunito are self-hosted (latin subset, woff2) so the site has no
+   dependency on fonts.googleapis.com / fonts.gstatic.com, which corporate
+   firewalls sometimes block. Files come from @fontsource (same builds Google
+   Fonts serves). */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(../fonts/montserrat-latin-400-normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url(../fonts/montserrat-latin-500-normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url(../fonts/montserrat-latin-600-normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(../fonts/nunito-latin-400-normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url(../fonts/nunito-latin-600-normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url(../fonts/nunito-latin-700-normal.woff2) format('woff2');
+}
 
 /*======================
     CSS Custom Properties

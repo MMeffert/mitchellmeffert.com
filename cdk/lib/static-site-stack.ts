@@ -122,17 +122,18 @@ function handler(event) {
       `),
     });
 
-    // Content Security Policy. style-src keeps 'unsafe-inline' because third-party
+    // Content Security Policy. style-src keeps 'unsafe-inline' because vendored
     // libraries inject <style> elements at runtime (Typed.js cursor, reCAPTCHA badge,
     // Splide). All first-party executable JS lives in external files, so script-src
-    // stays free of 'unsafe-inline'. reCAPTCHA / contact-form sources are only added
-    // when the contact form is enabled.
+    // stays free of 'unsafe-inline'. Fonts, Splide, and Typed.js are self-hosted, so
+    // the only third-party origins are reCAPTCHA's, added when the contact form is
+    // enabled.
     const cspDirectives = [
       "default-src 'self'",
-      `script-src 'self' https://cdn.jsdelivr.net${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
-      "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com",
+      `script-src 'self'${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
+      "style-src 'self' 'unsafe-inline'",
       `img-src 'self' data:${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
-      "font-src 'self' data: https://fonts.gstatic.com",
+      "font-src 'self' data:",
       `connect-src 'self'${contactForm ? ` https://www.google.com https://*.lambda-url.${this.region}.on.aws` : ''}`,
       ...(contactForm ? ['frame-src https://www.google.com'] : []),
       "object-src 'none'",
