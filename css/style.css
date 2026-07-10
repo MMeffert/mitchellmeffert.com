@@ -915,6 +915,21 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Honor the OS-level "reduce motion" preference (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
 /* Account for any fixed header when scrolling to sections */
 section[id] {
     scroll-margin-top: 0;

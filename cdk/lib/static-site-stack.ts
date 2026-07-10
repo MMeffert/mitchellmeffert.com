@@ -146,6 +146,17 @@ function handler(event) {
     const responseHeadersPolicy = new cloudfront.ResponseHeadersPolicy(this, 'ResponseHeadersPolicy', {
       responseHeadersPolicyName: `${siteName}-security-headers`,
       comment: 'Security headers for portfolio site',
+      customHeadersBehavior: {
+        customHeaders: [
+          {
+            // The site uses none of these powerful features; deny them outright so
+            // injected third-party code can't request them either.
+            header: 'Permissions-Policy',
+            value: 'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+            override: true,
+          },
+        ],
+      },
       securityHeadersBehavior: {
         contentSecurityPolicy: {
           contentSecurityPolicy: cspDirectives,

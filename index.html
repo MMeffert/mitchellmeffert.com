@@ -7,6 +7,7 @@
         <title>Mitchell Meffert | AWS Cloud Architect & Web Developer</title>
         <meta name="description" content="AWS-certified cloud architect and web developer with 19+ years experience. Specializing in cloud solutions, AI development, and enterprise web apps." />
         <meta name="author" content="Mitchell Meffert" />
+        <meta name="theme-color" content="#262626" />
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
@@ -133,7 +134,7 @@
                             <div class="col-lg-12">
                                 <div class="text-white text-center">
                                     <p class="h4 mb-0">Hi, I'm Mitchell Meffert</p>
-                                    <h1 class="header_title mb-0 mt-3">AWS Cloud Architect &amp; <span class="element fw-bold" data-elements="Web Developer.,Cloud Engineer.,Programmer.,Business Owner."></span></h1>
+                                    <h1 class="header_title mb-0 mt-3">AWS Cloud Architect &amp; <span class="element fw-bold" aria-hidden="true" data-elements="Web Developer.,Cloud Engineer.,Programmer.,Business Owner."></span><span class="visually-hidden">Web Developer</span></h1>
                                     <ul class="social_home list-unstyled text-center pt-4">
                                         <li class="list-inline-item"><a href="https://www.facebook.com/mitchell.meffert" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="mdi mdi-facebook"></i></a></li>
                                         <li class="list-inline-item"><a href="https://www.linkedin.com/in/mitchellmeffert" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="mdi mdi-linkedin"></i></a></li>
@@ -254,7 +255,7 @@
                 </div>
             </div>
         </section>
-        <!-- START FUNFACTS -->
+        <!-- END FUNFACTS -->
 
         <!-- START EXP. & EDU. -->
         <section class="section" id="education">
@@ -715,8 +716,9 @@
         <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"
                 integrity="sha384-cMrTlShXEGSdSFA359p+3aVUxK/R+0TAfbRZMcTlAn8yqzxEDj05QsS65nTFMMj4"
                 crossorigin="anonymous"></script>
-        <!--CUSTOM JS-->
-        <script src="js/custom.js"></script>
+        <!--CUSTOM JS (defer keeps it off the parser's critical path; deferred scripts
+            run in document order, so Splide and Typed.js above are defined first) -->
+        <script defer src="js/custom.js"></script>
         <!-- Google reCAPTCHA Enterprise (deferred for INP) -->
         <script defer src="https://www.google.com/recaptcha/enterprise.js?render=6LclXjYsAAAAAOGddQLVaLNDsjXeDfajOgJtvdfD"></script>
     </body>
