@@ -1015,3 +1015,24 @@ section[id] {
     opacity: 0;
     visibility: hidden;
 }
+
+/* Inline SVG icons (replacing MDI icon font) */
+.svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+/* Section divider asterisk icon sizing */
+.main-title-border .svg-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Carousel toggle icon sizing */
+.splide__toggle .svg-icon {
+    width: 20px;
+    height: 20px;
+}
