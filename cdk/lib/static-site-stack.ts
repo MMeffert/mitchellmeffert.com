@@ -144,6 +144,30 @@ function handler(event) {
     ].join('; ');
 
     // Response Headers Policy for security headers
+    const cspDirectives = [
+      "default-src 'none'",
+      "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com",
+      "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com",
+      "img-src 'self' data:",
+      "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net",
+      "connect-src 'self' https://*.lambda-url.us-east-1.on.aws https://www.google.com",
+      "frame-src https://www.google.com https://recaptcha.google.com",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; ');
+
+    const permissionsPolicy = [
+      'camera=()',
+      'microphone=()',
+      'geolocation=()',
+      'accelerometer=()',
+      'gyroscope=()',
+      'magnetometer=()',
+      'payment=()',
+      'usb=()',
+      'interest-cohort=()',
+    ].join(', ');
+
     const responseHeadersPolicy = new cloudfront.ResponseHeadersPolicy(this, 'ResponseHeadersPolicy', {
       responseHeadersPolicyName: `${siteName}-security-headers`,
       comment: 'Security headers for portfolio site',
@@ -173,13 +197,22 @@ function handler(event) {
           override: true,
         },
         strictTransportSecurity: {
-          accessControlMaxAge: cdk.Duration.seconds(31536000),
+          accessControlMaxAge: cdk.Duration.seconds(63072000),
           includeSubdomains: true,
           preload: true,
           override: true,
         },
         // X-XSS-Protection is intentionally not set: the header is deprecated and
         // current guidance is to omit it (CSP above covers XSS).
+      },
+      customHeadersBehavior: {
+        customHeaders: [
+          {
+            header: 'Permissions-Policy',
+            value: permissionsPolicy,
+            override: true,
+          },
+        ],
       },
     });
 
