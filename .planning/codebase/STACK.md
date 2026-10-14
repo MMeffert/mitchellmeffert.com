@@ -39,21 +39,20 @@
 - Animate.css - CSS animations (`css/animate.min.css`)
 
 **Build/Dev:**
-- ts-node 10.9.x - TypeScript execution (`cdk/package.json`)
-- TypeScript 5.x - Type checking and compilation
+- tsx - TypeScript execution (`cdk/package.json`)
+- TypeScript 7.x - Type checking (`tsc --noEmit` runs before every synth)
 
 ## Key Dependencies
 
 **Critical (CDK - `cdk/package.json`):**
 - `aws-cdk-lib` ^2.170.0 - Core AWS CDK constructs
 - `constructs` ^10.0.0 - CDK construct base class
-- `source-map-support` ^0.5.21 - Stack trace support
 
 **Dev Dependencies:**
 - `@types/node` ^25.0.3 - Node.js type definitions
 - `aws-cdk` ^2.170.0 - CDK CLI
-- `typescript` ^5.0.0 - TypeScript compiler
-- `ts-node` ^10.9.0 - TypeScript execution
+- `typescript` ~7.0.2 - TypeScript compiler (type check only)
+- `tsx` ^4.23.15 - TypeScript execution
 
 **Lambda Runtime (implicit via Node.js 24):**
 - `@aws-sdk/client-ses` - SES email sending (native in Node 24 Lambda)
@@ -69,7 +68,7 @@
 - Source maps inline
 
 **CDK (`cdk/cdk.json`):**
-- App command: `npx ts-node app.ts`
+- App command: `npx tsc --noEmit && npx tsx app.ts`
 - Modern CDK feature flags enabled
 - Minimized IAM policies
 - Security-first defaults (Block public access, SSL enforcement)
