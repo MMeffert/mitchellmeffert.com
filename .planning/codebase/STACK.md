@@ -5,7 +5,7 @@
 ## Languages
 
 **Primary:**
-- TypeScript 5.x - CDK infrastructure code (`cdk/`)
+- TypeScript 7.x - CDK infrastructure code (`cdk/`)
 - JavaScript ES2020 - Lambda functions (`cdk/lambda/`)
 - HTML5 - Static website content (`index.html`)
 - CSS3 - Styling (`css/`)
