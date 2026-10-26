@@ -13,12 +13,12 @@
     "bootstrap": "cdk bootstrap"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.273.0",
+    "aws-cdk-lib": "^2.274.0",
     "constructs": "^10.7.2"
   },
   "devDependencies": {
     "@types/node": "^25.9.3",
-    "aws-cdk": "^2.1145.0",
+    "aws-cdk": "^2.1146.1",
     "tsx": "^4.23.15",
     "typescript": "~7.0.2"
   }
