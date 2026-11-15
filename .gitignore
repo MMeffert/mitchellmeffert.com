@@ -13,3 +13,4 @@ cdk.out/
 
 # macOS
 .DS_Store
+.agent-review/

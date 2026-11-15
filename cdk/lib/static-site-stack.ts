@@ -7,6 +7,7 @@ import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import * as path from 'path';
 import { Construct } from 'constructs';
@@ -47,6 +48,11 @@ export class StaticSiteStack extends cdk.Stack {
       versioned: true,
       removalPolicy: cdk.RemovalPolicy.RETAIN,
       enforceSSL: true,
+      lifecycleRules: [{
+        // Every deploy rewrites objects (sync --delete + REPLACE), so noncurrent
+        // versions accumulate forever without this cap.
+        noncurrentVersionExpiration: cdk.Duration.days(90),
+      }],
     });
 
     // Get hosted zone
@@ -116,11 +122,47 @@ function handler(event) {
       `),
     });
 
+    // Content Security Policy. style-src keeps 'unsafe-inline' because vendored
+    // libraries inject <style> elements at runtime (Typed.js cursor, reCAPTCHA badge,
+    // Splide). All first-party executable JS lives in external files, so script-src
+    // stays free of 'unsafe-inline'. Fonts, Splide, and Typed.js are self-hosted, so
+    // the only third-party origins are reCAPTCHA's, added when the contact form is
+    // enabled.
+    const cspDirectives = [
+      "default-src 'self'",
+      `script-src 'self'${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
+      "style-src 'self' 'unsafe-inline'",
+      `img-src 'self' data:${contactForm ? ' https://www.google.com https://www.gstatic.com' : ''}`,
+      "font-src 'self' data:",
+      `connect-src 'self'${contactForm ? ` https://www.google.com https://*.lambda-url.${this.region}.on.aws` : ''}`,
+      ...(contactForm ? ['frame-src https://www.google.com'] : []),
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+      'upgrade-insecure-requests',
+    ].join('; ');
+
     // Response Headers Policy for security headers
     const responseHeadersPolicy = new cloudfront.ResponseHeadersPolicy(this, 'ResponseHeadersPolicy', {
       responseHeadersPolicyName: `${siteName}-security-headers`,
       comment: 'Security headers for portfolio site',
+      customHeadersBehavior: {
+        customHeaders: [
+          {
+            // The site uses none of these powerful features; deny them outright so
+            // injected third-party code can't request them either.
+            header: 'Permissions-Policy',
+            value: 'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+            override: true,
+          },
+        ],
+      },
       securityHeadersBehavior: {
+        contentSecurityPolicy: {
+          contentSecurityPolicy: cspDirectives,
+          override: true,
+        },
         contentTypeOptions: { override: true },
         frameOptions: {
           frameOption: cloudfront.HeadersFrameOption.DENY,
@@ -136,11 +178,8 @@ function handler(event) {
           preload: true,
           override: true,
         },
-        xssProtection: {
-          protection: true,
-          modeBlock: true,
-          override: true,
-        },
+        // X-XSS-Protection is intentionally not set: the header is deprecated and
+        // current guidance is to omit it (CSP above covers XSS).
       },
     });
 
@@ -164,6 +203,22 @@ function handler(event) {
       defaultRootObject: 'index.html',
       httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
       priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
+      // S3 returns 403 (not 404) for missing keys when the OAC role lacks ListBucket;
+      // map both to a branded 404 page served with a true 404 status (no soft-404s).
+      errorResponses: [
+        {
+          httpStatus: 403,
+          responseHttpStatus: 404,
+          responsePagePath: '/404.html',
+          ttl: cdk.Duration.minutes(5),
+        },
+        {
+          httpStatus: 404,
+          responseHttpStatus: 404,
+          responsePagePath: '/404.html',
+          ttl: cdk.Duration.minutes(5),
+        },
+      ],
     });
 
     // DNS Records
@@ -188,7 +243,9 @@ function handler(event) {
             [`${githubProvider}:aud`]: 'sts.amazonaws.com',
           },
           StringLike: {
-            [`${githubProvider}:sub`]: `repo:${githubRepo}:*`,
+            // Pin to the main branch only: a role with S3 write + CloudFront
+            // invalidation must not be assumable from arbitrary branches/tags/PRs.
+            [`${githubProvider}:sub`]: `repo:${githubRepo}:ref:refs/heads/main`,
           },
         }
       ),
@@ -227,6 +284,13 @@ function handler(event) {
         code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/contact-form')),
         timeout: cdk.Duration.seconds(10),
         memorySize: 128,
+        // Cap concurrent executions: the Function URL is public, so this bounds the
+        // blast radius (and reCAPTCHA/SES spend) of any flooding attempt.
+        reservedConcurrentExecutions: 5,
+        logGroup: new logs.LogGroup(this, 'ContactFormLogGroup', {
+          retention: logs.RetentionDays.ONE_MONTH,
+          removalPolicy: cdk.RemovalPolicy.DESTROY,
+        }),
         environment: {
           SENDER_EMAIL: contactForm.senderEmail,
           RECEIVER_EMAIL: contactForm.receiverEmail,

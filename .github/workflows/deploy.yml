@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          # Full history so the sitemap lastmod step can find the last commit
+          # that actually touched index.html
+          fetch-depth: 0
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v6
@@ -45,6 +49,15 @@ jobs:
             --output text)
           echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
 
+      - name: Stamp sitemap lastmod with last content change
+        run: |
+          # Use the date index.html last changed, not the deploy date, so lastmod
+          # stays truthful when a deploy touches only infra/workflow files
+          LASTMOD=$(git log -1 --format=%cd --date=format:%Y-%m-%d -- index.html)
+          LASTMOD=${LASTMOD:-$(date -u +%Y-%m-%d)}
+          sed -i "s|<lastmod>.*</lastmod>|<lastmod>$LASTMOD</lastmod>|" sitemap.xml
+          grep lastmod sitemap.xml
+
       - name: Sync files to S3
         run: |
           # Sync all static files to S3, excluding non-site files
@@ -67,6 +80,40 @@ jobs:
             s3://${{ steps.cfn.outputs.bucket_name }}/index.html \
             --cache-control "max-age=300,public" \
             --content-type "text/html" \
+            --metadata-directive REPLACE
+
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/404.html \
+            s3://${{ steps.cfn.outputs.bucket_name }}/404.html \
+            --cache-control "max-age=300,public" \
+            --content-type "text/html" \
+            --metadata-directive REPLACE
+
+          # Mutable text assets have no content hash in their filenames (and the
+          # CloudFront function strips query strings, defeating ?v= cache-busting),
+          # so give them a short cache. Otherwise the blanket 1-year cache above
+          # would keep returning visitors / crawlers on stale CSS, JS, and SEO files.
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/css/style.css \
+            s3://${{ steps.cfn.outputs.bucket_name }}/css/style.css \
+            --cache-control "max-age=3600,public" \
+            --content-type "text/css" \
+            --metadata-directive REPLACE
+
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/js/custom.js \
+            s3://${{ steps.cfn.outputs.bucket_name }}/js/custom.js \
+            --cache-control "max-age=3600,public" \
+            --content-type "application/javascript" \
+            --metadata-directive REPLACE
+
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/sitemap.xml \
+            s3://${{ steps.cfn.outputs.bucket_name }}/sitemap.xml \
+            --cache-control "max-age=3600,public" \
+            --content-type "application/xml" \
+            --metadata-directive REPLACE
+
+          aws s3 cp s3://${{ steps.cfn.outputs.bucket_name }}/robots.txt \
+            s3://${{ steps.cfn.outputs.bucket_name }}/robots.txt \
+            --cache-control "max-age=3600,public" \
+            --content-type "text/plain" \
             --metadata-directive REPLACE
 
       - name: Clean up stale files from S3

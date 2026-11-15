@@ -2,6 +2,17 @@
 
 Personal portfolio website for Mitchell Meffert.
 
+## Site
+
+Static HTML at the repo root (`index.html`, `404.html`, `css/`, `js/`, `fonts/`, `images/`) --
+no build step, no framework. Preview locally with any static server, e.g.
+`python3 -m http.server 8000` from the repo root. Edit the HTML/CSS directly.
+
+## Deployment
+
+Pushes to `main` deploy automatically via GitHub Actions (`.github/workflows/deploy.yml`, OIDC
+auth). The CDK section below is only for infrastructure changes, not content updates.
+
 ## AWS Configuration
 
 **This is a personal project - NOT a Roundhouse business project.**
