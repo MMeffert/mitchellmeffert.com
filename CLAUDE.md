@@ -1,6 +1,9 @@
 # mitchellmeffert.com
 
-Personal portfolio website for Mitchell Meffert.
+Personal portfolio website for Mitchell Meffert. The primary goal is to present his profile,
+resume, and personal brand. Consulting is a secondary opportunity: keep the contact invitation
+open to project inquiries, without adding dedicated service or location landing pages for
+non-branded lead generation.
 
 ## Site
 
